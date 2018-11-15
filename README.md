@@ -13,8 +13,6 @@
 
 ## 11. Identify the database to be used in your app and provide a justification for your choice:
 
-> [this is my link](www.google.com)
-
 We decided to use [MongoDB](https://www.mongodb.com/) as its an object-oriented, simple to use , dynamic, and scalable [NoSQL](https://searchdatamanagement.techtarget.com/definition/NoSQL-Not-Only-SQL)database. It’s based on the NoSQL document store model. **MonogoDB** works with data as [flexible JSON documents](https://thenewstack.io/technology-pairings-json-documents-databases/), rather than as rigid rows and columns as in [SQL](http://www.sqlcourse.com/intro.html) databases. We found find this document style more natural, flexible and in terms of application speed fast.
 Why we chose **MongoDB**?:
 
