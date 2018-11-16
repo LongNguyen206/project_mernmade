@@ -125,6 +125,7 @@ Why we chose **MongoDB**?:
     ```
     git merge <team_member_dev>
     ```
+    In case of conflicts, team member will solve them manually. In this case, the team member has to **add** and **commit** again from their `Local Master Branch`.
 11. Now, as the `Local Master Branch` has the most up-to-date combined code, team members will **push** this code to the `Remote Repo`, on the branch with their name. The following command will push to `Remote Repo` and **create a new branch** if needed:
     ```
     git push origin master:<team_member_dev>
