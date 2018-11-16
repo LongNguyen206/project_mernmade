@@ -28,7 +28,7 @@ Our application will serve the **Admin** for users who provide **Admin** authori
 
 ### Registed Users
 
-Our application will serve the **Registered User** for users who provide **Registed User** cerdentials. this application will have <n> main react components:
+Our application will serve the **Registered User** for users who provide **Registed User** credentials. this application will have <n> main react components:
 
 - AppRouter(App Navigation)
 - DashboardPage(to view/ search social media profiles)
@@ -79,6 +79,21 @@ Why we chose **MongoDB**?:
 ## 13. Provide your database schema design:
 
 ## 14. Provide User stories for your App:
+
+### Admin StoryBoard
+
+**Admin** in our app will be allowed to add social media profiles, verify brands, browse through the dashboard(filtered or not filtered) view social media profiles.
+
+### Registered User StoryBoard
+
+**Registered Users** will be able to sign up either through Facebook, Instagram, Google or locally.
+Once signed in the **Registered User** will then go to the home page where they'll be able to view social media profiles in a tile form. The user can filter accounts based on (location, popularity(based on average number of followers), platform (e.g Instagram, Facebook, twitter, Youtube), type-of-account(Influencer, Feature account, Community) and engagement(based on average number of likes/views/comments))
+**Registered users** can view profiles. **Registered users** can rate and also leave reviews on social media profiles. If **Registered users** like a particluar social media profile they are able to place them into a wish list. **Registered users** are able to delete thier account.
+
+### Guest User StoryBoard
+
+**Guest Users** enter the website they go straight to the home page where they'll be able to view social media profiles in a tile form.The **Guest User** can filter based on(location, popularity(based on average number of followers), platform(e.g Instagram, Facebook, Twitter, Youtube), type-of-account(Influencer, Feature account, Community), engagement(based on average number of likes/views/comments)).
+**Guest Users** can view social media profiles. **Guest Users** will be able to sign up either through Facebook, Instagram, Google or locally.
 
 ## 15. Provide Wireframes for your App:
 
