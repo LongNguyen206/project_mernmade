@@ -73,11 +73,13 @@ Why we chose **MongoDB**?:
 
 ## 16. Describe the way Tasks are being allocated and tracked in your project:
 
----
+Trello is a web-based project management application. On Trello we have broken the project into two main boards 'Phases' and 'Backlog features'. The phases boards main directive is to ensures that the team priortises certain features/sets of features in order to ensure proper time-frame delivery. The second board; 'Backlog features' is to give an oversight for the developers as to what tasks are yet to be completed and the estimated complexity of such feature. 
+
+Once a team-member has picked a task from the 'Backlog Features' on trello in order for other team-members to track their progress and to avoid two members working on the same task, the team-member will use the physical boards Backlog, in-progress,Testing, Stuck-Zone and Completed. Like Trello this helps the team to visualise the progress of the app so far and avoid the same work being completed by two members
 
 ## 17. Discuss how Agile methodology is being implemented in your App:
 
----
+'Kanban is a method for managing the creation of products with an emphasis on continual delivery while not overburdening the development team' -Wikipedia. This is the agile methodology that we choose to follow for this project. Due the conflict of time-zones between the team-members and client. We decided that the best solution would be to send querys/questions the night before the be answered by the client 10am the next day. Thus far into the planning stages we have a two client meeting each lasting about 15 mins. By the end first meeting 16 user stories were conveyed to the team by the client. Following the Kanban method of continuous integration, each team member will assign themselves a task for the 3 day sprint to be reviewed by the client providing test passes.
 
 ## 18.Provide an overview and description of your Source control process:
 
