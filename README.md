@@ -8,8 +8,50 @@
 6. Identify and describe the network setup you will use in your development.
 7. Identify and describe the infrastructure (i.e. hardware) that your App will run on.
 8. Describe the architecture of your App.
-9. Explain the different high-level components (abstractions) in your App.
-10. Detail any third party services that your App will use.
+
+## 9. Explain the different high-level components (abstractions) in your App.
+
+### Admin
+
+Our application will serve the **Admin** for users who provide **Admin** authorization credentials. this application will have <n> main react components:
+
+- AppRouter(App Navigation)
+- Admin page(to approve social media profiles/ Brand verfication)
+- ManageSocialMediaProiflePage(to manage social media profiles)
+
+### Registed Users
+
+Our application will serve the **Registered User** for users who provide **Registed User** cerdentials. this application will have <n> main react components:
+
+- AppRouter(App Navigation)
+- DashboardPage(to view/ search social media profiles)
+- ProfilePage(to view/ rate social media profiles/ leave reviews)
+- SettingPage(to manage interest/ wishlist/ view ratings)
+
+### Guest User
+
+Our application will serve the **Guest Users** for users who provide **Guest User** cerdentials. this application will have <n> main react components:
+
+- AppRouter(App Navigation)
+- DashBoard(to view/ search social media profiles)
+- ProfilePage(to view)
+
+### Express Backend
+
+Node.js server will receive, handle requests/ api requests, send/ recieve data from the database, serve static assests, and serve data in JSON format.
+Our server will also handle vaildation, authentication and authorization of our app.
+A mailer system for account comfirmation, password reset requests.
+
+### MongoDB DataBase
+
+MonogoDB will be our database for our app, it will store all user data, social media profiles, rating data, review data.
+
+## 10. Detail any third party services that your App will use.
+
+- Facebook API(used for account login verification and offical account verfication)
+- Instagram API(used for account login verifacation and offical account verfication)
+- Google API(used for account login verification)
+- <Mail service API>(used to send new users account comfirmation emails and to send users password reset emails)
 
 ## 11. Identify the database to be used in your app and provide a justification for your choice:
 
