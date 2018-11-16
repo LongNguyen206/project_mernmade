@@ -2,7 +2,15 @@
 
 ## 1. Who is your client?
 
+Our **Client** is a startup based in NY, USA that specializes in the production of **visual content** and **social media marketing**.
+
 ## 2. What is your client’s need (i.e. challenge) that you will be addressing in your project?
+
+The challenge is to create a highly selective, transparent and easy to navigate database of influencers and online communities that small businesses can have access to and form partnerships with.
+
+The current Social Media Advertising market is flooded with middlemen and agencies that only promote influencers and social media accounts (SMA) who happen to be their clients. Brands and companies that want to promote their products on social media, therefore, have a very limited choice of for partnership. Influencers with a small follower base, on the other hand also have a limited opportunity to be noticed by brands and businesses. Both parties heavily rely on agents and various platforms to form partnerships. 
+
+The **Client** expects the project to bring together influencers and brands directly, especially small and local businesses, therefore cutting down middlemen, expanding the reach of the former and cutting marketing costs of the latter.
 
 ## 3. Describe the client’s current setup and data:
 
