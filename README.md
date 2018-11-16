@@ -88,7 +88,7 @@ Why we chose **MongoDB**?:
 
 ## 18.Provide an overview and description of your Source control process:
 
-![alt text](https://github.com/LongNguyen206/project_mernmade/doc_images/git_workflow_chart.jpg)
+![alt text](https://github.com/LongNguyen206/project_mernmade/blob/dev/doc_images/git_workflow_chart.jpg)
 
 ### Initial work cycle:
 
