@@ -1,5 +1,5 @@
 # Documentation
- header, team intro, table of content
+(header, team intro, table of content)
 ## 1. Who is your client?
 
 Our client, Mary, is a **visual content maker** and **social media marketer** based in New York, USA.
@@ -8,27 +8,29 @@ Our client, Mary, is a **visual content maker** and **social media marketer** ba
 
 Part of our client's job is to work with small and medium-size businesses and provide them with social media marketing solutions. This means that if a business has a product that they want to promote, they would typically reach out to [social media influencers](https://influencermarketinghub.com/what-is-an-influencer/) who would feature these products in their social media content. A good social media marketing campaign usually benefits from a wider reach compared to the traditional advertising, and can also save the business a significant amount of marketing costs. *(You can read more about influencers marketing [here](https://blog.scrunch.com/24-reasons-why-brands-should-be-working-with-influencers) and [here](https://www.searchenginepeople.com/blog/brands-rely-influencer-marketing-2018-beyond.html))*
 
-One of the difficulties that Mary faces is to meet the exact requirements of a business and provide them with the most relevant influencer to promote the product, given a large number of available options.
+One of the difficulties that Mary faces is to provide her clients with the most relevant influencers/platform to promote their product, given a large number of available options. She believes that giving businesses access to her constantly updated database will save time for all parties, by allowing companies to filter and identify themselves the best option to launch their marketing campaign and target their preferred audience.
 
 Therefore, the client set us a challenge to create a highly selective, transparent and easy to navigate B2B database of influencers and online communities that businesses (her clients) can have access to and through which they can form partnerships.
 
 ## 3. Describe the client’s current setup and data:
 
-Our client has a database of influencers and communities that she currently adds data to using [RStudio](https://www.rstudio.com/) and her team uses MS Excel. She would then handpick the most relevant influencers to offer the businesses as social media marketing platforms. Our client would very much welcome a better solution.
+Our client has a database of influencers and communities that she currently adds data to using [RStudio](https://www.rstudio.com/) and her team uses MS Excel. This database is currently for internal use only (by Mary herself). The process of inputting data is also very tedious as the data is in the form of rigid tables. She would then handpick the most relevant influencers to offer the businesses. Our client would very much welcome a better and safer solution.
 
 ## 4. Describe the project you will be conducting and how your App will address the client’s needs:
 
 With the current setup, Mary has to manually match the businesses she is working with and the influencers she has access to.
 
-Our project would provide Mary with a web app, where she or her team can login as **admins** and consistently fill the database with verified influencer profiles. Businesses and brands would, in turn, be able to sign up as **users**, navigate through this database and select the most relevant influencers they would want to work with based on specific criteria. Businesses would also be albe to short list potential influencers they would want to work with. Additionally, businesses would also be able to leave feedback and reviews on influencers they had worked with, which would benefit other business users of the web app.
+Our project would provide Mary with a web app, where she or her team can login as **admins** and consistently fill the database with verified influencer profiles. Businesses and brands would, in turn, be able to sign up as **users**, navigate through this database and select the most relevant influencers they would want to work with based on specific criteria.
 
-To avoid fake and irrelevant business accounts, **admins** would also be able to do a formal verification of registered users, ensuring their authenticity.
+Businesses would also be able to shortlist potential influencers they would want to work with. Additionally, businesses would be able to leave feedback and reviews on influencers they had cooperated with in the past, which would give useful data insights both to our client and other users of the app.
+
+To ensure legitimacy of reviews, **admins** would also be able to do a formal verification of registered users' authenticity.
 
 ## 5. Identify and describe the software (including databases) to be used in your App:
 
 ### [NodeJS](https://nodejs.org/en/)
 
-Apart from being an obvious frontliner for modern web development, **NodeJS** can be described as a free and open source Javascript cross-platform for server-side programming. Introduced in 2009 as Google Chrome's Javascript engine, NodeJS elevated Javascript (which was only client-side prior to this) to a fullstack web programming language.
+Apart from being an obvious front-liner for modern web development, **NodeJS** can be described as a free and open source Javascript cross-platform for server-side programming. Introduced in 2009 as Google Chrome's V8 Javascript engine, NodeJS elevated Javascript (which was only client-side prior to this) to a fullstack web programming language.
 
 Unlike [Ruby](https://www.ruby-lang.org/en/) and its heavy and opinionated framework [Ruby on Rails](https://rubyonrails.org/), Javascript (and therefore NodeJS) benefits from a highly optimized engine which makes it much faster than Ruby, allowing for better performance, higher scalability with less number of servers.
 
@@ -36,45 +38,107 @@ Using **Node Package Manager**, or [npm](https://www.npmjs.com/), we can install
 
 ### [ExpressJS](https://expressjs.com/)
 
-We will use **ExpressJS** for our server (C in MVC). This "fast, unopinionated, minimalist and flexible" NodeJS framework allows us to quickly and easily write a functional REST API server in the backend. This framework also benefits from rich documentation and constant support, making it easy for us to build complicated routes, request handlers and link them to the front-end output. Therefore, unlike other NodeJS frameworks like **'koa'**, **'Hapi'** or **'Restify'**, Express keeps a rich functionality while staying simple enough for a small team like ours to use.
+We will use **ExpressJS** for our backend (C in MVC). This "fast, unopinionated, minimalist and flexible" NodeJS framework allows us to quickly and easily write a functional REST API server in the backend. This framework also benefits from rich documentation and constant support, making it easy for us to build complicated routes, request handlers and link them to the front-end output. Therefore, unlike other NodeJS frameworks like [**'koa'**](https://koajs.com/), [**'Hapi'**](https://hapijs.com/) or [**'Restify'**](http://restify.com/), Express keeps a rich functionality while staying simple enough for a small team like ours to use.
 
 ### [ReactJS](https://reactjs.org/)
 
-We will use **ReactJS** for our frontend (V in MVC). React is fast, scalable and simple Javascript *library*. Unlike other JS frontend frameworks like Angular or Ember, React only deals with the Views instead of both the "Model and View" part. Although it shines most in single-page applications, we believe that the ability change on-screen data without reloading adds to the app's better usability, better user experience and faster data processing. By allowing developers to create **reusable UI components**, React makes the coding easier and more compact. **The Virtual DOM**, which is a cached-in-browser DOM, allows for faster rendering and avoids web performance bottlenecks. **React Developer Tools**, a Chrome browser's extension, is great for inspecting React components and observing current 'props' and 'states', allowing for easier debugging and testing.
+We will use **ReactJS** for our frontend (V in MVC). React is fast, scalable and simple Javascript *library*. Unlike other JS frontend frameworks like Angular or Ember, React only deals with the Views instead of both the Model AND Views part. Even though it shines most in single-page applications, we believe that the ability change on-screen data without reloading adds to the app's better usability, better user experience and faster data processing. By allowing developers to create **reusable UI components**, React makes the coding easier and more compact. **The Virtual DOM**, which is a cached-in-browser DOM, allows for faster rendering and avoids web performance bottlenecks. **React Developer Tools**, a Chrome browser's extension, is great for inspecting React components and observing current 'props' and 'states', allowing for easier debugging and testing.
 
-Introduced by Facebook itself in 2011, we think ReactJS is solid choice for the frontend of the web app that is specialized around social media accounts.
+Introduced by Facebook itself in 2011, we think ReactJS is solid choice for the web app that is all about social media accounts.
 
 ### [MongoDB](https://www.mongodb.com/)
 
-We chose **MongoDB** for our database (M in MVC). MongoDB is an open-source, object-oriented, simple, dynamic, scalable, NoSQL and non-relational database developed by MongoDB, Inc. It is extremely simple to install and implement and uses JSON or BSON(Binary JSON) documents to store data instead of traditional tables. This provides high performance, high availability, and automatic scaling.
+We decided to choose **MongoDB** for our database (M in MVC). MongoDB is an open-source, object-oriented, simple, dynamic, scalable, NoSQL and non-relational database developed by MongoDB, Inc. It is extremely simple to install and implement, and uses JSON or BSON(Binary JSON) documents to store data, instead of traditional tables. This provides us with high performance, high availability, and automatic scaling of our database.
 
 As our client might decide to scale the application in the future to include more social media platforms, we need our schema to be dynamic and scalable, which is difficult to achieve with rigid tables of SQL databases. Most importantly, NoSQL database is very high-performing in queries, which is a crucial feature of our project (search and filtering). MongoDB uses ['Mongoose'](https://mongoosejs.com/) library for interaction with ExpressJS server.
 
 ### [DigitalOcean](https://www.digitalocean.com/products/droplets/)
 
-We decided to use **DigitalOcean** as our deployment platform. DigitalOcean is an IaaS (Infrastructure-as-a-Service), which gives us raw servers to compose as we want to run your app. It offers fast, on-demand SSD cloud servers, straightforward pricing, a simple API, and an easy-to-use control panel.
+We decided to use **DigitalOcean** as our deployment platform. DigitalOcean is an IaaS (Infrastructure-as-a-Service), which gives us raw servers to compose as we want to run our app. It offers fast, on-demand SSD cloud servers, straightforward pricing, a simple API, and an easy-to-use control panel/admin dashboard.
 
-DigitalOcean's servers are called Droplets, and they vary in configuration based on the pricing. DigitalOcean also offers Network services like load balancers, firewalls, and DNS. All of these products can be managed through their UI, API, CLI, or client libraries.
+DigitalOcean's servers are called **Droplets**, and they vary in configuration based on the pricing. DigitalOcean also offers Network services like load balancers, firewalls, and DNS. All of these products can be managed through their UI, API, CLI, or client libraries.
+
+### [JEST](https://jestjs.io/)
+
+We use **JEST** to test both our front- and backend Javascript. It's the most comprehensive, fast, developer-ready testing tool and perfect for our case.
 
 ## 6. Identify and describe the network setup you will use in your development:
 
+Our project will be deployed on a [cloud service](https://www.digitalocean.com/products/droplets/), DigitalOcean, therefore any computer device connected to the Internet would be able to access it via its domain name. The static files, other media and database will also be stored on DigitalOcean [**Spaces**](https://www.digitalocean.com/products/spaces/).
+
+Therefore we have a basic cloud server setup without backup, recovery plans or any load balancing:
+![Server Setup](https://github.com/LongNguyen206/project_mernmade/blob/dev/doc_images/server-setup.png)
+
+DigitalOcean provides us with fully independent virtual servers. These are also known as scalable computer services in that they provide you with add-on storage, security, and monitoring capabilities.
+
+All that is needed from both the **admins** and **users** of the app is to access the web app on their personal devices and no special equipment, except Internet connection and a modern web browser, would be needed.
+
 ## 7. Identify and describe the infrastructure (i.e. hardware) that your App will run on:
 
+All the hardware used to host the app will be owned by the DigitalOcean. Our [server plan](https://www.digitalocean.com/pricing/) gives us 1GB in Memory, 1 virtual CPU, 25GB of SSD and 1TB of monthly data transfer.
+
+Our database will be stored on DigitalOcean Spaces, which is a "simple scalable S3-compatible object storage with a built-in content delivery network (CDN) to store, serve, backup, and archive any amount of web content, images, media, and static files for web applications". The Spaces plan will give us 250GB of storage and 1TB of outbound, CDN included data transfer.
+
 ## 8. Describe the architecture of your App:
+
+Our app follows a typical MERN stack architecture:
+![MERN Architecture](https://github.com/LongNguyen206/project_mernmade/blob/dev/doc_images/web-arch.png)
+
+```
+/server/
+    /config/                                ## various configurations, including PassportJS and MongoDB URI
+    /helper/
+    /public/                                ## static files (most would be stored on cloud service)
+    /models/                                ## MongoDB schemas (data is stored on cloud service)
+    /routes/                                ## first stop point of url requests
+    /tests/                                 ## testing files
+        /unit/
+        /integration/
+        /route/
+    server.js                               ## ExpressJS server, middleware is also stored here
+/client/
+    /public/                                ## frontend static files
+    /src/
+        /components/
+            /admin/
+                /exampleComponent/          ## admin dashboard's-related components
+                    exampleComponent.js
+                    exampleComponent.scss
+            /exampleComponent/              ## other shared components
+                    exampleComponent.js
+                    exampleComponent.scss
+                /App.js                     ## React entry point
+            /index.html                     ## main HTML file
+            /index.js
+            /styles.scss                    ## overall page styling
+        /img/
+        /tests/
+```
+A MERN stack app requires a simultaneous running of both backend (Express) and frontend (React) servers. In production, this is taken care of by our virtual server.
+
+An example of an interaction of our app's components:
+
+1. In their browser, the admin clicks a button to add a new influencer profile (e.g. the url is `https://project.com/influencer/new`). The protocol and the domain will send the request to the DigitalOcean virtual server. 
+2. The button is a React component. It sends a React request to the proxy to be translated into an Express request.
+3. Once the request was processed by the proxy, Express, which is constantly listening to requests, recognizes it as a HTTP request.
+4. Express's `server/server.js` (our backend API) recognizes the domain. `server/server.js` will then send the request to `server/router/influencer.js` which is responsible for all requests containing 'influencer' routes. Express will also run all the necessary middleware at this point.
+5. `server/router/influencer.js` determines the business logic of the request. In this case, it accesses our MongoDB database (on DigitalOcean cloud server) which we will configure in `server/config/database.js` (along with other middleware) and modifies the database accordingly.
+6. while this all is happening, React automatically updates the frontend. React server reads the states and props of various components in the browser. Once we clicked a button to add a new profile, the state changes, and React does not wait to fetch the data from the database, but rather renders a new profile independently by reading our input fields then updating the state once we clicked "Submit". This allows for faster data processing.
+7. The changes to database are confirmed when we revisit or refresh the page next time, when React will actually send a request to fetch data from the database via Express server.
 
 ## 9. Explain the different high-level components (abstractions) in your App:
 
 ### Admin
 
-Our application will serve the **Admin** for users who provide **Admin** authorization credentials. this application will have <n> main react components:
+Our application will serve the **Admin** for users who provide **Admin** authorization credentials. this application will have 3 main react components:
 
 - AppRouter(App Navigation)
 - Admin page(to approve social media profiles/ Brand verfication)
-- ManageSocialMediaProiflePage(to manage social media profiles)
+- ManageSocialMediaProfilePage(to manage social media profiles)
 
 ### Registed Users
 
-Our application will serve the **Registered User** for users who provide **Registed User** cerdentials. this application will have <n> main react components:
+Our application will serve the **Registered User** for users who provide **Registered User** credentials. this application will have 4 main react components:
 
 - AppRouter(App Navigation)
 - DashboardPage(to view/ search social media profiles)
@@ -101,10 +165,11 @@ MonogoDB will be our database for our app, it will store all user data, social m
 
 ## 10. Detail any third party services that your App will use:
 
+- [DigitalOcean Api](https://developers.digitalocean.com/documentation/v2/) - allows us to manage Droplets and resources within the DigitalOcean cloud in a simple, programmatic way using conventional HTTP requests.
 - Facebook API (used for account login verification and official account verification)
 - Instagram API (used for public data fetching)
 - Google API (used for account login verification)
-- <Mail service API>(used to send new users account comfirmation emails and to send users password reset emails)
+- <Mail service API> (used to send new users account confirmation emails and to send users password reset emails)
 
 ## 11. Identify the database to be used in your app and provide a justification for your choice:
 
@@ -121,6 +186,7 @@ Why we chose **MongoDB**?:
 - **MonogoDB** offers <a href="https://docs.mongodb.com/manual/security/" target="_blank">security</a> features which include include authentication, authorisation and auditing. Its foundation is a role-based access control with flexible set of privileges. **MonogoDB** provides allows us to assign <a href="https://docs.mongodb.com/manual/core/authorization/" target="_blank">user-defined roles</a> by defining a set of build-in roles such as (admin, registered users). It also give us the ability to use <a href="https://docs.mongodb.com/manual/core/security-transport-encryption/" target="_blank">TLS/SSL</a>Transport Layer Security/Secure Sockets Layer) to encrypt all of **MonogoDB’s** network traffic to ensure that it is only readable by the intended client.
 
 ## 12. Discuss the database relations to be implemented:
+
 
 ## 13. Provide your database schema design:
 
