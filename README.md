@@ -1,22 +1,60 @@
 # Documentation
-
+ header, team intro, table of content
 ## 1. Who is your client?
 
-Our **Client** is a startup based in NY, USA that specializes in the production of **visual content** and **social media marketing**.
+Our client, Mary, is a **visual content maker** and **social media marketer** based in New York, USA.
 
 ## 2. What is your client’s need (i.e. challenge) that you will be addressing in your project?
 
-The challenge is to create a highly selective, transparent and easy to navigate database of influencers and online communities that small businesses can have access to and form partnerships with.
+Part of our client's job is to work with small and medium-size businesses and provide them with social media marketing solutions. This means that if a business has a product that they want to promote, they would typically reach out to [social media influencers](https://influencermarketinghub.com/what-is-an-influencer/) who would feature these products in their social media content. A good social media marketing campaign usually benefits from a wider reach compared to the traditional advertising, and can also save the business a significant amount of marketing costs. *(You can read more about influencers marketing [here](https://blog.scrunch.com/24-reasons-why-brands-should-be-working-with-influencers) and [here](https://www.searchenginepeople.com/blog/brands-rely-influencer-marketing-2018-beyond.html))*
 
-The current Social Media Advertising market is flooded with middlemen and agencies that only promote influencers and social media accounts (SMA) who happen to be their clients. Brands and companies that want to promote their products on social media, therefore, have a very limited choice of for partnership. Influencers with a small follower base, on the other hand also have a limited opportunity to be noticed by brands and businesses. Both parties heavily rely on agents and various platforms to form partnerships. 
+One of the difficulties that Mary faces is to meet the exact requirements of a business and provide them with the most relevant influencer to promote the product, given a large number of available options.
 
-The **Client** expects the project to bring together influencers and brands directly, especially small and local businesses, therefore cutting down middlemen, expanding the reach of the former and cutting marketing costs of the latter.
+Therefore, the client set us a challenge to create a highly selective, transparent and easy to navigate B2B database of influencers and online communities that businesses (her clients) can have access to and through which they can form partnerships.
 
 ## 3. Describe the client’s current setup and data:
 
+Our client has a database of influencers and communities that she currently adds data to using [RStudio](https://www.rstudio.com/) and her team uses MS Excel. She would then handpick the most relevant influencers to offer the businesses as social media marketing platforms. Our client would very much welcome a better solution.
+
 ## 4. Describe the project you will be conducting and how your App will address the client’s needs:
 
+With the current setup, Mary has to manually match the businesses she is working with and the influencers she has access to.
+
+Our project would provide Mary with a web app, where she or her team can login as **admins** and consistently fill the database with verified influencer profiles. Businesses and brands would, in turn, be able to sign up as **users**, navigate through this database and select the most relevant influencers they would want to work with based on specific criteria. Businesses would also be albe to short list potential influencers they would want to work with. Additionally, businesses would also be able to leave feedback and reviews on influencers they had worked with, which would benefit other business users of the web app.
+
+To avoid fake and irrelevant business accounts, **admins** would also be able to do a formal verification of registered users, ensuring their authenticity.
+
 ## 5. Identify and describe the software (including databases) to be used in your App:
+
+### [NodeJS](https://nodejs.org/en/)
+
+Apart from being an obvious frontliner for modern web development, **NodeJS** can be described as a free and open source Javascript cross-platform for server-side programming. Introduced in 2009 as Google Chrome's Javascript engine, NodeJS elevated Javascript (which was only client-side prior to this) to a fullstack web programming language.
+
+Unlike [Ruby](https://www.ruby-lang.org/en/) and its heavy and opinionated framework [Ruby on Rails](https://rubyonrails.org/), Javascript (and therefore NodeJS) benefits from a highly optimized engine which makes it much faster than Ruby, allowing for better performance, higher scalability with less number of servers.
+
+Using **Node Package Manager**, or [npm](https://www.npmjs.com/), we can install libraries like Express to customize an existing Node installation to our needs. There are literally thousands of these open-source libraries and server frameworks available, created by NodeJS users.
+
+### [ExpressJS](https://expressjs.com/)
+
+We will use **ExpressJS** for our server (C in MVC). This "fast, unopinionated, minimalist and flexible" NodeJS framework allows us to quickly and easily write a functional REST API server in the backend. This framework also benefits from rich documentation and constant support, making it easy for us to build complicated routes, request handlers and link them to the front-end output. Therefore, unlike other NodeJS frameworks like **'koa'**, **'Hapi'** or **'Restify'**, Express keeps a rich functionality while staying simple enough for a small team like ours to use.
+
+### [ReactJS](https://reactjs.org/)
+
+We will use **ReactJS** for our frontend (V in MVC). React is fast, scalable and simple Javascript *library*. Unlike other JS frontend frameworks like Angular or Ember, React only deals with the Views instead of both the "Model and View" part. Although it shines most in single-page applications, we believe that the ability change on-screen data without reloading adds to the app's better usability, better user experience and faster data processing. By allowing developers to create **reusable UI components**, React makes the coding easier and more compact. **The Virtual DOM**, which is a cached-in-browser DOM, allows for faster rendering and avoids web performance bottlenecks. **React Developer Tools**, a Chrome browser's extension, is great for inspecting React components and observing current 'props' and 'states', allowing for easier debugging and testing.
+
+Introduced by Facebook itself in 2011, we think ReactJS is solid choice for the frontend of the web app that is specialized around social media accounts.
+
+### [MongoDB](https://www.mongodb.com/)
+
+We chose **MongoDB** for our database (M in MVC). MongoDB is an open-source, object-oriented, simple, dynamic, scalable, NoSQL and non-relational database developed by MongoDB, Inc. It is extremely simple to install and implement and uses JSON or BSON(Binary JSON) documents to store data instead of traditional tables. This provides high performance, high availability, and automatic scaling.
+
+As our client might decide to scale the application in the future to include more social media platforms, we need our schema to be dynamic and scalable, which is difficult to achieve with rigid tables of SQL databases. Most importantly, NoSQL database is very high-performing in queries, which is a crucial feature of our project (search and filtering). MongoDB uses ['Mongoose'](https://mongoosejs.com/) library for interaction with ExpressJS server.
+
+### [DigitalOcean](https://www.digitalocean.com/products/droplets/)
+
+We decided to use **DigitalOcean** as our deployment platform. DigitalOcean is an IaaS (Infrastructure-as-a-Service), which gives us raw servers to compose as we want to run your app. It offers fast, on-demand SSD cloud servers, straightforward pricing, a simple API, and an easy-to-use control panel.
+
+DigitalOcean's servers are called Droplets, and they vary in configuration based on the pricing. DigitalOcean also offers Network services like load balancers, firewalls, and DNS. All of these products can be managed through their UI, API, CLI, or client libraries.
 
 ## 6. Identify and describe the network setup you will use in your development:
 
@@ -63,9 +101,9 @@ MonogoDB will be our database for our app, it will store all user data, social m
 
 ## 10. Detail any third party services that your App will use:
 
-- Facebook API(used for account login verification and offical account verfication)
-- Instagram API(used for account login verifacation and offical account verfication)
-- Google API(used for account login verification)
+- Facebook API (used for account login verification and official account verification)
+- Instagram API (used for public data fetching)
+- Google API (used for account login verification)
 - <Mail service API>(used to send new users account comfirmation emails and to send users password reset emails)
 
 ## 11. Identify the database to be used in your app and provide a justification for your choice:
@@ -141,7 +179,11 @@ Why we chose **MongoDB**?:
     ```
     git merge <team_member_dev>
     ```
-    In case of conflicts, team member will solve them manually. In this case, the team member has to **add** and **commit** again from their `Local Master Branch`.
+    In case of conflicts, team member will solve them manually. In this case, the team member has to **add** and **commit** again from their `Local Master Branch`:
+    ```
+    git add .
+    git commit -m "<Commit the merge message>"
+    ```
 11. Now, as the `Local Master Branch` has the most up-to-date combined code, team members will **push** this code to the `Remote Repo`, on the branch with their name. The following command will push to `Remote Repo` and **create a new branch** if needed:
     ```
     git push origin master:<team_member_dev>
