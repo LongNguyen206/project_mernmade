@@ -6,9 +6,9 @@ Our client, Mary, is a **visual content maker** and **social media marketer** ba
 
 ## 2. What is your client’s need (i.e. challenge) that you will be addressing in your project?
 
-Part of our client's job is to work with small and medium-size businesses and provide them with social media marketing solutions. This means that if a business has a product that they want to promote, they would typically reach out to [social media influencers](https://influencermarketinghub.com/what-is-an-influencer/) who would feature these products in their social media content. A good social media marketing campaign usually benefits from a wider reach compared to the traditional advertising, and can also save the business a significant amount of marketing costs. *(You can read more about influencers marketing [here](https://blog.scrunch.com/24-reasons-why-brands-should-be-working-with-influencers) and [here](https://www.searchenginepeople.com/blog/brands-rely-influencer-marketing-2018-beyond.html))*
+Part of our client's job is to work with small and medium-size businesses and provide them with social media marketing solutions. This means that if a business has a product that they want to promote, they would typically reach out to [social media influencers](https://influencermarketinghub.com/what-is-an-influencer/) who would feature these products in their social media posts. A good social media marketing campaign benefits from a wider audience reach compared to the traditional advertising, and can also save the business a significant amount of marketing costs. *(You can read more about influencers marketing [here](https://blog.scrunch.com/24-reasons-why-brands-should-be-working-with-influencers) and [here](https://www.searchenginepeople.com/blog/brands-rely-influencer-marketing-2018-beyond.html))*
 
-One of the difficulties that Mary faces is to provide her clients with the most relevant influencers/platform to promote their product, given a large number of available options. She believes that giving businesses access to her constantly updated database will save time for all parties, by allowing companies to filter and identify themselves the best option to launch their marketing campaign and target their preferred audience.
+One of the difficulties that Mary faces is to connect her clients with the most relevant influencers and/or platform to promote their product, given a large number of available options. Therefore, she believes that by granting her clients access to her constantly updating database will save time for all parties, and will allow companies to filter and identify the best option by themselves to launch their marketing campaign and target their preferred audience.
 
 Therefore, the client set us a challenge to create a highly selective, transparent and easy to navigate B2B database of influencers and online communities that businesses (her clients) can have access to and through which they can form partnerships.
 
@@ -20,9 +20,11 @@ Our client has a database of influencers and communities that she currently adds
 
 With the current setup, Mary has to manually match the businesses she is working with and the influencers she has access to.
 
-Our project would provide Mary with a web app, where she or her team can login as **admins** and consistently fill the database with verified influencer profiles. Businesses and brands would, in turn, be able to sign up as **users**, navigate through this database and select the most relevant influencers they would want to work with based on specific criteria.
+Our project would provide Mary with a web app, where she or her team can login as **admins** and consistently fill the database with verified influencer profiles. 
 
-Businesses would also be able to shortlist potential influencers they would want to work with. Additionally, businesses would be able to leave feedback and reviews on influencers they had cooperated with in the past, which would give useful data insights both to our client and other users of the app.
+Businesses and brands would, in turn, be able to sign up as **users**, navigate through this database and select the most relevant influencers they would want to work with based on specific criteria.
+
+Businesses would also be able to shortlist potential candidates they would want to work with. Additionally, businesses would be able to leave feedback and reviews on influencers they had cooperated with in the past, which would give useful data insights both to our client and other users of the app.
 
 To ensure legitimacy of reviews, **admins** would also be able to do a formal verification of registered users' authenticity.
 
@@ -50,7 +52,7 @@ Introduced by Facebook itself in 2011, we think ReactJS is solid choice for the 
 
 We decided to choose **MongoDB** for our database (M in MVC). MongoDB is an open-source, object-oriented, simple, dynamic, scalable, NoSQL and non-relational database developed by MongoDB, Inc. It is extremely simple to install and implement, and uses JSON or BSON(Binary JSON) documents to store data, instead of traditional tables. This provides us with high performance, high availability, and automatic scaling of our database.
 
-As our client might decide to scale the application in the future to include more social media platforms, we need our schema to be dynamic and scalable, which is difficult to achieve with rigid tables of SQL databases. Most importantly, NoSQL database is very high-performing in queries, which is a crucial feature of our project (search and filtering). MongoDB uses ['Mongoose'](https://mongoosejs.com/) library for interaction with ExpressJS server.
+As our client might decide to scale the application in the future to include more social media platforms, we need our schema to be dynamic and scalable, which is difficult to achieve with rigid tables of SQL databases. Most importantly, NoSQL database is very high-performing in queries, which is a crucial feature of our project (searching and filtering). MongoDB uses ['Mongoose'](https://mongoosejs.com/) library to interac with ExpressJS server.
 
 ### [DigitalOcean](https://www.digitalocean.com/products/droplets/)
 
@@ -66,12 +68,12 @@ We use **JEST** to test both our front- and backend Javascript. It's the most co
 
 Our project will be deployed on a [cloud service](https://www.digitalocean.com/products/droplets/), DigitalOcean, therefore any computer device connected to the Internet would be able to access it via its domain name. The static files, other media and database will also be stored on DigitalOcean [**Spaces**](https://www.digitalocean.com/products/spaces/).
 
-Therefore we have a basic cloud server setup without backup, recovery plans or any load balancing:
+Therefore we have a basic cloud server setup, without backup, recovery plans or any load balancing:
 ![Server Setup](https://github.com/LongNguyen206/project_mernmade/blob/dev/doc_images/server-setup.png)
 
 DigitalOcean provides us with fully independent virtual servers. These are also known as scalable computer services in that they provide you with add-on storage, security, and monitoring capabilities.
 
-All that is needed from both the **admins** and **users** of the app is to access the web app on their personal devices and no special equipment, except Internet connection and a modern web browser, would be needed.
+All that is needed from both the **admins** and **users** is to access the web app on their personal devices and no special equipment, except Internet connection and a modern web browser, would be needed.
 
 ## 7. Identify and describe the infrastructure (i.e. hardware) that your App will run on:
 
@@ -100,11 +102,12 @@ Our app follows a typical MERN stack architecture:
     /public/                                ## frontend static files
     /src/
         /components/
-            /admin/
+            /adminComponents/
                 /exampleComponent/          ## admin dashboard's-related components
                     exampleComponent.js
                     exampleComponent.scss
-            /exampleComponent/              ## other shared components
+            /userComponents/
+                /exampleComponent/          ## other shared components
                     exampleComponent.js
                     exampleComponent.scss
                 /App.js                     ## React entry point
@@ -116,81 +119,62 @@ Our app follows a typical MERN stack architecture:
 ```
 A MERN stack app requires a simultaneous running of both backend (Express) and frontend (React) servers. In production, this is taken care of by our virtual server.
 
-An example of an interaction of our app's components:
+An example of interaction between our app's components:
 
-1. In their browser, the admin clicks a button to add a new influencer profile (e.g. the url is `https://project.com/influencer/new`). The protocol and the domain will send the request to the DigitalOcean virtual server. 
+1. In the browser, the admin clicks a button to add a new influencer profile (e.g. the url is `https://project.com/influencer/new`). The protocol and the domain will send the request to the DigitalOcean virtual server.
 2. The button is a React component. It sends a React request to the proxy to be translated into an Express request.
-3. Once the request was processed by the proxy, Express, which is constantly listening to requests, recognizes it as a HTTP request.
+3. Once the request was processed by the proxy, Express, which is constantly listening to requests, recognizes it as the HTTP request.
 4. Express's `server/server.js` (our backend API) recognizes the domain. `server/server.js` will then send the request to `server/router/influencer.js` which is responsible for all requests containing 'influencer' routes. Express will also run all the necessary middleware at this point.
-5. `server/router/influencer.js` determines the business logic of the request. In this case, it accesses our MongoDB database (on DigitalOcean cloud server) which we will configure in `server/config/database.js` (along with other middleware) and modifies the database accordingly.
-6. while this all is happening, React automatically updates the frontend. React server reads the states and props of various components in the browser. Once we clicked a button to add a new profile, the state changes, and React does not wait to fetch the data from the database, but rather renders a new profile independently by reading our input fields then updating the state once we clicked "Submit". This allows for faster data processing.
+5. `server/router/influencer.js` determines the business logic of the request. In this case, it accesses our MongoDB database (on DigitalOcean cloud server) which we will configure in `server/config/database.js` and modifies the database accordingly.
+6. While this all is happening, React automatically updates the frontend. React server reads the states and props of various components in the browser. Once we clicked a button to add a new influencer profile, the state changes, and React does not wait to fetch the data from the database, but rather renders a new profile independently by reading our input fields then updating the state once we clicked "Submit". This allows for faster data processing.
 7. The changes to database are confirmed when we revisit or refresh the page next time, when React will actually send a request to fetch data from the database via Express server.
 
 ## 9. Explain the different high-level components (abstractions) in your App:
 
-### Admin
+### Admin's frontend:
 
-Our application will serve the **Admin** for users who provide **Admin** authorization credentials. this application will have 3 main react components:
+Our application will serve the **Admin** users with the "Admin's dashboard" (React component). Admins are users who provide **Admin** authorization credentials. This component will allow admins to add, edit and delete influencer profiles in the database, verify and change registered users' profiles, verify reviews, etc.
 
-- AppRouter(App Navigation)
-- Admin page(to approve social media profiles/ Brand verfication)
-- ManageSocialMediaProfilePage(to manage social media profiles)
+### Registered Users frontend:
 
-### Registed Users
-
-<<<<<<< HEAD
-Our application will serve the **Registered User** for users who provide **Registed User** credentials. this application will have <n> main react components:
-=======
-Our application will serve the **Registered User** for users who provide **Registered User** credentials. this application will have 4 main react components:
->>>>>>> long_dev
-
-- AppRouter(App Navigation)
-- DashboardPage(to view/ search social media profiles)
-- ProfilePage(to view/ rate social media profiles/ leave reviews)
-- SettingPage(to manage interest/ wishlist/ view ratings)
+The **Registered Users'** (React component) will have access to the search bar, filter options, they would be able to see extensive data on individual influencers. Registered users will also be able to edit their public profile, add influencers to private shortlists and leave reviews.
 
 ### Guest User
 
-Our application will serve the **Guest Users** for users who provide **Guest User** cerdentials. this application will have <n> main react components:
-
-- AppRouter(App Navigation)
-- DashBoard(to view/ search social media profiles)
-- ProfilePage(to view)
+Guest users will not be able to use our app unless they register.
 
 ### Express Backend
 
-Node.js server will receive, handle requests/ api requests, send/ recieve data from the database, serve static assests, and serve data in JSON format.
-Our server will also handle vaildation, authentication and authorization of our app.
-A mailer system for account comfirmation, password reset requests.
+Express will handle all route requests, database interactions including CRUD functions, middleware and app security (authentication/authorization).
 
 ### MongoDB DataBase
 
-MonogoDB will be our database for our app, it will store all user data, social media profiles, rating data, review data.
+MonogoDB will be our database for our app, it will store all user data, influencer profiles, rating data, review data.
 
 ## 10. Detail any third party services that your App will use:
 
 - [DigitalOcean Api](https://developers.digitalocean.com/documentation/v2/) - allows us to manage Droplets and resources within the DigitalOcean cloud in a simple, programmatic way using conventional HTTP requests.
-- Facebook API (used for account login verification and official account verification)
-- Instagram API (used for public data fetching)
-- Google API (used for account login verification)
-- <Mail service API> (used to send new users account confirmation emails and to send users password reset emails)
+- [Facebook API](https://developers.facebook.com/docs/facebook-login/web/) - used for user authentication and official account verification.
+- [Instagram API](https://www.instagram.com/developer/) - used for public data fetching.
+- <Some mail service API> - used to send New User account confirmation emails and to password reset emails.
+- [LinkedIn API](https://developer.linkedin.com/docs/oauth2) - used for user authentication and official account verification.
+- Various Node, Express and React Libraries (JWT, Passport, Babel, etc)
 
 ## 11. Identify the database to be used in your app and provide a justification for your choice:
 
-We decided to use <a href="https://www.mongodb.com/" target="_blank">Monogo</a> as its an object-oriented, simple to use , dynamic, and scalable <a href="https://searchdatamanagement.techtarget.com/definition/NoSQL-Not-Only-SQL" target="_blank">NoSQL</a> database. It’s based on the NoSQL document store model. **MonogoDB** works with data as <a href="https://thenewstack.io/technology-pairings-json-documents-databases/" target="_blank">flexible JSON documents</a>, rather than as rigid rows and columns as in <a href="http://www.sqlcourse.com/intro.htmls" target="_blank">SQL</a> databases. We found find this document style more natural, flexible and in terms of application speed fast.
+We decided to use <a href="https://www.mongodb.com/" target="_blank">MongoDB</a> as it is an object-oriented, simple to use, dynamic, and scalable <a href="https://searchdatamanagement.techtarget.com/definition/NoSQL-Not-Only-SQL" target="_blank">NoSQL</a> database. It’s based on the NoSQL document store model. MonogoDB works with data as <a href="https://thenewstack.io/technology-pairings-json-documents-databases/" target="_blank">flexible JSON documents</a>, rather than as rigid rows and columns as in <a href="http://www.sqlcourse.com/intro.htmls" target="_blank">SQL</a> databases. We found this data document style more natural, flexible and, in terms of application speed, faster.
 
 Why we chose **MongoDB**?:
 
-- Because it’s a downloadable archive which could be unpacked and used right away. **MongoDB** required minimum configuration, all we had to do was run the MonogoDB server then we could start filling JSON documents with data. With **MonogoDB** schema-less data model it’ll allow us rapid development throughout our build, wether we need to introduce new properties or change existing ones as we go without a need to perform schema evolutions and data migration. Arguably, but **MongoDB’s** style of manipulating documents and running queries is much more developer-friendly. Moreover, it does not require any language to learn, like SQL which use complex object-relational mapping (<a href="https://searchwindevelopment.techtarget.com/definition/object-relational-mapping" target="_blank">ORM</a>).
+- Because it’s a downloadable archive which could be unpacked and used right away. **MongoDB** required minimum configuration, all we had to do was run the `MongoDB server` then we could start filling JSON documents with data. With **MongoDB** schema-less data model it will allow us rapid development throughout our build, whether we need to introduce new properties or change existing ones as we go without a need to perform schema evolutions and data migration. Arguably, but **MongoDB’s** style of manipulating documents and running queries is much more developer-friendly. Moreover, it does not require any language to learn, like SQL which uses complex object-relational mapping (<a href="https://searchwindevelopment.techtarget.com/definition/object-relational-mapping" target="_blank">ORM</a>).
 
-- **MonogoDB** JSON documents represents its data the same way applications do. Developers find the JSON document format natural to work with. Unlike the table rows and columns of a relational database, data can be structured with arrays and subdocuments – in the same way applications represent data, as lists and members / instance variables respectively. With that said, we feel that <a href="https://docs.mongodb.com/manual/core/data-modeling-introduction/" target="_blank">MongoDB document structure</a> will be simpler and faster to model how data will be mapped and stored in the our database.
+- **MongoDB** JSON documents represent its data the same way applications do. Developers find the JSON document format natural to work with. Unlike the table rows and columns of a relational database, data can be structured with arrays and subdocuments – in the same way applications represent data, as lists and members / instance variables respectively. With that said, we feel that <a href="https://docs.mongodb.com/manual/core/data-modeling-introduction/" target="_blank">MongoDB document structure</a> will be simpler and faster to model how data will be mapped and stored in the our database.
 
-* We find JSON documents to be flexible. Each document can store data with different attributes from other documents. As an example, consider a product catalog where a document storing details for an item of mens’ clothing will store different attributes from a document storing details of a tv or other electronics. This is referred as“polymorphism”. As your deployments grow in terms of data volume MongoDB scales easily with no downtime, and without changing your application which is an important consideration for us and our client.
+- We find JSON documents to be flexible. Each document can store data with different attributes from other documents. As an example, consider a product catalog where a document storing details for an item of mens’ clothing will store different attributes from a document storing details of a TV or other electronics. This is referred as “polymorphism”. As your deployments grow in terms of data volume, MongoDB scales easily with no downtime, and without changing your application which is an important consideration for us and our client.
 
-- **MonogoDB** offers <a href="https://docs.mongodb.com/manual/security/" target="_blank">security</a> features which include include authentication, authorisation and auditing. Its foundation is a role-based access control with flexible set of privileges. **MonogoDB** provides allows us to assign <a href="https://docs.mongodb.com/manual/core/authorization/" target="_blank">user-defined roles</a> by defining a set of build-in roles such as (admin, registered users). It also give us the ability to use <a href="https://docs.mongodb.com/manual/core/security-transport-encryption/" target="_blank">TLS/SSL</a>Transport Layer Security/Secure Sockets Layer) to encrypt all of **MonogoDB’s** network traffic to ensure that it is only readable by the intended client.
+- **MonogoDB** offers <a href="https://docs.mongodb.com/manual/security/" target="_blank">security</a> features which include authentication, authorization and auditing. Its foundation is a role-based access control with flexible set of privileges. **MongoDB** allows us to assign <a href="https://docs.mongodb.com/manual/core/authorization/" target="_blank">user-defined roles</a> by defining a set of build-in roles such as admins and registered users. It also gives us the ability to use <a href="https://docs.mongodb.com/manual/core/security-transport-encryption/" target="_blank">TLS/SSL</a> (Transport Layer Security/Secure Sockets Layer) to encrypt all of **MongoDB’s** network traffic to ensure that it is only readable by the intended client.
 
 ## 12. Discuss the database relations to be implemented:
-
 
 ## 13. Provide your database schema design:
 
@@ -198,30 +182,44 @@ Why we chose **MongoDB**?:
 
 ### Admin StoryBoard
 
-**Admin** in our app will be allowed to add social media profiles, verify brands, browse through the dashboard(filtered or not filtered) view social media profiles.
+**Admin** in our app will be allowed to add social media profiles, verify brands, browse through the influencer database (filtered or not filtered) and view social media profiles.
 
 ### Registered User StoryBoard
 
-**Registered Users** will be able to sign up either through Facebook, Instagram, Google or locally.
-Once signed in the **Registered User** will then go to the home page where they'll be able to view social media profiles in a tile form. The user can filter accounts based on (location, popularity(based on average number of followers), platform (e.g Instagram, Facebook, twitter, Youtube), type-of-account(Influencer, Feature account, Community) and engagement(based on average number of likes/views/comments))
-**Registered users** can view profiles. **Registered users** can rate and also leave reviews on social media profiles. If **Registered users** like a particluar social media profile they are able to place them into a wish list. **Registered users** are able to delete thier account.
+**Registered Users** will be able to sign up either through Facebook, LinkedIn or locally.
+Once signed in, the **Registered User** will then go to the home page where they'll be able to view influencer profiles in a tile form.
 
-### Guest User StoryBoard
+The **Registered User** can filter accounts based on location, social-community size (based on average number of followers/subscribers), platform (e.g Instagram, Facebook, Twitter, Youtube), type-of-account(influencer, feature account, community account) and engagement rate (based on the average number of likes/views/comments).
 
-**Guest Users** enter the website they go straight to the home page where they'll be able to view social media profiles in a tile form.The **Guest User** can filter based on(location, popularity(based on average number of followers), platform(e.g Instagram, Facebook, Twitter, Youtube), type-of-account(Influencer, Feature account, Community), engagement(based on average number of likes/views/comments)).
-**Guest Users** can view social media profiles. **Guest Users** will be able to sign up either through Facebook, Instagram, Google or locally.
+The **Registered Users** can view influencer profiles. **Registered Users** can rate and also leave reviews on social media profiles. They can also shortlist influencers in private lists. **Registered Users** are able to delete their account.
 
 ## 15. Provide Wireframes for your App:
 
 ## 16. Describe the way Tasks are being allocated and tracked in your project:
 
-Trello is a web-based project management application. On Trello we have broken the project into two main boards 'Phases' and 'Backlog features'. The phases boards main directive is to ensures that the team priortises certain features/sets of features in order to ensure proper time-frame delivery. The second board; 'Backlog features' is to give an oversight for the developers as to what tasks are yet to be completed and the estimated complexity of such feature. 
+[Trello](https://trello.com/) is a web-based project management application. On Trello we have broken the project into two main parts: the 'KANBAN' lists and the 'Support' lists. The Support lists feature lists like 'Phases', where we track different phases of the project, and 'Daily Journal' that is used to document, plan and track daily contributions of each team member. The 'Phases' card's main directive is to ensure that the team prioritizes certain sets of features in order to ensure proper time-frame delivery:
 
-Once a team-member has picked a task from the 'Backlog Features' on trello in order for other team-members to track their progress and to avoid two members working on the same task, the team-member will use the physical boards Backlog, in-progress,Testing, Stuck-Zone and Completed. Like Trello this helps the team to visualise the progress of the app so far and avoid the same work being completed by two members
+Each day, we have a class Stand-up meeting, when we report to our educators and other classmates about our progress so far and the plan for the day. This is the same plan that we have in our 'Daily Journal' list. We follow up with a team meeting after that where we discuss our tasks for the day and if there are any roadblocks in each team member's work:
+![alt text](https://github.com/LongNguyen206/project_mernmade/blob/dev/doc_images/support_trello.png)
+
+The team members are allocated to backlog features on Trello, from development to deployment, this way we can track who is responsible for which feature.
+
+Once a team-member has picked a task from the 'Product Backlog' on Trello, they will use the physical board to reflect that. Like Trello, this helps the team to visualise the progress of the app so far and avoid the same work being completed by two members at the same time.
+
+At the end of the day, we document the tasks completed on Trello's 'Daily Journal'. The contributions are also shown as Github commits.
 
 ## 17. Discuss how Agile methodology is being implemented in your App:
 
-'Kanban is a method for managing the creation of products with an emphasis on continual delivery while not overburdening the development team' -Wikipedia. This is the agile methodology that we choose to follow for this project. Due the conflict of time-zones between the team-members and client. We decided that the best solution would be to send querys/questions the night before the be answered by the client 10am the next day. Thus far into the planning stages we have a two client meeting each lasting about 15 mins. By the end first meeting 16 user stories were conveyed to the team by the client. Following the Kanban method of continuous integration, each team member will assign themselves a task for the 3 day sprint to be reviewed by the client providing test passes.
+![alt text](https://github.com/LongNguyen206/project_mernmade/blob/dev/doc_images/agile_workflow_draft.jpeg)
+
+'Kanban is a method for managing the creation of products with an emphasis on continual delivery while not overburdening the development team' - [Wikipedia](https://en.wikipedia.org/wiki/Kanban). This is the Agile methodology that we chose to follow for this project.
+
+Our Trello Board is separated into 'Product Backlog', 'In Progress', 'In Testing', 'Pending Code Review', 'Deployed and Awaiting Client's Feedback', 'Approved':
+![alt text](https://github.com/LongNguyen206/project_mernmade/blob/dev/doc_images/trello.png)
+
+Every day we select maximum of 3 features to the 'In Process' list. Once the feature is developed, it goes to 'In Testing'. If testing is passed, the feature is reviewed by other team members and if approved, gets deployed for the client to test. After we receive the feedback from the client, the feature is either approved, in which case in stays deployed and a new feature is pulled from the backlog, or requires changes, in which case it goes back to 'Product Backlog'.
+
+Due the conflict of time-zones between the team-members and client, we decided that the best solution would be to send queries/questions the night before, to be answered by the client by 10AM Sydney time the next day. Thus far we had two client meetings, each lasted for about 15 mins. By the end of the first meeting, 16 User Stories were conveyed to the team by the client. Following the KANBAN method of continuous integration, each team member will assign themselves a task for the maximum of 3 day sprint to be reviewed by the client provided the feature passes all the tests.
 
 ## 18.Provide an overview and description of your Source control process:
 
@@ -336,9 +334,9 @@ Escaping is a means ensuring data an application has received is secure before r
 
 **Validations** are performed both client- and server-side. An example of `client-side validations` is attempting to enter text into a "numbers only" field. These can, however, be bypassed, hence a deeper `server-side validation` is required to prevent malicious code being inserted into the database that could cause undesirable results.
 
-**HTTPS**: "The principal motivation for HTTPS is authentication of the accessed website and protection of the privacy and integrity of the exchanged data while in transit" - [Wikipedia](https://en.wikipedia.org/wiki/HTTPS). `<companyName>` thus utilizes HTTPS for the following reasons; the ability securely send 3rd party data sent over via API and to prevent malicious hackers from trying to steal a users cookie an imitate a users session.
+**HTTPS**: "The principal motivation for HTTPS is authentication of the accessed website and protection of the privacy and integrity of the exchanged data while in transit" - [Wikipedia](https://en.wikipedia.org/wiki/HTTPS). `HashtagHound` thus utilizes HTTPS for the following reasons; the ability securely send 3rd party data sent over via API and to prevent malicious hackers from trying to steal a users cookie an imitate a users session.
 
 ## 22. Research what your legal obligations are in relation to handling user data:
 
-<companyName> has never collected private information from the account user unless previously provided with consent. We only collect publicly available social media data from official APIs (Twitter, Facebook, Instagram & YouTube). Data collected from our social platform partners complies with their standard [Platform Policies](https://www.instagram.com/about/legal/terms/api/) and [Terms and Services](https://help.instagram.com/581066165581870).
-All data <companyName> collects is stored electronically on the DigitalOcean infrastructure, <dataCentreLocation>. Our application servers and database servers run inside an DigitalOcean Private Cloud. This secure database containing our Users, Visitors and User data is only accessible on our application servers and by approved DigitalOcean Engineers. All data stored by <companyName> is encrypted at rest.
+HashtagHound has never collected private information from the account user unless previously provided with consent. We only collect publicly available social media data from official APIs (Twitter, Facebook, Instagram & YouTube). Data collected from our social platform partners complies with their standard [Platform Policies](https://www.instagram.com/about/legal/terms/api/) and [Terms and Services](https://help.instagram.com/581066165581870).
+All data HashtagHound collects is stored electronically on the DigitalOcean infrastructure, <dataCentreLocation>. Our application servers and database servers run inside an DigitalOcean Private Cloud. This secure database containing our Users, Visitors and User data is only accessible on our application servers and by approved DigitalOcean Engineers. All data stored by HashtagHound is encrypted at rest.
