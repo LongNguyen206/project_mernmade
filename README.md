@@ -20,7 +20,7 @@ Our client has a database of influencers and communities that she currently adds
 
 With the current setup, Mary has to manually match the businesses she is working with and the influencers she has access to.
 
-Our project would provide Mary with a web app, where she or her team can login as **admins** and consistently fill the database with verified influencer profiles. 
+Our project would provide Mary with a web app, where she or her team can login as **admins** and consistently fill the database with verified influencer profiles.
 
 Businesses and brands would, in turn, be able to sign up as **users**, navigate through this database and select the most relevant influencers they would want to work with based on specific criteria.
 
@@ -176,8 +176,56 @@ Why we chose **MongoDB**?:
 
 ## 12. Discuss the database relations to be implemented:
 
+We will implement three relationships in our database:
+
+Influencer profiles will be created by Admins in which they will be able to add all of the relevant data. Profiles' create, edit and delete can only be accessed by the Admin.
+
+The review system consists of a reviewer (userId) and reviewee (influencerListingId). Reviewer refers to the company because they will be able to leave a review on the performance of influencers they choose to work with.
+
+A reviewee (influencerListing), on the other hand, references the ID of the influencer being reviewed. This is because every review belongs to an influencer.
+
 ## 13. Provide your database schema design:
 
+We have 4 MongoDB schema's in total including Admin, User, InfluencerListing and Review.
+
+```
+Admin
+
+- id: String
+- email: String
+- password: String(hashed and salted value)
+```
+```
+User
+
+- id: String
+- Name: String
+- shortList: [Strings]
+- email: String
+- password: String
+- image: String
+- facebookID
+- LinkedInID
+```
+```
+InfluencerListing
+
+- id: String
+- image: String
+- link: String
+- category: String
+- following: integer
+- engagementRate: float
+- description: text
+```
+```
+Review:
+
+- comment: text
+- rating: binary
+- reviewer: User_id
+- reviewee: InfluencerListing_id
+```
 ## 14. Provide User stories for your App:
 
 ### Admin StoryBoard
@@ -200,7 +248,6 @@ The first wire-frame outlines the landing page Dashboard with the main search/fi
 a ![First Wire-frame](https://github.com/LongNguyen206/project_mernmade/blob/dev/doc_images/wireframe2.png)
 The last wire-frame is from the admin perspective, allowing the admin to individually add new influencers.
 ![First Wire-frame](https://github.com/LongNguyen206/project_mernmade/blob/dev/doc_images/wireframe3.png)
-
 
 ## 16. Describe the way Tasks are being allocated and tracked in your project:
 
@@ -320,6 +367,13 @@ Due the conflict of time-zones between the team-members and client, we decided t
 5. The team member commences coding. At this point, this step is equivalent to step 5 in "Initial work cycle".
 
 ## 19. Provide an overview and description of your Testing process:
+
+We will be integrating two tools together:
+
+Jest - Jest is a unit testing framework made by Facebook to test JavaScript and react applications.
+Enzyme - Enzyme is used to test for React applications only.
+
+Using Jest & Enzyme will allow us to perform unit tests throughout our code on individual components and elements of behaviour including input fields, navbar  
 
 ## 20. Discuss and analyse requirements related to information system security:
 
