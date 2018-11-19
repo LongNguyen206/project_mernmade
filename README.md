@@ -118,7 +118,7 @@ A MERN stack app requires a simultaneous running of both backend (Express) and f
 
 An example of an interaction of our app's components:
 
-1. In their browser, the admin clicks a button to add a new influencer profile (e.g. the url is `https://project.com/influencer/new`). The protocol and the domain will send the request to the DigitalOcean virtual server. 
+1. In their browser, the admin clicks a button to add a new influencer profile (e.g. the url is `https://project.com/influencer/new`). The protocol and the domain will send the request to the DigitalOcean virtual server.
 2. The button is a React component. It sends a React request to the proxy to be translated into an Express request.
 3. Once the request was processed by the proxy, Express, which is constantly listening to requests, recognizes it as a HTTP request.
 4. Express's `server/server.js` (our backend API) recognizes the domain. `server/server.js` will then send the request to `server/router/influencer.js` which is responsible for all requests containing 'influencer' routes. Express will also run all the necessary middleware at this point.
@@ -191,9 +191,57 @@ Why we chose **MongoDB**?:
 
 ## 12. Discuss the database relations to be implemented:
 
+We will implement three relationships in our database:
+
+Influencer profiles will be created by Admins in which they will be able to add all of the relevant data. Profiles' create, edit and delete can only be accessed by the Admin.
+
+The review system consists of a reviewer (userId) and reviewee (influencerListingId). Reviewer refers to the company because they will be able to leave a review on the performance of influencers they choose to work with.
+
+A reviewee (influencerListing), on the other hand, references the ID of the influencer being reviewed. This is because every review belongs to an influencer.
+
 
 ## 13. Provide your database schema design:
 
+We have 4 MongoDB schema's in total including Admin, User, InfluencerListing and Review.
+
+```
+Admin
+
+- id: String
+- email: String
+- password: String(hashed and salted value)
+```
+```
+User
+
+- id: String
+- Name: String
+- shortList: [Strings]
+- email: String
+- password: String
+- image: String
+- facebookID
+- LinkedInID
+```
+```
+InfluencerListing
+
+- id: String
+- image: String
+- link: String
+- category: String
+- following: integer
+- engagementRate: float
+- description: text
+```
+```
+Review:
+
+- comment: text
+- rating: binary
+- reviewer: User_id
+- reviewee: InfluencerListing_id
+```
 ## 14. Provide User stories for your App:
 
 ### Admin StoryBoard
@@ -215,7 +263,7 @@ Once signed in the **Registered User** will then go to the home page where they'
 
 ## 16. Describe the way Tasks are being allocated and tracked in your project:
 
-Trello is a web-based project management application. On Trello we have broken the project into two main boards 'Phases' and 'Backlog features'. The phases boards main directive is to ensures that the team priortises certain features/sets of features in order to ensure proper time-frame delivery. The second board; 'Backlog features' is to give an oversight for the developers as to what tasks are yet to be completed and the estimated complexity of such feature. 
+Trello is a web-based project management application. On Trello we have broken the project into two main boards 'Phases' and 'Backlog features'. The phases boards main directive is to ensures that the team priortises certain features/sets of features in order to ensure proper time-frame delivery. The second board; 'Backlog features' is to give an oversight for the developers as to what tasks are yet to be completed and the estimated complexity of such feature.
 
 Once a team-member has picked a task from the 'Backlog Features' on trello in order for other team-members to track their progress and to avoid two members working on the same task, the team-member will use the physical boards Backlog, in-progress,Testing, Stuck-Zone and Completed. Like Trello this helps the team to visualise the progress of the app so far and avoid the same work being completed by two members
 
@@ -315,6 +363,13 @@ Once a team-member has picked a task from the 'Backlog Features' on trello in or
 5. The team member commences coding. At this point, this step is equivalent to step 5 in "Initial work cycle".
 
 ## 19. Provide an overview and description of your Testing process:
+
+We will be integrating two tools together:
+
+Jest - Jest is a unit testing framework made by Facebook to test JavaScript and react applications.
+Enzyme - Enzyme is used to test for React applications only.
+
+Using Jest & Enzyme will allow us to perform unit tests throughout our code on individual components and elements of behaviour including input fields, navbar  
 
 ## 20. Discuss and analyse requirements related to information system security:
 
