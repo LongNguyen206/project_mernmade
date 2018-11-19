@@ -156,7 +156,7 @@ MonogoDB will be our database for our app, it will store all user data, influenc
 - [DigitalOcean Api](https://developers.digitalocean.com/documentation/v2/) - allows us to manage Droplets and resources within the DigitalOcean cloud in a simple, programmatic way using conventional HTTP requests.
 - [Facebook API](https://developers.facebook.com/docs/facebook-login/web/) - used for user authentication and official account verification.
 - [Instagram API](https://www.instagram.com/developer/) - used for public data fetching.
-- <Some mail service API> - used to send New User account confirmation emails and to password reset emails.
+- Some mail service API - used to send New User account confirmation emails and to password reset emails.
 - [LinkedIn API](https://developer.linkedin.com/docs/oauth2) - used for user authentication and official account verification.
 - Various Node, Express and React Libraries (JWT, Passport, Babel, etc)
 
