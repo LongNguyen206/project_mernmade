@@ -209,7 +209,7 @@ Once signed in the **Registered User** will then go to the home page where they'
 
 ## 15. Provide Wire-frames for your App:
 
-The first wire-frame outlines the landing page Dashboard with the main search/filter features to be applied to the influencers
+The first wire-frame outlines the landing page Dashboard with the main search/filter features to be applied to the influencers.
 ![First Wire-frame](https://github.com/LongNguyen206/project_mernmade/blob/dev/doc_images/wireframe.png)
 a ![First Wire-frame](https://github.com/LongNguyen206/project_mernmade/blob/dev/doc_images/wireframe2.png)
 The last wire-frame is from the admin perspective, allowing the admin to individually add new influencers.
