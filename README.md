@@ -1,32 +1,75 @@
-# Documentation
-(header, team intro, table of content)
+![logo](https://github.com/LongNguyen206/project_mernmade/blob/dev/doc_images/logo.png)
+
+# #HashTagHound
+
+## Gentech 2018 final project
+
+## Group(CodeName-M.E.R.N.M.A.D.E): [Long](https://github.com/LongNguyen206), [Olie](https://github.com/oliverhardman), [Mariam](https://github.com/mariamantar), [Jesse](https://github.com/JesseMadison)
+
+---
+
+Table of content:
+
+1. [Who is your client?](#who)
+2. [What is your client’s need (i.e. challenge) that you will be addressing in your project?](#clientsNeeds)
+3. [Describe the client’s current setup and data.](#setup)
+4. [Describe the project will you be conducting and how your App will address the client’s needs.](#problemsAdressing)
+5. [Identify and describe the software (including databases) to be used in your App.](#softwareUsed)
+6. [Identify and describe the network setup you will use in your development.](#networkSetup)
+7. [Identify and describe the infrastructure (i.e. hardware) that your App will run on.](#infrasturcture)
+8. [Describe the architecture of your App.](#architechture)
+9. [Explain the different high-level components (abstractions) in your App.](#components)
+10. [Detail any third party services that your App will use.](#thirdParty)
+11. [Identify the database to be used in your app and provide a justification for your choice.](#pickedDB)
+12. [Discuss the database relations to be implemented.](#DBrelations)
+13. [Provide your database schema design.](#DBschema)
+14. [Provide User stories for your App.](#userStories)
+15. [Provide Wireframes for your App.](#wireframes)
+16. [Describe the way Tasks are being allocated and tracked in your project.](#taskAllocation)
+17. [Discuss how Agile methodology is being implemented in your App.](#agile)
+18. [Provide an overview and description of your Source control process.](#sourceControl)
+19. [Provide an overview and description of your Testing process.](#test)
+20. [Discuss and analyse requirements related to information system security.](#systemSecurity)
+21. [Discuss methods you will use to protect information and data.](#protectedInformation)
+22. [Research what your legal obligations are in relation to handling user data.](#legal)
+
+<a name="who"></a>
+
 ## 1. Who is your client?
 
 Our client, Mary, is a **visual content maker** and **social media marketer** based in New York, USA.
 
+<a name="clientsNeeds"></a>
+
 ## 2. What is your client’s need (i.e. challenge) that you will be addressing in your project?
 
-Part of our client's job is to work with small and medium-size businesses and provide them with social media marketing solutions. This means that if a business has a product that they want to promote, they would typically reach out to [social media influencers](https://influencermarketinghub.com/what-is-an-influencer/) who would feature these products in their social media posts. A good social media marketing campaign benefits from a wider audience reach compared to the traditional advertising, and can also save the business a significant amount of marketing costs. *(You can read more about influencers marketing [here](https://blog.scrunch.com/24-reasons-why-brands-should-be-working-with-influencers) and [here](https://www.searchenginepeople.com/blog/brands-rely-influencer-marketing-2018-beyond.html))*
+Part of our client's job is to work with small and medium-size businesses and provide them with social media marketing solutions. This means that if a business has a product that they want to promote, they would typically reach out to [social media influencers](https://influencermarketinghub.com/what-is-an-influencer/) who would feature these products in their social media posts. A good social media marketing campaign benefits from a wider audience reach compared to the traditional advertising, and can also save the business a significant amount of marketing costs. _(You can read more about influencers marketing [here](https://blog.scrunch.com/24-reasons-why-brands-should-be-working-with-influencers) and [here](https://www.searchenginepeople.com/blog/brands-rely-influencer-marketing-2018-beyond.html))_
 
 One of the difficulties that Mary faces is to connect her clients with the most relevant influencers and/or platform to promote their product, given a large number of available options. Therefore, she believes that by granting her clients access to her constantly updating database will save time for all parties, and will allow companies to filter and identify the best option by themselves to launch their marketing campaign and target their preferred audience.
 
 Therefore, the client set us a challenge to create a highly selective, transparent and easy to navigate B2B database of influencers and online communities that businesses (her clients) can have access to and through which they can form partnerships.
 
+<a name="setup"></a>
+
 ## 3. Describe the client’s current setup and data:
 
 Our client has a database of influencers and communities that she currently adds data to using [RStudio](https://www.rstudio.com/) and her team uses MS Excel. This database is currently for internal use only (by Mary herself). The process of inputting data is also very tedious as the data is in the form of rigid tables. She would then handpick the most relevant influencers to offer the businesses. Our client would very much welcome a better and safer solution.
+
+<a name="problemsAdressing" ></a>
 
 ## 4. Describe the project you will be conducting and how your App will address the client’s needs:
 
 With the current setup, Mary has to manually match the businesses she is working with and the influencers she has access to.
 
-Our project would provide Mary with a web app, where she or her team can login as **admins** and consistently fill the database with verified influencer profiles. 
+Our project would provide Mary with a web app, where she or her team can login as **admins** and consistently fill the database with verified influencer profiles.
 
 Businesses and brands would, in turn, be able to sign up as **users**, navigate through this database and select the most relevant influencers they would want to work with based on specific criteria.
 
 Businesses would also be able to shortlist potential candidates they would want to work with. Additionally, businesses would be able to leave feedback and reviews on influencers they had cooperated with in the past, which would give useful data insights both to our client and other users of the app.
 
 To ensure legitimacy of reviews, **admins** would also be able to do a formal verification of registered users' authenticity.
+
+<a name="softwareUsed"></a>
 
 ## 5. Identify and describe the software (including databases) to be used in your App:
 
@@ -44,7 +87,7 @@ We will use **ExpressJS** for our backend (C in MVC). This "fast, unopinionated,
 
 ### [ReactJS](https://reactjs.org/)
 
-We will use **ReactJS** for our frontend (V in MVC). React is fast, scalable and simple Javascript *library*. Unlike other JS frontend frameworks like Angular or Ember, React only deals with the Views instead of both the Model AND Views part. Even though it shines most in single-page applications, we believe that the ability change on-screen data without reloading adds to the app's better usability, better user experience and faster data processing. By allowing developers to create **reusable UI components**, React makes the coding easier and more compact. **The Virtual DOM**, which is a cached-in-browser DOM, allows for faster rendering and avoids web performance bottlenecks. **React Developer Tools**, a Chrome browser's extension, is great for inspecting React components and observing current 'props' and 'states', allowing for easier debugging and testing.
+We will use **ReactJS** for our frontend (V in MVC). React is fast, scalable and simple Javascript _library_. Unlike other JS frontend frameworks like Angular or Ember, React only deals with the Views instead of both the Model AND Views part. Even though it shines most in single-page applications, we believe that the ability change on-screen data without reloading adds to the app's better usability, better user experience and faster data processing. By allowing developers to create **reusable UI components**, React makes the coding easier and more compact. **The Virtual DOM**, which is a cached-in-browser DOM, allows for faster rendering and avoids web performance bottlenecks. **React Developer Tools**, a Chrome browser's extension, is great for inspecting React components and observing current 'props' and 'states', allowing for easier debugging and testing.
 
 Introduced by Facebook itself in 2011, we think ReactJS is solid choice for the web app that is all about social media accounts.
 
@@ -64,6 +107,8 @@ DigitalOcean's servers are called **Droplets**, and they vary in configuration b
 
 We use **JEST** to test both our front- and backend Javascript. It's the most comprehensive, fast, developer-ready testing tool and perfect for our case.
 
+<a name="networkSetup"></a>
+
 ## 6. Identify and describe the network setup you will use in your development:
 
 Our project will be deployed on a [cloud service](https://www.digitalocean.com/products/droplets/), DigitalOcean, therefore any computer device connected to the Internet would be able to access it via its domain name. The static files, other media and database will also be stored on DigitalOcean [**Spaces**](https://www.digitalocean.com/products/spaces/).
@@ -75,11 +120,15 @@ DigitalOcean provides us with fully independent virtual servers. These are also 
 
 All that is needed from both the **admins** and **users** is to access the web app on their personal devices and no special equipment, except Internet connection and a modern web browser, would be needed.
 
+<a name="infrasturcture"></a>
+
 ## 7. Identify and describe the infrastructure (i.e. hardware) that your App will run on:
 
 All the hardware used to host the app will be owned by the DigitalOcean. Our [server plan](https://www.digitalocean.com/pricing/) gives us 1GB in Memory, 1 virtual CPU, 25GB of SSD and 1TB of monthly data transfer.
 
 Our database will be stored on DigitalOcean Spaces, which is a "simple scalable S3-compatible object storage with a built-in content delivery network (CDN) to store, serve, backup, and archive any amount of web content, images, media, and static files for web applications". The Spaces plan will give us 250GB of storage and 1TB of outbound, CDN included data transfer.
+
+<a name="architechture"></a>
 
 ## 8. Describe the architecture of your App:
 
@@ -117,6 +166,7 @@ Our app follows a typical MERN stack architecture:
         /img/
         /tests/
 ```
+
 A MERN stack app requires a simultaneous running of both backend (Express) and frontend (React) servers. In production, this is taken care of by our virtual server.
 
 An example of interaction between our app's components:
@@ -128,6 +178,8 @@ An example of interaction between our app's components:
 5. `server/router/influencer.js` determines the business logic of the request. In this case, it accesses our MongoDB database (on DigitalOcean cloud server) which we will configure in `server/config/database.js` and modifies the database accordingly.
 6. While this all is happening, React automatically updates the frontend. React server reads the states and props of various components in the browser. Once we clicked a button to add a new influencer profile, the state changes, and React does not wait to fetch the data from the database, but rather renders a new profile independently by reading our input fields then updating the state once we clicked "Submit". This allows for faster data processing.
 7. The changes to database are confirmed when we revisit or refresh the page next time, when React will actually send a request to fetch data from the database via Express server.
+
+<a name="components"></a>
 
 ## 9. Explain the different high-level components (abstractions) in your App:
 
@@ -151,6 +203,8 @@ Express will handle all route requests, database interactions including CRUD fun
 
 MonogoDB will be our database for our app, it will store all user data, influencer profiles, rating data, review data.
 
+<a name="thirdParty"> </a>
+
 ## 10. Detail any third party services that your App will use:
 
 - [DigitalOcean Api](https://developers.digitalocean.com/documentation/v2/) - allows us to manage Droplets and resources within the DigitalOcean cloud in a simple, programmatic way using conventional HTTP requests.
@@ -159,6 +213,8 @@ MonogoDB will be our database for our app, it will store all user data, influenc
 - Some mail service API - used to send New User account confirmation emails and to password reset emails.
 - [LinkedIn API](https://developer.linkedin.com/docs/oauth2) - used for user authentication and official account verification.
 - Various Node, Express and React Libraries (JWT, Passport, Babel, etc)
+
+<a name="pickedDB"> </a>
 
 ## 11. Identify the database to be used in your app and provide a justification for your choice:
 
@@ -174,9 +230,67 @@ Why we chose **MongoDB**?:
 
 - **MonogoDB** offers <a href="https://docs.mongodb.com/manual/security/" target="_blank">security</a> features which include authentication, authorization and auditing. Its foundation is a role-based access control with flexible set of privileges. **MongoDB** allows us to assign <a href="https://docs.mongodb.com/manual/core/authorization/" target="_blank">user-defined roles</a> by defining a set of build-in roles such as admins and registered users. It also gives us the ability to use <a href="https://docs.mongodb.com/manual/core/security-transport-encryption/" target="_blank">TLS/SSL</a> (Transport Layer Security/Secure Sockets Layer) to encrypt all of **MongoDB’s** network traffic to ensure that it is only readable by the intended client.
 
+<a name="DBrelation"> </a>
+
 ## 12. Discuss the database relations to be implemented:
 
+We will implement three relationships in our database:
+
+Influencer profiles will be created by Admins in which they will be able to add all of the relevant data. Profiles' create, edit and delete can only be accessed by the Admin.
+
+The review system consists of a reviewer (userId) and reviewee (influencerListingId). Reviewer refers to the company because they will be able to leave a review on the performance of influencers they choose to work with.
+
+A reviewee (influencerListing), on the other hand, references the ID of the influencer being reviewed. This is because every review belongs to an influencer.
+
+<a name="DBschema"> </a>
+
 ## 13. Provide your database schema design:
+
+We have 4 MongoDB schema's in total including Admin, User, InfluencerListing and Review.
+
+```
+Admin
+
+- id: String
+- email: String
+- password: String(hashed and salted value)
+```
+
+```
+User
+
+- id: String
+- Name: String
+- shortList: [Strings]
+- email: String
+- password: String
+- image: String
+- facebookID
+- LinkedInID
+```
+
+```
+InfluencerListing
+
+- id: String
+- image: String
+- link: String
+- category: String
+- following: integer
+- engagementRate: float
+- description: text
+```
+
+```
+Review:
+
+- comment: text
+- rating: binary
+- reviewer: User_id
+- reviewee: InfluencerListing_id
+```
+
+<a name="userStories"> </a>
 
 ## 14. Provide User stories for your App:
 
@@ -193,6 +307,8 @@ The **Registered User** can filter accounts based on location, social-community 
 
 The **Registered Users** can view influencer profiles. **Registered Users** can rate and also leave reviews on social media profiles. They can also shortlist influencers in private lists. **Registered Users** are able to delete their account.
 
+<a name="wireframe"> </a>
+
 ## 15. Provide Wire-frames for your App:
 
 The first wire-frame outlines the landing page Dashboard with the main search/filter features to be applied to the influencers.
@@ -201,6 +317,7 @@ a ![First Wire-frame](https://github.com/LongNguyen206/project_mernmade/blob/dev
 The last wire-frame is from the admin perspective, allowing the admin to individually add new influencers.
 ![First Wire-frame](https://github.com/LongNguyen206/project_mernmade/blob/dev/doc_images/wireframe3.png)
 
+<a name="taskAllocation"> </a>
 
 ## 16. Describe the way Tasks are being allocated and tracked in your project:
 
@@ -213,7 +330,11 @@ The team members are allocated to backlog features on Trello, from development t
 
 Once a team-member has picked a task from the 'Product Backlog' on Trello, they will use the physical board to reflect that. Like Trello, this helps the team to visualise the progress of the app so far and avoid the same work being completed by two members at the same time.
 
+Trello is a web-based project management application. On Trello we have broken the project into two main boards 'Phases' and 'Backlog features'. The phases boards main directive is to ensures that the team priortises certain features/sets of features in order to ensure proper time-frame delivery. The second board; 'Backlog features' is to give an oversight for the developers as to what tasks are yet to be completed and the estimated complexity of such feature.
+
 At the end of the day, we document the tasks completed on Trello's 'Daily Journal'. The contributions are also shown as Github commits.
+
+<a name="agile"> </a>
 
 ## 17. Discuss how Agile methodology is being implemented in your App:
 
@@ -227,6 +348,10 @@ Our Trello Board is separated into 'Product Backlog', 'In Progress', 'In Testing
 Every day we select maximum of 3 features to the 'In Process' list. Once the feature is developed, it goes to 'In Testing'. If testing is passed, the feature is reviewed by other team members and if approved, gets deployed for the client to test. After we receive the feedback from the client, the feature is either approved, in which case in stays deployed and a new feature is pulled from the backlog, or requires changes, in which case it goes back to 'Product Backlog'.
 
 Due the conflict of time-zones between the team-members and client, we decided that the best solution would be to send queries/questions the night before, to be answered by the client by 10AM Sydney time the next day. Thus far we had two client meetings, each lasted for about 15 mins. By the end of the first meeting, 16 User Stories were conveyed to the team by the client. Following the KANBAN method of continuous integration, each team member will assign themselves a task for the maximum of 3 day sprint to be reviewed by the client provided the feature passes all the tests.
+
+'Kanban is a method for managing the creation of products with an emphasis on continual delivery while not overburdening the development team' -Wikipedia. This is the agile methodology that we choose to follow for this project. Due the conflict of time-zones between the team-members and client. We decided that the best solution would be to send querys/questions the night before the be answered by the client 10am the next day. Thus far into the planning stages we have a two client meeting each lasting about 15 mins. By the end first meeting 16 user stories were conveyed to the team by the client. Following the Kanban method of continuous integration, each team member will assign themselves a task for the 3 day sprint to be reviewed by the client providing test passes.
+
+<a name="sourceControl"> </a>
 
 ## 18.Provide an overview and description of your Source control process:
 
@@ -319,7 +444,28 @@ Due the conflict of time-zones between the team-members and client, we decided t
    ```
 5. The team member commences coding. At this point, this step is equivalent to step 5 in "Initial work cycle".
 
+<a name="test"></a>
+
 ## 19. Provide an overview and description of your Testing process:
+
+We will be integrating two tools together:
+
+Jest - Jest is a unit testing framework made by Facebook to test JavaScript and react applications.
+Enzyme - Enzyme is used to test for React applications only.
+
+Using Jest & Enzyme will allow us to perform unit tests throughout our code on individual components and elements of behaviour including input fields, navbar
+
+We will be using Unit tests and Integration tests.
+<a href="http://softwaretestingfundamentals.com/unit-testing/" target="_blank">Unit Tests</a> will be used to test our functions and components indiviually.
+<a href="http://softwaretestingfundamentals.com/integration-testing/" target="_blank">Integration Tests</a> will be used to ensure a code base operates flawlessly together.
+
+Our strategy is to incoporate [JEST](https://jestjs.io/) in our Express folder, to preform our integration tests as a whole. [Enzyme](https://airbnb.io/enzyme/) will be used for our test cases and will be located in our 'Test' subfolder in at 'client' folder, it'll be testing our React components and their elements individually (Unit Test).
+
+We plan to use <a href="http://agiledata.org/essays/tdd.html" target="_blank">TDD</a> to test more complex function chains, to ensure they function as their suppose to.
+
+![alt text](http://www.agiledata.org/images/tddSteps.jpg)
+
+<a name="systemSecurity"> </a>
 
 ## 20. Discuss and analyse requirements related to information system security:
 
@@ -335,6 +481,8 @@ Escaping is a means ensuring data an application has received is secure before r
 
 "In computing, a denial-of-service attack (DoS attack) is a cyber-attack in which the perpetrator seeks to make a machine or network resource unavailable to its intended users by temporarily or indefinitely disrupting services of a host connected to the Internet". - Wikipedia thankfully our hosting service DigitalOcean has a cloud Firewall; "network-based, stateful firewall service for your DigitalOcean Droplets. They block all traffic that isn’t expressly permitted by a rule". This firewall helps to distinguish between good and bad actors, limiting the affect of a DDoS attack.
 
+<a name="protectedInformation"> </a>
+
 ## 21. Discuss methods you will use to protect information and data:
 
 **Authentication/Authorization Requirements** for users/admin; all passwords require a minimum of eight characters containing a minimum of one upper case letter, one number and one special character. Passwords are masked during user entry to prevent shoulder-surfing. Passwords are uniquely salted and hashed when stored in the password database, salting is very effective at preventing successful dictionary attacks, the reason is that is salt concatenated onto the original password then hashed, which helps to secure common passwords by making decoding them very computationally expensive.
@@ -342,6 +490,8 @@ Escaping is a means ensuring data an application has received is secure before r
 **Validations** are performed both client- and server-side. An example of `client-side validations` is attempting to enter text into a "numbers only" field. These can, however, be bypassed, hence a deeper `server-side validation` is required to prevent malicious code being inserted into the database that could cause undesirable results.
 
 **HTTPS**: "The principal motivation for HTTPS is authentication of the accessed website and protection of the privacy and integrity of the exchanged data while in transit" - [Wikipedia](https://en.wikipedia.org/wiki/HTTPS). `HashtagHound` thus utilizes HTTPS for the following reasons; the ability securely send 3rd party data sent over via API and to prevent malicious hackers from trying to steal a users cookie an imitate a users session.
+
+<a name="legal"> </a>
 
 ## 22. Research what your legal obligations are in relation to handling user data:
 
