@@ -1,20 +1,73 @@
+![logo](https://github.com/LongNguyen206/project_mernmade/blob/dev/doc_images/logo.png)
+
+# #HashTagHound
+
+## Gentech 2018 final project
+
+## Group(CodeName-M.E.R.N.M.A.D.E): [Long](https://github.com/LongNguyen206), [Olie](https://github.com/oliverhardman), [Mariam](https://github.com/mariamantar), [Jesse](https://github.com/JesseMadison)
+
+---
+
+Table of content:
+
+1. [Who is your client?](#who)
+2. [What is your client’s need (i.e. challenge) that you will be addressing in your project?](#clientsNeeds)
+3. [Describe the client’s current setup and data.](#setup)
+4. [Describe the project will you be conducting and how your App will address the client’s needs.](#problemsAdressing)
+5. [Identify and describe the software (including databases) to be used in your App.](#softwareUsed)
+6. [Identify and describe the network setup you will use in your development.](#networkSetup)
+7. [Identify and describe the infrastructure (i.e. hardware) that your App will run on.](#infrasturcture)
+8. [Describe the architecture of your App.](#architechture)
+9. [Explain the different high-level components (abstractions) in your App.](#components)
+10. [Detail any third party services that your App will use.](#thirdParty)
+11. [Identify the database to be used in your app and provide a justification for your choice.](#pickedDB)
+12. [Discuss the database relations to be implemented.](#DBrelations)
+13. [Provide your database schema design.](#DBschema)
+14. [Provide User stories for your App.](#userStories)
+15. [Provide Wireframes for your App.](#wireframes)
+16. [Describe the way Tasks are being allocated and tracked in your project.](#taskAllocation)
+17. [Discuss how Agile methodology is being implemented in your App.](#agile)
+18. [Provide an overview and description of your Source control process.](#sourceControl)
+19. [Provide an overview and description of your Testing process.](#test)
+20. [Discuss and analyse requirements related to information system security.](#systemSecurity)
+21. [Discuss methods you will use to protect information and data.](#protectedInformation)
+22. [Research what your legal obligations are in relation to handling user data.](#legal)
+
 # Documentation
+
+<a name="who"></a>
 
 ## 1. Who is your client?
 
+<a name="clientsNeeds"></a>
+
 ## 2. What is your client’s need (i.e. challenge) that you will be addressing in your project?
+
+<a name="setup"></a>
 
 ## 3. Describe the client’s current setup and data:
 
+<a name="problemsAdressing" ></a>
+
 ## 4. Describe the project you will be conducting and how your App will address the client’s needs:
+
+<a name="softwareUsed"></a>
 
 ## 5. Identify and describe the software (including databases) to be used in your App:
 
+<a name="networkSetup"></a>
+
 ## 6. Identify and describe the network setup you will use in your development:
+
+<a name="infrasturcture"></a>
 
 ## 7. Identify and describe the infrastructure (i.e. hardware) that your App will run on:
 
+<a name="architechture"></a>
+
 ## 8. Describe the architecture of your App:
+
+<a name="components"></a>
 
 ## 9. Explain the different high-level components (abstractions) in your App:
 
@@ -53,12 +106,16 @@ A mailer system for account comfirmation, password reset requests.
 
 MonogoDB will be our database for our app, it will store all user data, social media profiles, rating data, review data.
 
+<a name="thirdParty"> </a>
+
 ## 10. Detail any third party services that your App will use:
 
 - Facebook API(used for account login verification and offical account verfication)
 - Instagram API(used for account login verifacation and offical account verfication)
 - Google API(used for account login verification)
 - <Mail service API>(used to send new users account comfirmation emails and to send users password reset emails)
+
+<a name="pickedDB"> </a>
 
 ## 11. Identify the database to be used in your app and provide a justification for your choice:
 
@@ -74,9 +131,15 @@ Why we chose **MongoDB**?:
 
 - **MonogoDB** offers <a href="https://docs.mongodb.com/manual/security/" target="_blank">security</a> features which include include authentication, authorisation and auditing. Its foundation is a role-based access control with flexible set of privileges. **MonogoDB** provides allows us to assign <a href="https://docs.mongodb.com/manual/core/authorization/" target="_blank">user-defined roles</a> by defining a set of build-in roles such as (admin, registered users). It also give us the ability to use <a href="https://docs.mongodb.com/manual/core/security-transport-encryption/" target="_blank">TLS/SSL</a>Transport Layer Security/Secure Sockets Layer) to encrypt all of **MonogoDB’s** network traffic to ensure that it is only readable by the intended client.
 
+<a name="DBrelation"> </a>
+
 ## 12. Discuss the database relations to be implemented:
 
+<a name="DBschema"> </a>
+
 ## 13. Provide your database schema design:
+
+<a name="userStories"> </a>
 
 ## 14. Provide User stories for your App:
 
@@ -95,17 +158,24 @@ Once signed in the **Registered User** will then go to the home page where they'
 **Guest Users** enter the website they go straight to the home page where they'll be able to view social media profiles in a tile form.The **Guest User** can filter based on(location, popularity(based on average number of followers), platform(e.g Instagram, Facebook, Twitter, Youtube), type-of-account(Influencer, Feature account, Community), engagement(based on average number of likes/views/comments)).
 **Guest Users** can view social media profiles. **Guest Users** will be able to sign up either through Facebook, Instagram, Google or locally.
 
+<a name="wireframe"> </a>
+
 ## 15. Provide Wireframes for your App:
+
+<a name="taskAllocation"> </a>
 
 ## 16. Describe the way Tasks are being allocated and tracked in your project:
 
-Trello is a web-based project management application. On Trello we have broken the project into two main boards 'Phases' and 'Backlog features'. The phases boards main directive is to ensures that the team priortises certain features/sets of features in order to ensure proper time-frame delivery. The second board; 'Backlog features' is to give an oversight for the developers as to what tasks are yet to be completed and the estimated complexity of such feature. 
+Trello is a web-based project management application. On Trello we have broken the project into two main boards 'Phases' and 'Backlog features'. The phases boards main directive is to ensures that the team priortises certain features/sets of features in order to ensure proper time-frame delivery. The second board; 'Backlog features' is to give an oversight for the developers as to what tasks are yet to be completed and the estimated complexity of such feature.
 
 Once a team-member has picked a task from the 'Backlog Features' on trello in order for other team-members to track their progress and to avoid two members working on the same task, the team-member will use the physical boards Backlog, in-progress,Testing, Stuck-Zone and Completed. Like Trello this helps the team to visualise the progress of the app so far and avoid the same work being completed by two members
+
+<a name="agile"> </a>
 
 ## 17. Discuss how Agile methodology is being implemented in your App:
 
 'Kanban is a method for managing the creation of products with an emphasis on continual delivery while not overburdening the development team' -Wikipedia. This is the agile methodology that we choose to follow for this project. Due the conflict of time-zones between the team-members and client. We decided that the best solution would be to send querys/questions the night before the be answered by the client 10am the next day. Thus far into the planning stages we have a two client meeting each lasting about 15 mins. By the end first meeting 16 user stories were conveyed to the team by the client. Following the Kanban method of continuous integration, each team member will assign themselves a task for the 3 day sprint to be reviewed by the client providing test passes.
+<a name="sourceControl"> </a>
 
 ## 18.Provide an overview and description of your Source control process:
 
@@ -194,7 +264,21 @@ Once a team-member has picked a task from the 'Backlog Features' on trello in or
    ```
 5. The team member commences coding. At this point, this step is equivalent to step 5 in "Initial work cycle".
 
+   <a name="test"></a>
+
 ## 19. Provide an overview and description of your Testing process:
+
+We will be using Unit tests and Integration tests.
+<a href="http://softwaretestingfundamentals.com/unit-testing/" target="_blank">Unit Tests</a> will be used to test our functions and components indiviually.
+<a href="http://softwaretestingfundamentals.com/integration-testing/" target="_blank">Integration Tests</a> will be used to ensure a code base operates flawlessly together.
+
+Our strategy is to incoporate [JEST](https://jestjs.io/) in our Express folder, to preform our integration tests as a whole. [Enzyme](https://airbnb.io/enzyme/) will be used for our test cases and will be located in our 'Test' subfolder in at 'client' folder, it'll be testing our React components and their elements individually (Unit Test).
+
+We plan to use <a href="http://agiledata.org/essays/tdd.html" target="_blank">TDD</a> to test more complex function chains, to ensure they function as their suppose to.
+
+![alt text](http://www.agiledata.org/images/tddSteps.jpg)
+
+<a name="systemSecurity"> </a>
 
 ## 20. Discuss and analyse requirements related to information system security:
 
@@ -210,6 +294,8 @@ Escaping is a means ensuring data an application has received is secure before r
 
 "In computing, a denial-of-service attack (DoS attack) is a cyber-attack in which the perpetrator seeks to make a machine or network resource unavailable to its intended users by temporarily or indefinitely disrupting services of a host connected to the Internet". - Wikipedia thankfully our hosting service DigitalOcean has a cloud Firewall; "network-based, stateful firewall service for your DigitalOcean Droplets. They block all traffic that isn’t expressly permitted by a rule". This firewall helps to distinguish between good and bad actors, limiting the affect of a DDoS attack.
 
+<a name="protectedInformation"> </a>
+
 ## 21. Discuss methods you will use to protect information and data:
 
 **Authentication/Authorization Requirements** for users/admin; all passwords require a minimum of eight characters containing a minimum of one upper case letter, one number and one special character. Passwords are masked during user entry to prevent shoulder-surfing. Passwords are uniquely salted and hashed when stored in the password database, salting is very effective at preventing successful dictionary attacks, the reason is that is salt concatenated onto the original password then hashed, which helps to secure common passwords by making decoding them very computationally expensive.
@@ -217,6 +303,8 @@ Escaping is a means ensuring data an application has received is secure before r
 **Validations** are performed both client- and server-side. An example of `client-side validations` is attempting to enter text into a "numbers only" field. These can, however, be bypassed, hence a deeper `server-side validation` is required to prevent malicious code being inserted into the database that could cause undesirable results.
 
 **HTTPS**: "The principal motivation for HTTPS is authentication of the accessed website and protection of the privacy and integrity of the exchanged data while in transit" - [Wikipedia](https://en.wikipedia.org/wiki/HTTPS). `<companyName>` thus utilizes HTTPS for the following reasons; the ability securely send 3rd party data sent over via API and to prevent malicious hackers from trying to steal a users cookie an imitate a users session.
+
+<a name="legal"> </a>
 
 ## 22. Research what your legal obligations are in relation to handling user data:
 
