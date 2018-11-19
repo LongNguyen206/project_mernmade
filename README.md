@@ -1,23 +1,23 @@
-![logo](https://github.com/LongNguyen206/project_mernmade/blob/dev/doc_images/logo.png)
+![logo](https://github.com/LongNguyen206/project_mernmade/blob/dev/doc_images/hh_facebook_312-3.jpg)
 
-# #HashTagHound
+# #HashtagHound
 
-## Gentech 2018 final project
+> Coder Academy Gentech 2018 Final Project (CodeName-M.E.R.N.M.A.D.E)
 
-## Group(CodeName-M.E.R.N.M.A.D.E): [Long](https://github.com/LongNguyen206), [Olie](https://github.com/oliverhardman), [Mariam](https://github.com/mariamantar), [Jesse](https://github.com/JesseMadison)
+> Team: [Long](https://github.com/LongNguyen206), [Olie](https://github.com/oliverhardman), [Mariam](https://github.com/mariamantar), [Jesse](https://github.com/JesseMadison)
 
 ---
 
-Table of content:
+## Table of content:
 
-1. [Who is your client?](#who)
+1. [Who is your client?](#client)
 2. [What is your client’s need (i.e. challenge) that you will be addressing in your project?](#clientsNeeds)
 3. [Describe the client’s current setup and data.](#setup)
-4. [Describe the project will you be conducting and how your App will address the client’s needs.](#problemsAdressing)
+4. [Describe the project will you be conducting and how your App will address the client’s needs.](#problemsAddressing)
 5. [Identify and describe the software (including databases) to be used in your App.](#softwareUsed)
 6. [Identify and describe the network setup you will use in your development.](#networkSetup)
-7. [Identify and describe the infrastructure (i.e. hardware) that your App will run on.](#infrasturcture)
-8. [Describe the architecture of your App.](#architechture)
+7. [Identify and describe the infrastructure (i.e. hardware) that your App will run on.](#infrastructure)
+8. [Describe the architecture of your App.](#architecture)
 9. [Explain the different high-level components (abstractions) in your App.](#components)
 10. [Detail any third party services that your App will use.](#thirdParty)
 11. [Identify the database to be used in your app and provide a justification for your choice.](#pickedDB)
@@ -33,7 +33,7 @@ Table of content:
 21. [Discuss methods you will use to protect information and data.](#protectedInformation)
 22. [Research what your legal obligations are in relation to handling user data.](#legal)
 
-<a name="who"></a>
+<a name="client"></a>
 
 ## 1. Who is your client?
 
@@ -55,7 +55,7 @@ Therefore, the client set us a challenge to create a highly selective, transpare
 
 Our client has a database of influencers and communities that she currently adds data to using [RStudio](https://www.rstudio.com/) and her team uses MS Excel. This database is currently for internal use only (by Mary herself). The process of inputting data is also very tedious as the data is in the form of rigid tables. She would then handpick the most relevant influencers to offer the businesses. Our client would very much welcome a better and safer solution.
 
-<a name="problemsAdressing" ></a>
+<a name="problemsAddressing" ></a>
 
 ## 4. Describe the project you will be conducting and how your App will address the client’s needs:
 
@@ -67,7 +67,7 @@ Businesses and brands would, in turn, be able to sign up as **users**, navigate 
 
 Businesses would also be able to shortlist potential candidates they would want to work with. Additionally, businesses would be able to leave feedback and reviews on influencers they had cooperated with in the past, which would give useful data insights both to our client and other users of the app.
 
-To ensure legitimacy of reviews, **admins** would also be able to do a formal verification of registered users' authenticity.
+To ensure legitimacy of reviews, **admins** would also be able to do a formal verification of registered users.
 
 <a name="softwareUsed"></a>
 
@@ -120,7 +120,7 @@ DigitalOcean provides us with fully independent virtual servers. These are also 
 
 All that is needed from both the **admins** and **users** is to access the web app on their personal devices and no special equipment, except Internet connection and a modern web browser, would be needed.
 
-<a name="infrasturcture"></a>
+<a name="infrastructure"></a>
 
 ## 7. Identify and describe the infrastructure (i.e. hardware) that your App will run on:
 
@@ -128,7 +128,7 @@ All the hardware used to host the app will be owned by the DigitalOcean. Our [se
 
 Our database will be stored on DigitalOcean Spaces, which is a "simple scalable S3-compatible object storage with a built-in content delivery network (CDN) to store, serve, backup, and archive any amount of web content, images, media, and static files for web applications". The Spaces plan will give us 250GB of storage and 1TB of outbound, CDN included data transfer.
 
-<a name="architechture"></a>
+<a name="architecture"></a>
 
 ## 8. Describe the architecture of your App:
 
@@ -210,7 +210,7 @@ MonogoDB will be our database for our app, it will store all user data, influenc
 - [DigitalOcean Api](https://developers.digitalocean.com/documentation/v2/) - allows us to manage Droplets and resources within the DigitalOcean cloud in a simple, programmatic way using conventional HTTP requests.
 - [Facebook API](https://developers.facebook.com/docs/facebook-login/web/) - used for user authentication and official account verification.
 - [Instagram API](https://www.instagram.com/developer/) - used for public data fetching.
-- <Some mail service API> - used to send New User account confirmation emails and to password reset emails.
+- Some mail service API - used to send New User account confirmation emails and to password reset emails.
 - [LinkedIn API](https://developer.linkedin.com/docs/oauth2) - used for user authentication and official account verification.
 - Various Node, Express and React Libraries (JWT, Passport, Babel, etc)
 
@@ -255,7 +255,6 @@ Admin
 - email: String
 - password: String(hashed and salted value)
 ```
-
 ```
 User
 
@@ -268,7 +267,6 @@ User
 - facebookID
 - LinkedInID
 ```
-
 ```
 InfluencerListing
 
@@ -280,7 +278,6 @@ InfluencerListing
 - engagementRate: float
 - description: text
 ```
-
 ```
 Review:
 
@@ -309,13 +306,13 @@ The **Registered Users** can view influencer profiles. **Registered Users** can 
 
 <a name="wireframe"> </a>
 
-## 15. Provide Wire-frames for your App:
+## 15. Provide wireframes for your App:
 
-The first wire-frame outlines the landing page Dashboard with the main search/filter features to be applied to the influencers.
-![First Wire-frame](https://github.com/LongNguyen206/project_mernmade/blob/dev/doc_images/wireframe.png)
-a ![First Wire-frame](https://github.com/LongNguyen206/project_mernmade/blob/dev/doc_images/wireframe2.png)
+The first wireframe outlines the landing page Dashboard with the main search/filter features to be applied to the influencers.
+![First Wireframe](https://github.com/LongNguyen206/project_mernmade/blob/dev/doc_images/wireframe.png)
+a ![Second Wireframe](https://github.com/LongNguyen206/project_mernmade/blob/dev/doc_images/wireframe2.png)
 The last wire-frame is from the admin perspective, allowing the admin to individually add new influencers.
-![First Wire-frame](https://github.com/LongNguyen206/project_mernmade/blob/dev/doc_images/wireframe3.png)
+![Third Wireframe](https://github.com/LongNguyen206/project_mernmade/blob/dev/doc_images/wireframe3.png)
 
 <a name="taskAllocation"> </a>
 
@@ -329,8 +326,6 @@ Each day, we have a class Stand-up meeting, when we report to our educators and 
 The team members are allocated to backlog features on Trello, from development to deployment, this way we can track who is responsible for which feature.
 
 Once a team-member has picked a task from the 'Product Backlog' on Trello, they will use the physical board to reflect that. Like Trello, this helps the team to visualise the progress of the app so far and avoid the same work being completed by two members at the same time.
-
-Trello is a web-based project management application. On Trello we have broken the project into two main boards 'Phases' and 'Backlog features'. The phases boards main directive is to ensures that the team priortises certain features/sets of features in order to ensure proper time-frame delivery. The second board; 'Backlog features' is to give an oversight for the developers as to what tasks are yet to be completed and the estimated complexity of such feature.
 
 At the end of the day, we document the tasks completed on Trello's 'Daily Journal'. The contributions are also shown as Github commits.
 
@@ -348,8 +343,6 @@ Our Trello Board is separated into 'Product Backlog', 'In Progress', 'In Testing
 Every day we select maximum of 3 features to the 'In Process' list. Once the feature is developed, it goes to 'In Testing'. If testing is passed, the feature is reviewed by other team members and if approved, gets deployed for the client to test. After we receive the feedback from the client, the feature is either approved, in which case in stays deployed and a new feature is pulled from the backlog, or requires changes, in which case it goes back to 'Product Backlog'.
 
 Due the conflict of time-zones between the team-members and client, we decided that the best solution would be to send queries/questions the night before, to be answered by the client by 10AM Sydney time the next day. Thus far we had two client meetings, each lasted for about 15 mins. By the end of the first meeting, 16 User Stories were conveyed to the team by the client. Following the KANBAN method of continuous integration, each team member will assign themselves a task for the maximum of 3 day sprint to be reviewed by the client provided the feature passes all the tests.
-
-'Kanban is a method for managing the creation of products with an emphasis on continual delivery while not overburdening the development team' -Wikipedia. This is the agile methodology that we choose to follow for this project. Due the conflict of time-zones between the team-members and client. We decided that the best solution would be to send querys/questions the night before the be answered by the client 10am the next day. Thus far into the planning stages we have a two client meeting each lasting about 15 mins. By the end first meeting 16 user stories were conveyed to the team by the client. Following the Kanban method of continuous integration, each team member will assign themselves a task for the 3 day sprint to be reviewed by the client providing test passes.
 
 <a name="sourceControl"> </a>
 
