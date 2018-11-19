@@ -138,11 +138,7 @@ Our application will serve the **Admin** for users who provide **Admin** authori
 
 ### Registed Users
 
-<<<<<<< HEAD
-Our application will serve the **Registered User** for users who provide **Registed User** credentials. this application will have <n> main react components:
-=======
 Our application will serve the **Registered User** for users who provide **Registered User** credentials. this application will have 4 main react components:
->>>>>>> long_dev
 
 - AppRouter(App Navigation)
 - DashboardPage(to view/ search social media profiles)
@@ -211,7 +207,14 @@ Once signed in the **Registered User** will then go to the home page where they'
 **Guest Users** enter the website they go straight to the home page where they'll be able to view social media profiles in a tile form.The **Guest User** can filter based on(location, popularity(based on average number of followers), platform(e.g Instagram, Facebook, Twitter, Youtube), type-of-account(Influencer, Feature account, Community), engagement(based on average number of likes/views/comments)).
 **Guest Users** can view social media profiles. **Guest Users** will be able to sign up either through Facebook, Instagram, Google or locally.
 
-## 15. Provide Wireframes for your App:
+## 15. Provide Wire-frames for your App:
+
+The first wire-frame outlines the landing page Dashboard with the main search/filter features to be applied to the influencers
+![First Wire-frame](https://github.com/LongNguyen206/project_mernmade/blob/dev/doc_images/wireframe.png)
+a ![First Wire-frame](https://github.com/LongNguyen206/project_mernmade/blob/dev/doc_images/wireframe2.png)
+The last wire-frame is from the admin perspective, allowing the admin to individually add new influencers.
+![First Wire-frame](https://github.com/LongNguyen206/project_mernmade/blob/dev/doc_images/wireframe3.png)
+
 
 ## 16. Describe the way Tasks are being allocated and tracked in your project:
 
