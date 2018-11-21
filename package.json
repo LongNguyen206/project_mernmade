@@ -1,0 +1,23 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "![logo](https://github.com/LongNguyen206/project_mernmade/blob/dev/doc_images/hh_facebook_312-3.jpg)",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LongNguyen206/project_mernmade.git"
+  },
+  "bugs": {
+    "url": "https://github.com/LongNguyen206/project_mernmade/issues"
+  },
+  "homepage": "https://github.com/LongNguyen206/project_mernmade#readme"
+}
