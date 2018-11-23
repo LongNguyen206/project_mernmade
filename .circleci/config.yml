@@ -16,6 +16,7 @@ jobs:
 
     steps:
       - checkout
+      - cd server
 
       # Download and cache dependencies
       - restore_cache:
@@ -28,7 +29,7 @@ jobs:
 
       - save_cache:
           paths:
-            - server/node_modules
+            - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
         
       # run tests!
