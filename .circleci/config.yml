@@ -16,7 +16,7 @@ jobs:
 
     steps:
       - checkout
-      - cd server
+      - run: cd server
 
       # Download and cache dependencies
       - restore_cache:
