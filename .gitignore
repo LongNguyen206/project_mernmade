@@ -1,2 +1,9 @@
+# dependencies
 server/node_modules
+client/node_modules
+
+# misc files
 .DS_Store
+
+# notes
+steps.md
