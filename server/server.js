@@ -1,8 +1,8 @@
-const express = require('express')
-const app = express()
+const express = require('express');
+const app = express();
 
 app.get('/', (req, res) => {
-    res.send('Hey, I\'m a Node.js app!')
+    res.send('Hey, UPDATED')
 })
 
 app.listen(3000, () => {
