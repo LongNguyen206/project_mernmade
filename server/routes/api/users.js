@@ -34,11 +34,11 @@ router.post("/", auth.optional, (req, res) => {
     .then(() => res.json({ user: finalUser.toAuthJSON() }));
 });
 
-//POST login route (optional, everyone has access)
+//POST login route (optional, everyone has access) ------------ found this bug, fuck --------------------
 router.post("/login", auth.optional, (req, res, next) => {
-  const {
-    body: { user }
-  } = req;
+    const user = req.body
+    console.log(user)
+
 
   if (!user.email) {
     return res.status(422).json({
