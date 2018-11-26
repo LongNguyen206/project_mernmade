@@ -57,6 +57,18 @@ app.use((req, res, err) => {
   });
 });
 
+//Basic error handling
+app.use((req, res, err) => {
+    res.status(err.status || 500);
+  
+    res.json({
+      errors: {
+        message: err.message,
+        error: {}
+      }
+    });
+  });
+
 // Specify port
 const port = process.env.PORT || 5000;
 
