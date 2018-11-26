@@ -1,15 +1,15 @@
 require('dotenv').config();
 const express = require('express');
+const mongoose = require("mongoose");
 const path = require("path");
 const bodyParser = require("body-parser");
-const session = require("express-session");
 const cors = require("cors");
-const mongoose = require("mongoose");
 const errorHandler = require("errorhandler");
 const passport = require('passport');
+const session = require("express-session");
 
 const app = express();
-// //include the database:
+// Connect the database:
 const db = require('./config/database');
 
 // Middleware 
@@ -30,34 +30,34 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
+// MongoDB
 mongoose.Promise = global.Promise;
 mongoose.connect(db.mongoURI, { useNewUrlParser: true })
   .then(() => console.log('Connected to MongoDB'))
   .catch((err) => console.log(err));
 
-
-//Models, routes and passport
-require("./models/Users");
+// Models, Routes and Passport
+require("./models/User");
 require("./config/passport");
 app.use(require("./routes"));
 
+// Home Page
 app.get('/', (req, res) => {
-    res.send('Hey, UPDATED AGAIN')
+  res.send('Hey, This is Node!')
 });
 
-//Basic error handling
+// Basic error handling
 app.use((req, res, err) => {
-    res.status(err.status || 500);
-  
-    res.json({
-      errors: {
-        message: err.message,
-        error: {}
-      }
-    });
+  res.status(err.status || 500);
+  res.json({
+    errors: {
+      message: err.message,
+      error: {}
+    }
   });
+});
 
-//specify port
+// Specify port
 const port = process.env.PORT || 5000;
 
 app.listen(port, () => {
