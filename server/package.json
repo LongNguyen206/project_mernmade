@@ -14,11 +14,8 @@
   "license": "ISC",
   "dependencies": {
     "concurrently": "^4.1.0",
-<<<<<<< HEAD
     "dotenv": "^6.1.0",
-=======
     "cors": "^2.8.5",
->>>>>>> 2728b188fd9539c51db241f12451185c39362f5c
     "express": "^4.16.4",
     "express-jwt": "^5.3.1",
     "express-session": "^1.15.6",
