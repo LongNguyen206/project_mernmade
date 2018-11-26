@@ -1,22 +1,61 @@
 require('dotenv').config();
 const express = require('express');
-const app = express();
-//require mongoose
-const mongoose = require('mongoose');
-//require the body parser to parse through the form content
-const bodyParser = require('body-parser');
+const path = require("path");
+const bodyParser = require("body-parser");
+const session = require("express-session");
+const cors = require("cors");
+const mongoose = require("mongoose");
+const errorHandler = require("errorhandler");
+const passport = require('passport');
 
+const app = express();
 // //include the database:
 const db = require('./config/database');
+
+// Middleware 
+app.use(cors());
+app.use(require("morgan")("dev"));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use(express.static(path.join(__dirname, "public")));
+app.set("trust proxy", 1); // trust first proxy
+app.use(
+  session({
+    secret: "passport-tutorial",
+    cookie: { maxAge: 60000 },
+    resave: false,
+    saveUninitialized: false
+  })
+);
+app.use(passport.initialize());
+app.use(passport.session());
 
 mongoose.Promise = global.Promise;
 mongoose.connect(db.mongoURI, { useNewUrlParser: true })
   .then(() => console.log('Connected to MongoDB'))
   .catch((err) => console.log(err));
 
+
+//Models, routes and passport
+require("./models/Users");
+require("./config/passport");
+app.use(require("./routes"));
+
 app.get('/', (req, res) => {
     res.send('Hey, UPDATED AGAIN')
 });
+
+//Basic error handling
+app.use((req, res, err) => {
+    res.status(err.status || 500);
+  
+    res.json({
+      errors: {
+        message: err.message,
+        error: {}
+      }
+    });
+  });
 
 //specify port
 const port = process.env.PORT || 5000;
