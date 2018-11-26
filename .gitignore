@@ -2,6 +2,9 @@
 server/node_modules
 client/node_modules
 
+# keys and secrets
+server/.env
+
 # misc files
 .DS_Store
 
