@@ -1,6 +1,8 @@
 const router = require("express").Router();
 const mongoose = require("mongoose");
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const passport = require('passport');
 // Load 'users' model to check for existing email
 const User = mongoose.model("users");
 
@@ -17,17 +19,38 @@ router.post("/register", (req, res) => {
         email: "is taken"
       });
     }
-    if (!req.body.name) {
+    // Empty name validation
+    if ((!req.body.name) || (req.body.name.trim().length === 0)) {
       return res.status(404).json({
         name: "is required"
       });
     }
+    // Max length for name validation
+    if (req.body.name.length > 30) {
+      return res.status(404).json({
+        name: "is too long"
+      });
+    }
+    // Min length for name validation
+    if (req.body.name.length < 2) {
+      return res.status(404).json({
+        name: "is too short"
+      });
+    }
+    // Empty email validation
     if (!req.body.email) {
       return res.status(404).json({
         email: "is required"
       });
     }
-    if (!req.body.password) {
+    // Email format validation
+    if (/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(req.body.email) == false) {
+      return res.status(404).json({
+        email: "is invalid"
+      });
+    }
+    // Empty password validation
+    if ((!req.body.password) || (req.body.password.trim().length === 0)) {
       return res.status(404).json({
         password: "is required"
       });
@@ -48,9 +71,7 @@ router.post("/register", (req, res) => {
           new User(newUser)
             .save()
             .then(user => {
-                // passport.authenticate('local')(req, res, () => {
-                  res.json(user);
-                // });
+              res.json(user);
             })
             .catch(err => console.log(err))
         });
@@ -90,34 +111,40 @@ router.post("/login", (req, res, next) => {
     bcrypt.compare(req.body.password, user.password)
       .then(isMatch => {
         if (isMatch) {
-          res.json({msg: "Success"})
+          // User Matched
+          // Create JWT payload
+          const payload = { 
+            id: user.id, 
+            email: user.email,
+            name: user.name 
+          }
+          // Sign Token
+          jwt.sign(
+            payload, 
+            process.env.SECRETORKEY, 
+            { expiresIn: 7200 }, 
+            (err, token) => {
+              res.json({
+                success: true,
+                token: 'Bearer ' + token
+              });
+          });
         } else {
           return res.status(400).json({password: "incorrect"})
         }
-      })
-  })
-  // passport.authenticate("local", { session: false }, (err, passportUser, info) => {
-  //     if (err) {
-  //       return console.log(err);
-  //     }
-  //     if (passportUser) {
-  //       const user = passportUser;
-  //       user.token = passportUser.generateJWT();
-  //       return res.json({ user: user.toAuthJSON() });
-  //     }
-  //     return res.status(400).json({msg: "success"});
-  //   })(req, res, next);
+      });
+  });
 });
 
-// //GET current route (required, only authenticated users have access)
-// router.get("/current", jwt_auth.required, (req, res, next) => {
-//   const { payload: { id } } = req;
-//   return User.findById(id).then(user => {
-//     if (!user) {
-//       return res.sendStatus(400);
-//     };
-//     return res.json({ user: user.toAuthJSON() });
-//   });
-// });
+// @route   GET api/users/current
+// @desc    Returns Current User
+// @access  Private
+router.get("/current", passport.authenticate('jwt', { session: false }), (req, res) => {
+  res.json({
+    id: req.user.id,
+    email: req.user.email,
+    name: req.user.name
+  });
+});
 
 module.exports = router;
