@@ -11,7 +11,7 @@ const getTokenFromHeaders = req => {
   return null;
 };
 
-const auth = {
+const jwt_auth = {
   required: jwt({
     secret: "secret",
     userProperty: "payload",
@@ -25,4 +25,4 @@ const auth = {
   })
 };
 
-module.exports = auth;
+module.exports = jwt_auth;
