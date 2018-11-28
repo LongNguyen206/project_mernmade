@@ -42,6 +42,7 @@ app.get('/', (req, res) => {
 
 // Use Routes
 app.use('/api/users', users);
+
 // Basic error handling
 app.use((req, res, err) => {
   res.status(err.status || 500);
