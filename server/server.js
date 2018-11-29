@@ -15,11 +15,14 @@ mongoose.connect(db, { useNewUrlParser: true })
   .then(() => console.log('Connected to MongoDB'))
   .catch(err => console.log(err));
 
-// Models and Passport
+// Models
+require("./models/Account");
 require("./models/User");
+require("./models/Profile");
 
 // Define Routes
 const users = require('./routes/api/users');
+const profile = require('./routes/api/profile');
 
 // Create app instance
 const app = express();
@@ -42,6 +45,8 @@ app.get('/', (req, res) => {
 
 // Use Routes
 app.use('/api/users', users);
+app.use('/api/profile', profile);
+
 
 // Basic error handling
 app.use((req, res, err) => {

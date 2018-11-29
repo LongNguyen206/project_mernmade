@@ -21,39 +21,39 @@ router.post("/register", (req, res) => {
     }
     // Empty name validation
     if ((!req.body.name) || (req.body.name.trim().length === 0)) {
-      return res.status(404).json({
+      return res.status(400).json({
         name: "is required"
       });
     }
     // Max length for name validation
     if (req.body.name.length > 30) {
-      return res.status(404).json({
+      return res.status(400).json({
         name: "is too long"
       });
     }
     // Min length for name validation
     if (req.body.name.length < 2) {
-      return res.status(404).json({
+      return res.status(400).json({
         name: "is too short"
-      });
-    }
-    // Empty email validation
-    if (!req.body.email) {
-      return res.status(404).json({
-        email: "is required"
       });
     }
     // Email format validation
     if (/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(req.body.email) == false) {
-      return res.status(404).json({
+      return res.status(400).json({
         email: "is invalid"
       });
     }
-    // Empty password validation
-    if ((!req.body.password) || (req.body.password.trim().length === 0)) {
-      return res.status(404).json({
-        password: "is required"
-      });
+    // Password format validation
+    if (/(?=^.{6,15}$)(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&amp;*()_+}{&quot;:;'?/&gt;.&lt;,])(?!.*\s).*$/.test(req.body.password) == false) {
+      return res.status(400).json({
+        password: "must be at least 6 characters and have at least 1 lower case letter, 1 Upper case letter and 1 digit"
+    });
+    } else
+    // Confirm Password validation
+    if (req.body.password !== req.body.password2) {
+      return res.status(400).json({
+        password: "Confirm Password does not match"
+    });
     } else {
       const newUser = {
         name: req.body.name,
@@ -87,12 +87,12 @@ router.post("/login", (req, res, next) => {
   const user = req.body;
   // Field validations
   if (!user.email) {
-    return res.status(422).json({
+    return res.status(400).json({
       email: "is required"
     });
   }
   if (!user.password) {
-    return res.status(422).json({
+    return res.status(400).json({
       password: "is required"
     });
   }
