@@ -1,0 +1,36 @@
+header {
+  margin: 0 auto;
+  text-align: center;
+
+}
+
+
+header h1 {
+  margin: 0;
+  font-family: arial;
+  font-size: 4rem;
+  color: #383636;
+  
+}
+
+
+header p {
+  font-weight: 700;
+  font-size: 1.75rem;
+  font-family: arial;
+  color: #383636;
+}
+
+header a {
+  box-shadow: 0 3px 3px 0 rgb(0,0,0,1);
+  font-weight: 700;
+  font-size: 1.2rem;
+  background-color: black;
+  border-color: black;
+  color: white;
+  padding: 1.25rem 2.5rem;
+  border-radius: 2rem;
+  text-decoration: none;
+  font-family: arial;
+  display: inline-block;
+}
