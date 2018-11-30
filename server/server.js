@@ -23,6 +23,7 @@ require("./models/Profile");
 // Define Routes
 const users = require('./routes/api/users');
 const profile = require('./routes/api/profile');
+const accounts = require('./routes/api/accounts');
 
 // Create app instance
 const app = express();
@@ -46,7 +47,7 @@ app.get('/', (req, res) => {
 // Use Routes
 app.use('/api/users', users);
 app.use('/api/profile', profile);
-
+app.use('/api/accounts', accounts);
 
 // Basic error handling
 app.use((req, res, err) => {
