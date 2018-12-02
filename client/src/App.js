@@ -1,20 +1,17 @@
 import React, { Component } from 'react';
-// import Navbar from './components/Navbar'
-// import Header from './components/Header'
-// import Footer from './components/Footer'
-import Landingpage from './Landingpage';
-import { BrowserRouter as Router, Route } from 'react-router-dom'
-import SignUp from './pages/SignUp';
+import NavbarComp from './components/Navbar';
+import SigninModal from './components/SigninModal';
+import FooterComp from './components/Footer';
+import './App.css';
 
 class App extends Component {
   render() {
     return (
-      <Router>
-       <div className="App">
-        <Route exact path="/" component={Landingpage} />
-        <Route exact path="/signup" component={SignUp} />
+      <div className="App">
+        <NavbarComp />
+        <h1>HashtagHound</h1>
+        <FooterComp />
       </div>
-    </Router>
     );
   }
 }
