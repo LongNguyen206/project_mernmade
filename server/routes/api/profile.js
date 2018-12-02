@@ -7,7 +7,7 @@ const Profile = mongoose.model("profile");
 const Account = mongoose.model("accounts");
 
 // @route   GET api/profile/
-// @desc    Get Current User's profile
+// @desc    Get current user's profile
 // @access  Private
 router.get('/', passport.authenticate('jwt', { session: false }), (req, res) => {
     Profile.findOne({ user: req.user.id })
@@ -91,7 +91,13 @@ router.get('/shortlist', passport.authenticate('jwt', { session: false }), (req,
                     profile: "not found"
                 })
             }
-            res.json(profile.shortlist)
+            if (profile.shortlist.length !== 0) {
+                res.json(profile.shortlist)
+            } else {
+                return res.status(404).json({
+                    shortlist: "is empty"
+                })
+            }
         })
         .catch(err => res.status(404).json(err));
 });
@@ -163,6 +169,19 @@ router.post('/', passport.authenticate('jwt', { session: false }), (req, res) =>
                     });
             }
         });
+});
+
+// @route   DELETE api/profile/
+// @desc    Delete current user and profile
+// @access  Private
+router.delete('/', passport.authenticate('jwt', { session: false }), (req, res) => {
+    Profile.findOneAndRemove({ user: req.user.id })
+        .then(() => {
+            User.findOneAndRemove({ _id: req.user.id })
+                .then(() => res.json({ msg: "Success"}))
+
+        })
+        .catch(err => res.status(404).json(err));
 });
 
 module.exports = router;

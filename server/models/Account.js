@@ -8,15 +8,19 @@ const AccountSchema = new Schema({
   platform: { type: String, required: true },
   link: { type: String, required: true },
   accountType: { type: String, required: true },
-  followers: { type: String, required: true },
+  followers: { type: Number, required: true },
   engagement: { type: String },
   industry: { type: [String], min: 1, required: true },
   location: { type: String },
   description: { type: String },
   reviews: [{
-    reviewBody: { type: String },
-    reviewDate: { type: Date, default: Date.now() },
-    reviewUser: { type: Schema.Types.ObjectId, ref: 'users' }
+    reviewUser: { type: Schema.Types.ObjectId, ref: 'users' },
+    reviewUserName: { type: String },
+    reviewUserAvatar: { type: String },
+    reviewText: { type: String, required: true },
+    reviewLikes: [{ user: { type: Schema.Types.ObjectId, ref: 'users' } }],
+    reviewEditedStatus: { type: Boolean, default: false },
+    reviewDate: { type: Date, default: Date.now() }
   }],
   date: { type: Date, default: Date.now }
 });
