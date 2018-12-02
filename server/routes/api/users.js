@@ -48,7 +48,7 @@ router.post("/register", (req, res) => {
       return res.status(400).json({
         password: "must be at least 6 characters and have at least 1 lower case letter, 1 Upper case letter and 1 digit"
     });
-    } else
+    }
     // Confirm Password validation
     if (req.body.password !== req.body.password2) {
       return res.status(400).json({
