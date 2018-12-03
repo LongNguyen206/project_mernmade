@@ -147,4 +147,37 @@ router.get("/current", passport.authenticate('jwt', { session: false }), (req, r
   });
 });
 
+router.post("/auth/facebook", passport.authenticate('facebookToken', { session: false }, (req, res, next) => {
+  User.findOne({
+    email: res.email
+  })
+  .then(user => {
+    // If User doesn't exist
+    if (!user) {
+      return res.status(404).json({
+        email: "not found"
+      })
+    }
+    // If User exists
+    const payload = { 
+      id: user.id, 
+      email: user.email,
+      name: user.name 
+    }
+    // Sign Token
+    jwt.sign(
+      payload, 
+      process.env.SECRETORKEY, 
+      { expiresIn: 7200 }, 
+      (err, token) => {
+        const newToken = 'Bearer ' + token;
+        console.log(newToken)
+        res.json({ newToken })
+    });
+  })
+  .catch(err => console.log(err));
+}));
+
+router.get('/auth/facebook/callback', passport.authenticate('facebook', {session: false, failureRedirect : '/'}));
+
 module.exports = router;
