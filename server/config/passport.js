@@ -27,8 +27,6 @@ module.exports = passport => {
     clientID: process.env.FACEBOOK_APP_ID,
     clientSecret: process.env.FACEBOOK_APP_SECRET
   }, (accessToken, refreshToken, profile, done) => {
-        console.log('profile', profile);
-        console.log('accessToken', accessToken);
         User.findOne({ facebookID: profile.id })
         .then(user => {
           if (user) {
@@ -36,7 +34,6 @@ module.exports = passport => {
           }
           const newUser = new User({
             facebookID: profile.id,
-            facebookToken: accessToken,
             name: profile.displayName,
             email: profile.emails[0].value
           });
@@ -45,7 +42,7 @@ module.exports = passport => {
               done(null, user);
             });
         })
-        .catch(err => console.log(err));
+        .catch(err => done(err, false, err.message));
     }
   ));
 };

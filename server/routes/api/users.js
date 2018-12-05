@@ -71,7 +71,23 @@ router.post("/register", (req, res) => {
           new User(newUser)
             .save()
             .then(user => {
-              res.json(user);
+              // Create JWT payload
+              const payload = { 
+                id: user.id, 
+                email: user.email,
+                name: user.name 
+              }
+              // Sign Token
+              jwt.sign(
+                payload, 
+                process.env.SECRETORKEY, 
+                { expiresIn: 7200 }, 
+                (err, token) => {
+                  res.json({
+                    success: true,
+                    token: 'Bearer ' + token
+                  });
+              });
             })
             .catch(err => console.log(err))
         });
@@ -147,13 +163,19 @@ router.get("/current", passport.authenticate('jwt', { session: false }), (req, r
   });
 });
 
-router.post("/auth/facebook", passport.authenticate('facebookToken', { session: false }, (req, res, next) => {
+// @route   POST api/users/auth/facebook
+// @desc    Log or Register user with Facebook
+// @access  Public
+router.post("/auth/facebook", passport.authenticate('facebookToken', { session: false }), (req, res, next) => {
+  console.log('req.user', req.user)
   User.findOne({
-    email: res.email
+    email: req.user.email
   })
   .then(user => {
+    console.log('user', user)
     // If User doesn't exist
     if (!user) {
+      console.log("no user found with this facebook email")
       return res.status(404).json({
         email: "not found"
       })
@@ -170,14 +192,13 @@ router.post("/auth/facebook", passport.authenticate('facebookToken', { session: 
       process.env.SECRETORKEY, 
       { expiresIn: 7200 }, 
       (err, token) => {
-        const newToken = 'Bearer ' + token;
-        console.log(newToken)
-        res.json({ newToken })
+        res.json({
+          success: true,
+          token: 'Bearer ' + token
+        });
     });
   })
   .catch(err => console.log(err));
-}));
-
-router.get('/auth/facebook/callback', passport.authenticate('facebook', {session: false, failureRedirect : '/'}));
+});
 
 module.exports = router;

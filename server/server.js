@@ -5,6 +5,7 @@ const path = require("path");
 const bodyParser = require("body-parser");
 const passport = require('passport');
 const session = require("express-session");
+const cors = require("cors");
 
 // Connect the database:
 const db = require('./config/database').mongoURI;
@@ -29,6 +30,7 @@ const accounts = require('./routes/api/accounts');
 const app = express();
 
 // Middleware 
+app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, "public")));
