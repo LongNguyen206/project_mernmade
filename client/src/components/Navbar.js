@@ -1,33 +1,43 @@
 import React, { Component } from 'react';
-import { Navbar, NavItem, Modal, Button, Row, Input } from 'react-materialize';
-import { reduxForm, Field } from 'redux-form';
+import { Navbar, NavItem, Modal } from 'react-materialize';
+import { connect } from 'react-redux';
+
+import * as actions from '../actions';
+import LoginModal from './LoginModal';
 
 class NavbarComp extends Component {
+    constructor(props) {
+        super(props);
+    }
+
+    logOut = () => {
+        console.log("Logout got called");
+        this.props.logout();
+    }
+
     render () {
         return (
             <Navbar brand='logo' right>
-                <NavItem href="/register">Getting started</NavItem>
-                <NavItem>
-                    <Modal header='Modal Header' trigger={<div>Sign In</div>}>
-                        <Row>
-                            {/* <form>
-                                <fieldset>
-                                    <Field name="email" type="text" id="email" component="input" />
-                                </fieldset>
-                                <fieldset>
-                                    <Field name="password" type="password" id="password" component="input" />
-                                </fieldset>
-                                <Button type="submit">Sign In</Button>
-                            </form> */}
-                            <Input type="email" label="Email" s={12} />
-                            <Input type="password" label="password" s={12} />
-                            <Button waves='light' node='a' href='/api/users/auth/facebook'> Facebook </Button>            
-                        </Row>
+                { !this.props.isAuth ?
+                [<NavItem key="signup" href="/register">Getting started</NavItem>,
+                <NavItem key="signin">
+                    <Modal  header='Sign In' trigger={<div>Sign In</div>}>
+                        <LoginModal />
                     </Modal>
-                </NavItem>
+                </NavItem>]
+                :
+                <NavItem href="/logout" onClick={this.logOut}>Sign Out</NavItem>
+                }      
             </Navbar>
         )
     }
 }
 
-export default NavbarComp;
+// linking backend props to frontend state
+const mapStateToProps = state => {
+    return {
+        isAuth: state.auth.isAuthenticated
+    }
+};
+
+export default connect(mapStateToProps, actions)(NavbarComp);
