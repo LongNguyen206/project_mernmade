@@ -11,6 +11,8 @@ import App from './components/App';
 import Landing from './components/Landing';
 import Register from './components/Register';
 import Homepage from './components/Homepage';
+import SearchPage from "./components/SearchPage";
+import ListingsPage from "./components/ListingsPage";
 import reducers from './reducers';
 import authGuard from './components/HOCs/authGuard';
 
@@ -27,9 +29,11 @@ ReactDOM.render(
         <BrowserRouter>
             <App>
                 {/* All Routes defined here  */}
-                <Route exact path="/" component={Landing}></Route>
-                <Route exact path="/register" component={Register}></Route>
-                <Route exact path="/home" component={authGuard(Homepage)}></Route>
+                <Route exact path="/" component={Landing} />
+                <Route exact path="/register" component={Register} />
+                <Route exact path="/searchpage" component={SearchPage} />
+                <Route exact path="/listingspage" component={ListingsPage} />
+                <Route exact path="/home" component={authGuard(Homepage)} />
             </App>
         </BrowserRouter>
     </Provider>,

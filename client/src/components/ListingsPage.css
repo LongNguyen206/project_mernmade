@@ -1,0 +1,13 @@
+#profile {
+  font-size: 10px;
+  text-align: center;
+}
+
+#followercount {
+  text-align: center;
+  opacity: 0.5;
+}
+
+#card {
+  max-width: 200;
+}
