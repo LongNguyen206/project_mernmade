@@ -152,27 +152,14 @@ router.post("/login", (req, res, next) => {
   });
 });
 
-// @route   GET api/users/current
-// @desc    Returns Current User
-// @access  Private
-router.get("/current", passport.authenticate('jwt', { session: false }), (req, res) => {
-  res.json({
-    id: req.user.id,
-    email: req.user.email,
-    name: req.user.name
-  });
-});
-
 // @route   POST api/users/auth/facebook
-// @desc    Log or Register user with Facebook
+// @desc    Login or Register user with Facebook
 // @access  Public
 router.post("/auth/facebook", passport.authenticate('facebookToken', { session: false }), (req, res, next) => {
-  console.log('req.user', req.user)
   User.findOne({
     email: req.user.email
   })
   .then(user => {
-    console.log('user', user)
     // If User doesn't exist
     if (!user) {
       console.log("no user found with this facebook email")
@@ -199,6 +186,17 @@ router.post("/auth/facebook", passport.authenticate('facebookToken', { session: 
     });
   })
   .catch(err => console.log(err));
+});
+
+// @route   GET api/users/current
+// @desc    Returns Current User
+// @access  Private
+router.get("/current", passport.authenticate('jwt', { session: false }), (req, res) => {
+  res.json({
+    id: req.user.id,
+    email: req.user.email,
+    name: req.user.name
+  });
 });
 
 module.exports = router;

@@ -17,14 +17,14 @@ class Register extends Component {
         // We need to call some action creator that will contact backend server 
         await this.props.register(formData);
         if (!this.props.errorMessage) {
-            this.props.history.push('/');
+            this.props.history.push('/search');
         }
     };
 
     responseFacebook = async res => {
         await this.props.oauthFacebook(res.accessToken);
         if (!this.props.errorMessage) {
-            this.props.history.push('/');
+            this.props.history.push('/search');
         }
     };
 

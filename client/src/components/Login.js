@@ -9,7 +9,7 @@ import FacebookLogin from 'react-facebook-login';
 import * as actions from '../actions';
 import CustomInput from './CustomInput';
 
-class LoginModal extends Component {
+class Login extends Component {
     constructor(props) {
         super(props);
     };
@@ -67,4 +67,4 @@ export default compose(
     withRouter,
     connect(mapStateToProps, actions),
     reduxForm({ form: 'signin' })
-)(LoginModal);
+)(Login);

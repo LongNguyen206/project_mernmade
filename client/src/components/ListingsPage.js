@@ -7,7 +7,7 @@ import { Row, Col } from "react-materialize";
 
 class ListingsPage extends Component {
   constructor(props) {
-    console.log(props.location.state.platform);
+    // console.log(props.location.state.platform);
     console.log(props.location.state.industry);
     console.log(props.location.state.location);
     super(props);
