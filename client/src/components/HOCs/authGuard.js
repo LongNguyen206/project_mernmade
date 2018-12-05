@@ -6,7 +6,7 @@ export default (OriginalComponent) => {
         chechAuth() {
             // Whether the user is authenticated
             if (!this.props.isAuth && !this.props.jwToken) {
-                this.props.history.push('/');
+                this.props.history.push('/login');
             }
         };
 

@@ -4,16 +4,17 @@ import CheckBox from "./CheckBox";
 class FilterBar extends Component {
   constructor(props) {
     super(props);
-  }
+  };
+
   render() {
     return (
-      <div className="App">
+      <div>
         <ul>
           {this.props.platforms.map(platform => {
             return (
               <CheckBox
                 key={platform.id}
-                handlePlatform={this.props.handlePlatform}
+                handleFilter={this.props.handlePlatform}
                 {...platform}
               />
             );
@@ -23,7 +24,7 @@ class FilterBar extends Component {
             return (
               <CheckBox
                 key={type.id}
-                handlePlatform={this.props.handleAccountType}
+                handleFilter={this.props.handleAccountType}
                 {...type}
               />
             );
@@ -31,6 +32,8 @@ class FilterBar extends Component {
         </ul>
       </div>
     );
-  }
-}
+  };
+  
+};
+
 export default FilterBar;

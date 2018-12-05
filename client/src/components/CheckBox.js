@@ -1,4 +1,5 @@
 import React from "react";
+import { Input } from "react-materialize";
 
 export const CheckBox = props => {
   return (
@@ -6,8 +7,8 @@ export const CheckBox = props => {
       <label>
         <input
           key={props.id}
-          onClick={props.handlePlatform}
-          type="checkbox"
+          onClick={props.handleFilter}
+          type='checkbox'
           checked={props.isChecked}
           value={props.value}
         />{" "}

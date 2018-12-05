@@ -67,7 +67,7 @@ class SearchPage extends Component {
 
   onSubmit = event => {
     this.props.history.push({
-      pathname: "/listingspage",
+      pathname: "/search_result",
       state: {
         industry: this.state.industry,
         platform: this.state.platform,
