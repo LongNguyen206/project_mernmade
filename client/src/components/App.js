@@ -1,12 +1,14 @@
 import React from 'react';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStroopwafel } from '@fortawesome/free-solid-svg-icons';
+
 
 import NavbarComp from './Navbar';
 import FooterComp from './Footer';
 
-library.add(faStroopwafel)
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faFacebookF, faInstagram, faLinkedinIn, faAppStore } from '@fortawesome/free-brands-svg-icons'
+
+library.add(faFacebookF, faInstagram, faLinkedinIn, faAppStore)
 
 export default (props) => {
     return (
@@ -14,7 +16,7 @@ export default (props) => {
         <NavbarComp />
           <div className="content">
           { props.children }
-          </div>        
+          </div>
         <FooterComp />
       </div>
     )

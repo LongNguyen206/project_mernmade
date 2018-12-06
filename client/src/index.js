@@ -18,6 +18,7 @@ import Login from './components/Login';
 import Homepage from './components/Homepage';
 import SearchPage from "./components/SearchPage";
 import ListingsPage from "./components/ListingsPage";
+import ListingsProfile from "./components/ListingsProfile";
 
 const jwToken = localStorage.getItem('JWTOKEN');
 axios.defaults.headers.common['Authorization'] = jwToken;
@@ -31,15 +32,16 @@ ReactDOM.render(
     }, applyMiddleware(reduxThunk)) }>
         <BrowserRouter>
             <App>
-                    {/* All Routes defined here  */}
-                    <Route exact path="/" component={Landing} />
+                {/* All Routes defined here  */}
+                <Route exact path="/" component={Landing} />
                 <Container>
                     <Route exact path="/register" component={Register} />
                     <Route exact path="/login" component={Login} />
                 </Container>
-                    <Route exact path="/search" component={authGuard(SearchPage)} />
-                    <Route exact path="/search_result" component={authGuard(ListingsPage)} />
-                    <Route exact path="/home" component={authGuard(Homepage)} />
+                <Route exact path="/search" component={authGuard(SearchPage)} />
+                <Route exact path="/search_result" component={authGuard(ListingsPage)} />
+                <Route exact path="/home" component={authGuard(Homepage)} />
+                <Route exact path="/profile/:id" component={authGuard(ListingsProfile)} />
             </App>
         </BrowserRouter>
     </Provider>,
