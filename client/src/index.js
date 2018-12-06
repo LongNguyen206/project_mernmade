@@ -5,6 +5,7 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import reduxThunk from 'redux-thunk';
 import axios from 'axios';
+import { Container } from 'react-materialize';
 
 import * as serviceWorker from './serviceWorker';
 import reducers from './reducers';
@@ -30,13 +31,15 @@ ReactDOM.render(
     }, applyMiddleware(reduxThunk)) }>
         <BrowserRouter>
             <App>
-                {/* All Routes defined here  */}
-                <Route exact path="/" component={Landing} />
-                <Route exact path="/register" component={Register} />
-                <Route exact path="/login" component={Login} />
-                <Route exact path="/search" component={authGuard(SearchPage)} />
-                <Route exact path="/search_result" component={authGuard(ListingsPage)} />
-                <Route exact path="/home" component={authGuard(Homepage)} />
+                    {/* All Routes defined here  */}
+                    <Route exact path="/" component={Landing} />
+                <Container>
+                    <Route exact path="/register" component={Register} />
+                    <Route exact path="/login" component={Login} />
+                </Container>
+                    <Route exact path="/search" component={authGuard(SearchPage)} />
+                    <Route exact path="/search_result" component={authGuard(ListingsPage)} />
+                    <Route exact path="/home" component={authGuard(Homepage)} />
             </App>
         </BrowserRouter>
     </Provider>,

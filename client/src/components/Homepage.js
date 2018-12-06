@@ -10,11 +10,18 @@ class Homepage extends Component {
 
   render() {
     return (
-      <div className="App">
-        <h1>Home page</h1>
+      <div className="App" style={{textAlign: 'center'}}>
+      <br />
+        <p>{JSON.stringify(this.props.accounts)}</p>
       </div>
     );
   }
 }
 
-export default connect(null, actions)(Homepage);
+// linking backend props to frontend state
+const mapStateToProps = state => {
+  return {
+      accounts: state.home.accounts
+  }
+};
+export default connect(mapStateToProps, actions)(Homepage);

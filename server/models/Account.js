@@ -5,6 +5,7 @@ const { Schema } = mongoose;
 const AccountSchema = new Schema({
   handle: { type: String, required: true, max: 40 },
   name: { type: String, required: true },
+  picture: { type: String },
   platform: { type: String, required: true },
   link: { type: String, required: true },
   accountType: { type: String, required: true },

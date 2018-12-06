@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Navbar, NavItem, Modal } from 'react-materialize';
 import { connect } from 'react-redux';
-import '../styling/NavbarComp.css';
+import { Navbar, NavItem, Modal } from 'react-materialize';
 
+import '../styling/Style.css';
 import * as actions from '../actions';
 import LoginModal from './LoginModal';
 
@@ -12,22 +12,21 @@ class NavbarComp extends Component {
     }
 
     logOut = () => {
-        console.log("Logout got called");
         this.props.logout();
     }
 
-    render () {
+    render() {
         return (
             <Navbar brand='HASHTAG HOUND' right>
                 { !this.props.isAuth ?
-                [<NavItem className="up-button" key="signup" href="/register">Sign Up</NavItem>,
-                <NavItem key="signin">
-                    <Modal  header='Sign In' trigger={<div>Sign In</div>} style={{width: '26%', height: '64%', backgroundColor: 'white', borderRadius: 5, textAlign: 'center' }}>
+                [ <NavItem className="up-button" key="signup" href="/register">Sign Up</NavItem>,
+                <NavItem className="up-button" key="signin">
+                    <Modal header='Sign In' trigger={<div>Sign In</div>} >
                         <LoginModal />
                     </Modal>
-                </NavItem>]
+                </NavItem> ]
                 :
-                <NavItem href="/logout" onClick={this.logOut}>Sign Out</NavItem>
+                <NavItem href="/" onClick={this.logOut}>Sign Out</NavItem>
                 }
             </Navbar>
         )

@@ -16,43 +16,49 @@ router.post("/register", (req, res) => {
   .then(user => {
     if (user) {
       return res.status(400).json({
-        email: "is taken"
+        errMsg: "Email is taken"
       });
     }
     // Empty name validation
     if ((!req.body.name) || (req.body.name.trim().length === 0)) {
       return res.status(400).json({
-        name: "is required"
+        errMsg: "Name is required"
       });
     }
-    // Max length for name validation
-    if (req.body.name.length > 30) {
+    // Name length validation
+    if ((req.body.name.length < 2) || (req.body.name.length > 30)) {
       return res.status(400).json({
-        name: "is too long"
+        errMsg: "Name must ne between 2 and 30 characters"
       });
     }
-    // Min length for name validation
-    if (req.body.name.length < 2) {
+    // Empty email validation
+    if ((!req.body.email) || (req.body.email.trim().length === 0)) {
       return res.status(400).json({
-        name: "is too short"
+        errMsg: "Email is required"
       });
     }
     // Email format validation
     if (/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(req.body.email) == false) {
       return res.status(400).json({
-        email: "is invalid"
+        errMsg: "Email is invalid"
+      });
+    }
+    // Confirm Email validation
+    if (req.body.email !== req.body.email2) {
+      return res.status(400).json({
+        errMsg: "Confirm Email does not match"
       });
     }
     // Password format validation
     if (/(?=^.{6,15}$)(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&amp;*()_+}{&quot;:;'?/&gt;.&lt;,])(?!.*\s).*$/.test(req.body.password) == false) {
       return res.status(400).json({
-        password: "must be at least 6 characters and have at least 1 lower case letter, 1 Upper case letter and 1 digit"
+        errMsg: "Password must be at least 6 characters and have at least 1 lower case letter, 1 Upper case letter and 1 digit"
     });
     }
     // Confirm Password validation
     if (req.body.password !== req.body.password2) {
       return res.status(400).json({
-        password: "Confirm Password does not match"
+        errMsg: "Confirm Password does not match"
     });
     } else {
       const newUser = {
@@ -104,12 +110,12 @@ router.post("/login", (req, res, next) => {
   // Field validations
   if (!user.email) {
     return res.status(400).json({
-      email: "is required"
+      errMsg: "Email is required"
     });
   }
   if (!user.password) {
     return res.status(400).json({
-      password: "is required"
+      errMsg: "Password is required"
     });
   }
   // Find User by email
@@ -120,7 +126,7 @@ router.post("/login", (req, res, next) => {
     // If User doesn't exist
     if (!user) {
       return res.status(404).json({
-        email: "not found"
+        errMsg: "Wrong Email and/or Password"
       })
     }
     // If User exists, check the password
@@ -164,7 +170,7 @@ router.post("/auth/facebook", passport.authenticate('facebookToken', { session: 
     if (!user) {
       console.log("no user found with this facebook email")
       return res.status(404).json({
-        email: "not found"
+        errMsg: "no user found with this facebook email"
       })
     }
     // If User exists

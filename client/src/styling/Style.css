@@ -1,0 +1,202 @@
+@import url('https://fonts.googleapis.com/css?family=Nanum+Gothic|Prata|Nunito|Oswald:500|Cormorant+Garamond');
+
+/* Whole Navbar */
+nav {
+  background: none;
+  width: 100%;
+  color: #000000;
+  background-color: rgb(255, 255, 255);
+  position: fixed;
+  padding: 10px 20px;
+  line-height: 35px;
+  box-shadow: none;
+  margin-bottom: 10%;
+  top: 0;
+  text: black;
+}
+
+/* Company Logo, left corner */
+nav .brand-logo {
+  color: black;
+  font-family: 'Oswald', sans-serif;
+  margin-left: 5%;
+  font-weight: 400;
+}
+
+/* Navbar links */
+nav ul a  {
+  font-size: 1.4rem;
+  font-family: 'Cormorant Garamond', serif;
+  color: black;
+  font-weight: 1;
+  margin-left: auto;
+}
+
+/* Navbar links on hover */
+nav ul a:hover {
+  border-bottom: 3px solid #000;
+  display: inline-block;
+  background-color: white;
+}
+
+/* Login Modal */
+#modal_0 {
+  width: '26%';
+  height: '64%';
+  background-color: white;
+  border-radius: 5;
+  text-align: 'center';
+}
+
+/* All buttons */
+.btn {
+  /* background-color: #5b709c;
+  color: #ffffff;
+  width: 100%; */
+}
+
+.btn:hover {
+  /* background-color: #000000; */
+}
+.register-form{
+  font-family: 'Nunito', sans-serif;
+  margin-bottom: 5%;
+  margin-top: 15%;
+}
+
+.register-title{
+  color: #454647;
+  line-height: 1.6;
+}
+
+
+.form-group {
+  width: 40%;
+  margin: auto;
+  line-height: 1.6;
+}
+
+.header-button {
+  box-shadow: 0 0 0 0 ;
+  font-size: 1.2rem;
+  border-color: #ffffff;
+  color: #ffffff;
+  background: linear-gradient(45deg, #0288d1 0%, #26c6da 100%);
+  border-radius: 50px;
+  margin-top: 0;
+  margin-left: 30%;
+  width: 40%;
+  line-height: normal;
+  text-align: center;
+}
+
+.button-collapse {
+  color: black;
+}
+
+.form-row {
+  background-color: white;
+  margin-left: 39%;
+}
+
+.helper {
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: 4400;
+    width: 30em;
+    line-height: normal;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.8rem;
+}
+
+.terms {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  font-weight: 4400;
+  width: 30em;
+  line-height: normal;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.8rem;
+}
+
+#profile {
+font-size: 10px;
+text-align: center;
+}
+
+#followercount {
+text-align: center;
+opacity: 0.5;
+}
+
+#card {
+max-width: 200;
+}
+  
+h1 {
+font-family: 'Prata', serif;
+font-weight: 400;
+text-align: center;
+color: #3bc4ed;
+}
+
+.content {
+    overflow: auto;
+    min-height: 100vh;
+}
+
+h1.blocktext {
+    margin-left: auto;
+    margin-right: auto;
+    width: 17em;
+    height: 17rem;
+    line-height: normal;
+}
+
+
+.blocktext span {
+    color: black;
+}
+
+
+.info-image {
+    margin-left: 10%;
+}
+
+
+.container4 {
+    margin-bottom: 30%;
+    margin-top: 20%;
+    /* padding-bottom: 20%; */
+}
+
+
+.drop-image{
+    margin-bottom: 30%;
+    margin-top: 21%;
+}
+
+footer.page-footer {
+    /* padding-top: 10px; */
+    background-color: #8898aa;
+    position: static;
+    width: 100%;
+    bottom: 0;
+    display: absolute;
+     overflow: hidden;
+     box-sizing: inherit;
+}
+
+
+.footer-links {
+  font-size: 20px;
+  margin-top: 11%;
+  margin-right: 40%;
+  font-family: 'Nanum Gothic', sans-serif;
+}
+
+footer.page-footer .footer-copyright {
+text-align: center;
+}

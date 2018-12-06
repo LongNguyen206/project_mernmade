@@ -2,7 +2,7 @@ import React, { Component, Fragment } from "react";
 
 import ListingCard from "./ListingsCard";
 import FilterBar from "./FilterBar";
-import "./ListingsPage.css";
+import '../styling/Style.css';
 import { Row, Col } from "react-materialize";
 
 class ListingsPage extends Component {

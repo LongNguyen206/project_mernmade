@@ -10,7 +10,8 @@ import {
     AUTH_REGISTER, 
     AUTH_LOGIN, 
     AUTH_LOGOUT, 
-    AUTH_ERROR 
+    AUTH_ERROR,
+    ACCOUNTS_GET_ALL 
     } from './types';
 
 export const register = data => {
@@ -29,7 +30,7 @@ export const register = data => {
         } catch(err) {
             dispatch({
                 type: 'AUTH_ERROR',
-                payload: 'Register error'
+                payload: err.response.data.errMsg
             });
         }
     }
@@ -46,9 +47,10 @@ export const login = data => {
             console.log('res', res.data)
             localStorage.setItem('JWTOKEN', res.data.token);
         } catch(err) {
+            console.log('-----------', err)
             dispatch({
                 type: 'AUTH_ERROR',
-                payload: 'Login error'
+                payload: err.response.data.errMsg
             });
         }
     }
@@ -70,7 +72,7 @@ export const oauthFacebook = data => {
         } catch(err) {
             dispatch({
                 type: 'AUTH_ERROR',
-                payload: 'Facebook error'
+                payload: err.response.data.errMsg
             });
         }
         
@@ -91,9 +93,12 @@ export const logout = () => {
 export const getAccounts = () => {
     return async dispatch => {
         try {
-            console.log("Getting all accounts")
             const res = await axios.get('/api/accounts/all')
-            console.log('res', res)
+            console.log(typeof res.data)
+            dispatch({
+                type: 'ACCOUNTS_GET_ALL',
+                payload: res.data
+            });
         } catch(err) {
             console.log(err)
         }
