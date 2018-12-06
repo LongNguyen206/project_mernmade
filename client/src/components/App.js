@@ -5,9 +5,9 @@ import FooterComp from './Footer';
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faStroopwafel } from '@fortawesome/free-solid-svg-icons'
+import { faFacebookF, faInstagram, faLinkedinIn, faAppStore } from '@fortawesome/free-brands-svg-icons'
 
-library.add(faStroopwafel)
+library.add(faFacebookF, faInstagram, faLinkedinIn, faAppStore)
 
 
 

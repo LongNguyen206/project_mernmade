@@ -7,8 +7,8 @@ footer.page-footer {
     width: 100%;
     bottom: 0;
     display: absolute;
-     overflow: hidden;
-     box-sizing: inherit;
+    overflow: hidden;
+    box-sizing: inherit;
 }
 
 
@@ -19,6 +19,21 @@ footer.page-footer {
   font-family: 'Nanum Gothic', sans-serif;
 }
 
+
 footer.page-footer .footer-copyright {
-text-align: center;
+  text-align: center;
+}
+
+.socialMedia {
+  font-size: 3rem;
+  display: inline-block;
+  margin: 0 20px 0 0;
+  margin-top: 15%;
+  position: relative;
+  color: white;
+  float: right;
+}
+
+.socialMedia:hover {
+  color: #3bc4ed;
 }

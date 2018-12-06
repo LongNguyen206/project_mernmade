@@ -12,9 +12,8 @@ class FooterComp extends Component {
                 links={
 
               <ul>
-                <a className="grey-text text-lighten-3" href="#!">Facebook</a>
-                <a className="grey-text text-lighten-3" href="#!">LinkedIn</a>
-                <a className="grey-text text-lighten-3" href="#!">Twitter</a>
+                <a href="https://www.instagram.com/hashtag_hound/">  <FontAwesomeIcon icon={['fab', 'instagram']} className="socialMedia" /></a>
+                <a href="https://www.facebook.com/hashtaghoundapp/"><FontAwesomeIcon icon={['fab', 'facebook-f']} className="socialMedia"/></a>
               </ul>
                 }
                 className='example'>
@@ -27,8 +26,6 @@ class FooterComp extends Component {
                  <a className="grey-text text-lighten-3" href="#!">Privacy Policy</a>
                    &nbsp;&nbsp;
                  <a className="grey-text text-lighten-3" href="#!">Contact Us </a>
-                 <FontAwesomeIcon icon="stroopwafel" />
-
                   </ul>
                </Row>
             </Footer>
