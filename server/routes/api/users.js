@@ -71,7 +71,23 @@ router.post("/register", (req, res) => {
           new User(newUser)
             .save()
             .then(user => {
-              res.json(user);
+              // Create JWT payload
+              const payload = { 
+                id: user.id, 
+                email: user.email,
+                name: user.name 
+              }
+              // Sign Token
+              jwt.sign(
+                payload, 
+                process.env.SECRETORKEY, 
+                { expiresIn: 7200 }, 
+                (err, token) => {
+                  res.json({
+                    success: true,
+                    token: 'Bearer ' + token
+                  });
+              });
             })
             .catch(err => console.log(err))
         });
@@ -136,24 +152,17 @@ router.post("/login", (req, res, next) => {
   });
 });
 
-// @route   GET api/users/current
-// @desc    Returns Current User
-// @access  Private
-router.get("/current", passport.authenticate('jwt', { session: false }), (req, res) => {
-  res.json({
-    id: req.user.id,
-    email: req.user.email,
-    name: req.user.name
-  });
-});
-
-router.post("/auth/facebook", passport.authenticate('facebookToken', { session: false }, (req, res, next) => {
+// @route   POST api/users/auth/facebook
+// @desc    Login or Register user with Facebook
+// @access  Public
+router.post("/auth/facebook", passport.authenticate('facebookToken', { session: false }), (req, res, next) => {
   User.findOne({
-    email: res.email
+    email: req.user.email
   })
   .then(user => {
     // If User doesn't exist
     if (!user) {
+      console.log("no user found with this facebook email")
       return res.status(404).json({
         email: "not found"
       })
@@ -170,14 +179,24 @@ router.post("/auth/facebook", passport.authenticate('facebookToken', { session: 
       process.env.SECRETORKEY, 
       { expiresIn: 7200 }, 
       (err, token) => {
-        const newToken = 'Bearer ' + token;
-        console.log(newToken)
-        res.json({ newToken })
+        res.json({
+          success: true,
+          token: 'Bearer ' + token
+        });
     });
   })
   .catch(err => console.log(err));
-}));
+});
 
-router.get('/auth/facebook/callback', passport.authenticate('facebook', {session: false, failureRedirect : '/'}));
+// @route   GET api/users/current
+// @desc    Returns Current User
+// @access  Private
+router.get("/current", passport.authenticate('jwt', { session: false }), (req, res) => {
+  res.json({
+    id: req.user.id,
+    email: req.user.email,
+    name: req.user.name
+  });
+});
 
 module.exports = router;
