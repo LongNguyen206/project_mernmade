@@ -58,10 +58,12 @@ nav ul a:hover {
 .btn:hover {
   /* background-color: #000000; */
 }
+
 .register-form{
-  font-family: 'Nunito', sans-serif;
-  margin-bottom: 5%;
-  margin-top: 15%;
+    font-family: 'Nunito', sans-serif;
+    margin-bottom: 5%;
+    margin-top: 15%;
+    min-width: 300px;
 }
 
 .register-title{

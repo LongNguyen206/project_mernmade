@@ -5,7 +5,7 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import reduxThunk from 'redux-thunk';
 import axios from 'axios';
-import { Container } from 'react-materialize';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 import * as serviceWorker from './serviceWorker';
 import reducers from './reducers';
@@ -24,24 +24,22 @@ const jwToken = localStorage.getItem('JWTOKEN');
 axios.defaults.headers.common['Authorization'] = jwToken;
 
 ReactDOM.render(
-    <Provider store={ createStore(reducers, {
+    <Provider store={ createStore(reducers,
+    {
         auth: {
             token: jwToken,
             isAuthenticated: jwToken ? true : false
         }
-    }, applyMiddleware(reduxThunk)) }>
+    }, composeWithDevTools(applyMiddleware(reduxThunk)))}>
         <BrowserRouter>
             <App>
-                {/* All Routes defined here  */}
-                <Route exact path="/" component={Landing} />
-                <Container>
+                    {/* All Routes defined here  */}
+                    <Route exact path="/" component={Landing} />
                     <Route exact path="/register" component={Register} />
                     <Route exact path="/login" component={Login} />
-                </Container>
-                <Route exact path="/search" component={authGuard(SearchPage)} />
-                <Route exact path="/search_result" component={authGuard(ListingsPage)} />
-                <Route exact path="/home" component={authGuard(Homepage)} />
-                <Route exact path="/profile/:id" component={authGuard(ListingsProfile)} />
+                    <Route exact path="/search" component={authGuard(SearchPage)} />
+                    <Route exact path="/search_result" component={authGuard(ListingsPage)} />
+                    <Route exact path="/home" component={authGuard(Homepage)} />
             </App>
         </BrowserRouter>
     </Provider>,

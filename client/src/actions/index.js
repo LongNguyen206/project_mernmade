@@ -3,7 +3,6 @@
 // actions are then dispatched to different middlewares and then reducers
 // every action has a Type
 // reducers get HIT by the actions based on action's Type
-// constants and variables for export
 import axios from 'axios';
 
 import { 
