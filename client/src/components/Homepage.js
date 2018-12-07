@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import * as actions from '../actions';
 
@@ -11,11 +12,16 @@ class Homepage extends Component {
   render() {
     return (
       <div className="App" style={{textAlign: 'center'}}>
-      <br />
-        <p>{JSON.stringify(this.props.accounts)}</p>
+      <br /><br /><br /><br /><br /><br /><br /><br /><br />
+        {this.props.accounts ? this.props.accounts.map(account => (<li>{account.name}</li>)) : null}
       </div>
     );
   }
+}
+
+Homepage.propTypes = {
+  getAccounts: PropTypes.func.isRequired,
+  accounts: PropTypes.object.isRequired
 }
 
 // linking backend props to frontend state
