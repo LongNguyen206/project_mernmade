@@ -15,7 +15,7 @@ class Login extends Component {
     };
 
     onSubmit = async formData => {
-        // We need to call some action creator that will contact backend server 
+        // We need to call some action creator that will contact backend server
         await this.props.login(formData);
         if (!this.props.errorMessage) {
             window.location.reload();
@@ -37,7 +37,7 @@ class Login extends Component {
                 <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
                     <Field name="email" type="text" id="login_email" label="Enter your email" component={CustomInput} />
                     <Field name="password" type="password" id="login_password" label="Enter your password" component={CustomInput} />
-                    { this.props.errorMessage ? 
+                    { this.props.errorMessage ?
                     <div className="alert alert-danger">
                         { this.props.errorMessage }
                     </div>
