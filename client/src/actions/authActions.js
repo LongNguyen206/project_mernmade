@@ -4,13 +4,11 @@
 // every action has a Type
 // reducers get HIT by the actions based on action's Type
 import axios from 'axios';
+import jwt_decode from 'jwt-decode';
 
 import { 
-    AUTH_REGISTER, 
-    AUTH_LOGIN, 
-    AUTH_LOGOUT, 
-    AUTH_ERROR,
-    ACCOUNTS_GET_ALL 
+    SET_CURRENT_USER,
+    AUTH_ERROR
     } from './types';
 
 export const register = data => {
@@ -21,85 +19,79 @@ export const register = data => {
     return async dispatch => {
         try {
             const res = await axios.post('/api/users/register', data);
-            dispatch({
-                type: 'AUTH_REGISTER',
-                payload: res.data
-            });
             localStorage.setItem('JWTOKEN', res.data.token);
+            // Set token to Authorization header (passed with each request)
+            axios.defaults.headers.common['Authorization'] = res.data.token;
+            // Decode token to get user
+            const decoded = jwt_decode(res.data.token);
+            // Set current user
+            dispatch(setCurrentUser(decoded));
         } catch(err) {
             dispatch({
                 type: 'AUTH_ERROR',
                 payload: err.response.data.errMsg
             });
-        }
-    }
+        };
+    };
 };
 
 export const login = data => {
     return async dispatch => {
         try {
             const res = await axios.post('/api/users/login', data);
-            dispatch({
-                type: 'AUTH_LOGIN',
-                payload: res.data
-            });
-            console.log('res', res.data)
             localStorage.setItem('JWTOKEN', res.data.token);
+            // Set token to Authorization header (passed with each request)
+            axios.defaults.headers.common['Authorization'] = res.data.token;
+            // Decode token to get user
+            const decoded = jwt_decode(res.data.token);
+            // Set current user
+            dispatch(setCurrentUser(decoded));
         } catch(err) {
-            console.log('-----------', err)
             dispatch({
                 type: 'AUTH_ERROR',
                 payload: err.response.data.errMsg
             });
-        }
-    }
+        };
+    };
 };
 
 export const oauthFacebook = data => {
     return async dispatch => {
         try {
             const res = await axios.post('/api/users/auth/facebook', {
-                access_token: data });
-                console.log('res', res)
-            dispatch({
-                type: 'AUTH_LOGIN',
-                payload: res.data
+                access_token: data 
             });
-            console.log('res', res.data)
             localStorage.setItem('JWTOKEN', res.data.token);
+            // Set token to Authorization header (passed with each request)
             axios.defaults.headers.common['Authorization'] = res.data.token;
+            // Decode token to get user
+            const decoded = jwt_decode(res.data.token);
+            // Set current user
+            dispatch(setCurrentUser(decoded));
         } catch(err) {
             dispatch({
                 type: 'AUTH_ERROR',
                 payload: err.response.data.errMsg
             });
-        }
-        
-    }
+        };
+    };
 };
 
 export const logout = () => {
     return dispatch => {
+        // Remove token from local storage
         localStorage.removeItem('JWTOKEN');
-        dispatch({
-            type: 'AUTH_LOGOUT',
-            payload: ''
-        });
-        axios.defaults.headers.common['Authorization'] = '';
-    }
+        // Set current user to {}, which also sets isAuthenticated to 'false'
+        dispatch(setCurrentUser({}));
+        // Remove Authorization header for future requests
+        delete axios.defaults.headers.common['Authorization'];
+    };
 };
 
-export const getAccounts = () => {
-    return async dispatch => {
-        try {
-            const res = await axios.get('/api/accounts/all')
-            console.log(typeof res.data)
-            dispatch({
-                type: 'ACCOUNTS_GET_ALL',
-                payload: res.data
-            });
-        } catch(err) {
-            console.log(err)
-        }
-    }
+// Set logged in user
+export const setCurrentUser = decoded => {
+    return {
+        type: 'SET_CURRENT_USER',
+        payload: decoded
+    };
 };

@@ -25,8 +25,11 @@ module.exports = passport => {
 
   passport.use('facebookToken', new FacebookTokenStrategy({
     clientID: process.env.FACEBOOK_APP_ID,
-    clientSecret: process.env.FACEBOOK_APP_SECRET
+    clientSecret: process.env.FACEBOOK_APP_SECRET,
+    profileFields: ['id', 'displayName', 'name', 'emails', 'picture.type(large)']
   }, (accessToken, refreshToken, profile, done) => {
+        console.log(profile)
+
         User.findOne({ facebookID: profile.id })
         .then(user => {
           if (user) {
@@ -35,7 +38,8 @@ module.exports = passport => {
           const newUser = new User({
             facebookID: profile.id,
             name: profile.displayName,
-            email: profile.emails[0].value
+            email: profile.emails[0].value,
+            avatar: profile.photos[0].value
           });
           newUser.save()
             .then(user => {

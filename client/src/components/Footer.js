@@ -8,7 +8,7 @@ class FooterComp extends Component {
     render () {
         return (
             <Footer
-              copyrights="Copyright &copy; 2018 Hashtag Hound"
+              copyrights="&copy; 2018 Hashtag Hound"
               links={
               <ul>
                 <a href="https://www.instagram.com/hashtag_hound/">  <FontAwesomeIcon icon={['fab', 'instagram']} className="socialMedia" /></a>

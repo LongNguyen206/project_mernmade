@@ -63,7 +63,7 @@ router.post("/register", (req, res) => {
     } else {
       const newUser = {
         name: req.body.name,
-        email: req.body.email,
+        email: req.body.email.trim().toLowerCase(),
         password: req.body.password
       };
       //encrypt the password:
@@ -81,7 +81,8 @@ router.post("/register", (req, res) => {
               const payload = { 
                 id: user.id, 
                 email: user.email,
-                name: user.name 
+                name: user.name,
+                avatar: user.avatar  
               }
               // Sign Token
               jwt.sign(
@@ -110,12 +111,12 @@ router.post("/login", (req, res, next) => {
   // Field validations
   if (!user.email) {
     return res.status(400).json({
-      errMsg: "Email is required"
+      errMsg: "Please enter your email"
     });
   }
   if (!user.password) {
     return res.status(400).json({
-      errMsg: "Password is required"
+      errMsg: "Please enter your password"
     });
   }
   // Find User by email
@@ -138,7 +139,8 @@ router.post("/login", (req, res, next) => {
           const payload = { 
             id: user.id, 
             email: user.email,
-            name: user.name 
+            name: user.name,
+            avatar: user.avatar 
           }
           // Sign Token
           jwt.sign(
@@ -152,7 +154,9 @@ router.post("/login", (req, res, next) => {
               });
           });
         } else {
-          return res.status(400).json({password: "incorrect"})
+          return res.status(404).json({
+            errMsg: "Wrong Email and/or Password"
+          })
         }
       });
   });
@@ -177,7 +181,8 @@ router.post("/auth/facebook", passport.authenticate('facebookToken', { session: 
     const payload = { 
       id: user.id, 
       email: user.email,
-      name: user.name 
+      name: user.name,
+      avatar: user.avatar  
     }
     // Sign Token
     jwt.sign(
@@ -201,7 +206,8 @@ router.get("/current", passport.authenticate('jwt', { session: false }), (req, r
   res.json({
     id: req.user.id,
     email: req.user.email,
-    name: req.user.name
+    name: req.user.name,
+    avatar: req.user.avatar 
   });
 });
 

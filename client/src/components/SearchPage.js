@@ -3,7 +3,7 @@ import { Row, Col, Autocomplete, Input, Button } from "react-materialize";
 import Background from "../img/SearchPagephoto.jpg";
 
 const headerStyle = {
-  backgroundImage: `url( ${Background} )`,
+  // backgroundImage: `url( ${Background} )`,
   height: "100vh",
   width: "100%",
   backgroundSize: "cover"

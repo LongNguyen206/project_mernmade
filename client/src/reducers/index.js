@@ -2,10 +2,10 @@
 import { combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form';
 import authReducer from './auth';
-import homepageReducer from './homepage';
+import profileReducer from './profile';
 
 export default combineReducers({
     form: formReducer,
     auth: authReducer,
-    home: homepageReducer
+    profile: profileReducer
 });
