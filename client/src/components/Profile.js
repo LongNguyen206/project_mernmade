@@ -8,6 +8,7 @@ import FacebookLogin from 'react-facebook-login';
 
 import * as actions from '../actions/authActions';
 import CustomInput from './CustomInput';
+import CustomSelectInput from './CustomSelectInput';
 
 class Profile extends Component {
   constructor(props) {
@@ -24,11 +25,11 @@ class Profile extends Component {
     const { profile, loading } = this.props.profile;
 
     return (
-        <div className="register-form" >
+        <div className="profile-form" >
           <Row className="form-row">
               <form>
                 <Field name="handle" type="text" id="profile_handle" label="Your handle" defaultValue={(this.touchOnChange===true) ? null : profile.handle} s={12} component={CustomInput} />
-                <Field name="industry" type="text" id="profile_industry" label="Your industry" s={12} defaultValue={profile.industry} component={CustomInput} />
+                <Field name="industry" id="profile_industry" label="Your industry" s={12} defaultValue={profile.industry} options={[{label: "Food", value: "Foodvalue"}]} component={CustomListInput} />
                 <Field name="company" type="text" id="profile_company" label="Your company" s={12} defaultValue={profile.company} component={CustomInput} />
                 <Field name="website" type="text" id="profile_website" label="Your website" s={12} defaultValue={profile.website} component={CustomInput} />
                 { this.props.errorMessage ? 
