@@ -16,7 +16,7 @@ router.get('/', passport.authenticate('jwt', { session: false }), (req, res) => 
         .then(profile => {
             if (!profile) {
                 return res.status(404).json({
-                    profile: "not found"
+                    errMsg: "Profile not found"
                 })
             }
             res.json(profile);
@@ -34,7 +34,7 @@ router.get('/all', passport.authenticate('jwt', { session: false }), (req, res) 
         .then(profiles => {
             if (!profiles) {
                 return res.status(404).json({
-                    profiles: "none"
+                    errMsg: "No Profiles Found"
                 })
             }
             res.json(profiles);
@@ -51,7 +51,7 @@ router.get('/handle/:handle', passport.authenticate('jwt', { session: false }), 
         .then(profile => {
             if (!profile) {
                 return res.status(404).json({
-                    profile: "not found"
+                    errMsg: "Profile not found"
                 })
             }
             res.json(profile);
@@ -68,14 +68,14 @@ router.get('/user/:user_id', passport.authenticate('jwt', { session: false }), (
         .then(profile => {
             if (!profile) {
                 return res.status(404).json({
-                    profile: "not found"
+                    errMsg: "Profile not found"
                 })
             }
             res.json(profile);
         })
         // for ID, we need to specify the error
         .catch(err => res.status(404).json({
-            profile: "not found"
+            errMsg: "Profile not found"
         }));
 });
 
@@ -88,14 +88,14 @@ router.get('/shortlist', passport.authenticate('jwt', { session: false }), (req,
         .then(profile => {
             if (!profile) {
                 return res.status(404).json({
-                    profile: "not found"
+                    errMsg: "Profile not found"
                 })
             }
             if (profile.shortlist.length !== 0) {
                 res.json(profile.shortlist)
             } else {
                 return res.status(404).json({
-                    shortlist: "is empty"
+                    errMsg: "Your list is empty"
                 })
             }
         })
@@ -112,36 +112,29 @@ router.post('/', passport.authenticate('jwt', { session: false }), (req, res) =>
     // Empty handle validation
     if ((!req.body.handle) || (req.body.handle.trim().length === 0)) {
         return res.status(400).json({
-          handle: "is required"
+            errMsg: "Username is required"
         });
     }
     // Handle length validation
     if ((req.body.handle.length < 2) || (req.body.handle.length > 40)) {
         return res.status(400).json({
-          handle: "must be between 2 and 40 characters"
+            errMsg: "Username must be between 2 and 40 characters"
         });
     }
-    // Empty industry validation
-    if (!req.body.industry) {
+    // Handle format validation
+    if (/^[a-zA-Z0-9_]*$/.test(req.body.handle) == false) {
         return res.status(400).json({
-          industry: "is required"
-        });
-    }
-    // Empty company validation
-    if ((!req.body.company) || (req.body.company.trim().length === 0)) {
-        return res.status(400).json({
-          company: "is required"
+            errMsg: "Username must not contain special characters except underscores"
         });
     }
     // Website format validation
     if ((req.body.website) && (/^(https?:\/\/)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)$/.test(req.body.website) == false)) {
         return res.status(400).json({
-          website: "is invalid"
+            errMsg: "Website is invalid"
         });
     }
     // if body went through, assign the value
     if (req.body.handle) profileFields.handle = req.body.handle;
-    if (req.body.industry) profileFields.industry = req.body.industry;
     if (req.body.company) profileFields.company = req.body.company;
     if (req.body.website) profileFields.website = req.body.website;
     Profile.findOne({ user: req.user.id })
@@ -160,7 +153,7 @@ router.post('/', passport.authenticate('jwt', { session: false }), (req, res) =>
                 Profile.findOne({ handle: profileFields.handle })
                     .then(profile => {
                         if (profile) {
-                            res.status(400).json({ handle: "already exists" });
+                            res.status(400).json({ errMsg: "Username already exists" });
                         }
                         // Save
                         new Profile(profileFields).save()

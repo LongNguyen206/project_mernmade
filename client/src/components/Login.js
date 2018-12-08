@@ -7,9 +7,7 @@ import { withRouter } from "react-router-dom";
 import FacebookLogin from 'react-facebook-login';
 
 import * as actions from '../actions/authActions';
-import CustomInput from './CustomInput';
-
-
+import CustomAuthInput from './CustomAuthInput';
 
 class Login extends Component {
     componentDidMount() {
@@ -42,8 +40,8 @@ class Login extends Component {
                     <h4 className="register-title">Log In</h4>
                     <Row className="form-row">
                         <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
-                            <Field name="email" type="email" id="login_email" label="Enter your email" component={CustomInput} />
-                            <Field name="password" type="password" id="login_password" label="Enter your password" component={CustomInput} />
+                            <Field name="email" type="email" id="login_email" label="Enter your email" s={12} component={CustomAuthInput} />
+                            <Field name="password" type="password" id="login_password" label="Enter your password" s={12} component={CustomAuthInput} />
                             { this.props.errorMessage ?
                             <p className="form-group" style={{color: 'red', fontSize: '13px'}}>
                                 *{ this.props.errorMessage }

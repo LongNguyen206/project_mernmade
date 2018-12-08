@@ -7,7 +7,7 @@ import { withRouter } from "react-router-dom";
 import FacebookLogin from 'react-facebook-login';
 
 import * as actions from '../actions/authActions';
-import CustomInput from './CustomInput';
+import CustomAuthInput from './CustomAuthInput';
 
 class Register extends Component {
     componentDidMount() {
@@ -38,11 +38,47 @@ class Register extends Component {
                     <h4 className="register-title"> Sign Up </h4>
                     <Row className="form-row">
                         <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
-                            <Field name="name" type="text" id="register_name" label="*Full Name" s={12} component={CustomInput} />
-                            <Field name="email" type="email" id="register_email" label="*Your Email" s={12} component={CustomInput} />
-                            <Field name="email2" type="email" id="register_email2" label="*Confirm Your Email" s={12} component={CustomInput} />
-                            <Field name="password" type="password" id="register_password" label="*Password" s={12} component={CustomInput} />
-                            <Field name="password2" type="password" id="register_password2" label="*Confirm Your Password" s={12} component={CustomInput} />
+                            <Field 
+                                name="name" 
+                                type="text" 
+                                id="register_name" 
+                                label="*Full Name" 
+                                s={12} 
+                                component={CustomAuthInput}
+                                placeholder="Please provide your real name or name of your company" 
+                            />
+                            <Field 
+                                name="email" 
+                                type="email" 
+                                id="register_email" 
+                                label="*Your Email" 
+                                s={12} 
+                                component={CustomAuthInput}
+                            />
+                            <Field 
+                                name="email2" 
+                                type="email" 
+                                id="register_email2" 
+                                label="*Confirm Your Email"
+                                s={12} 
+                                component={CustomAuthInput}
+                            />
+                            <Field 
+                                name="password" 
+                                type="password" 
+                                id="register_password" 
+                                label="*Password" 
+                                s={12} 
+                                component={CustomAuthInput} 
+                            />
+                            <Field 
+                                name="password2" 
+                                type="password" 
+                                id="register_password2" 
+                                label="*Confirm Your Password" 
+                                s={12} 
+                                component={CustomAuthInput}
+                            />
                             { this.props.errorMessage ? 
                                 <p className="form-group" style={{color: 'red', fontSize: '13px'}}>
                                     *{ this.props.errorMessage }

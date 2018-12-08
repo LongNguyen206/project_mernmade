@@ -13,7 +13,7 @@ router.get('/all', passport.authenticate('jwt', { session: false }), (req, res) 
         .then(accounts => {
             if (!accounts) {
                 return res.status(404).json({
-                    accounts: "none"
+                    errMsg: "No Accounts found"
                 })
             }
             res.json(accounts);
@@ -29,7 +29,7 @@ router.get('/handle/:handle', passport.authenticate('jwt', { session: false }), 
         .then(account => {
             if (!account) {
                 return res.status(404).json({
-                    account: "not found"
+                    errMsg: "Account not found"
                 })
             }
             res.json(account);
@@ -45,14 +45,14 @@ router.get('/id/:account_id', passport.authenticate('jwt', { session: false }), 
         .then(account => {
             if (!account) {
                 return res.status(404).json({
-                    account: "not found"
+                    errMsg: "Account not found"
                 })
             }
             res.json(account);
         })
         // for ID, we need to specify the error
         .catch(err => res.status(404).json({
-            account: "not found"
+            errMsg: "Account not found"
         }));
 });
 
@@ -64,7 +64,7 @@ router.post('/handle/:handle/shortlist', passport.authenticate('jwt', { session:
         .then(account => {
             if (!account) {
                 return res.status(404).json({
-                    account: "not found"
+                    errMsg: "Account not found"
                 })
             }
             Profile.findOne({ user: req.user.id })
@@ -102,13 +102,13 @@ router.post('/:account_id/review', passport.authenticate('jwt', { session: false
              // Empty text validation
             if ((!req.body.text) || (req.body.text.trim().length === 0)) {
                 return res.status(400).json({
-                text: "is required"
+                    errMsg: "Text is required"
                 });
             }
             // Text length validation
             if ((req.body.text.length < 3) || (req.body.text.length > 300)) {
                 return res.status(400).json({
-                text: "must be between 3 and 300 characters"
+                    errMsg: "Review must be between 3 and 300 characters"
                 });
             }
             // // Add to reviews array
@@ -117,7 +117,7 @@ router.post('/:account_id/review', passport.authenticate('jwt', { session: false
             account.save()
                 .then(account => res.json(account));
         })
-        .catch(err => res.status(404).json({msg: "Something went wrong"}));
+        .catch(err => res.status(404).json({errMsg: "Something went wrong"}));
 });
 
 // @route   POST api/accounts/:account_id/review/:review_id
@@ -128,7 +128,7 @@ router.post('/:account_id/review/:review_id', passport.authenticate('jwt', { ses
         .then(account => {
             // Check if review exists
             if (account.reviews.filter(review => review._id.toString() === req.params.review_id).length === 0) {
-                return res.status(404).json({ review: "not exists"})
+                return res.status(404).json({ errMsg: "Review does not exist"})
             }
             // Get Edit index
             const editIndex = account.reviews.map(item => item._id.toString()).indexOf(req.params.review_id)
@@ -144,7 +144,7 @@ router.post('/:account_id/review/:review_id', passport.authenticate('jwt', { ses
             account.save()
                 .then(account => res.json(account));
         })
-        .catch(err => res.status(404).json({msg: "Something went wrong"}));
+        .catch(err => res.status(404).json({errMsg: "Something went wrong"}));
 });
 
 module.exports = router;

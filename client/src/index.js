@@ -52,12 +52,12 @@ ReactDOM.render(
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/search" component={authGuard(SearchPage)} />
                 <Route exact path="/search_result" component={authGuard(ListingsPage)} />
-                <Route exact path="/home" component={authGuard(Homepage)} />
+                <Route exact path="/myprofile" component={authGuard(MyProfile)} />
                 <Route exact path="/profiletest" component={authGuard(IndividualProfile)} />
-                  {/* footer pages */}
+                {/* footer pages */}
                 <Route exact path="/about" component={About} />
-                <Route exact path="/termsandconditions" component={TandC} />
-                <Route exact path="/privacypolicy" component={Privacy} />
+                <Route exact path="/terms" component={TandC} />
+                <Route exact path="/privacy" component={Privacy} />
             </App>
         </BrowserRouter>
     </Provider>,

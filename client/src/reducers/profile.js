@@ -14,11 +14,11 @@ export default (state = DEFAULT_STATE, action) => {
         case PROFILE_LOADING:
             return { ...state, loading: true };
         case GET_PROFILE:
-            return { ...state, profile: action.payload, loading: false };
+            return { ...state, profile: action.payload, loading: false, errorMessage: '' };
         case CLEAR_CURRENT_PROFILE:
-            return { ...state, profile: null };
+            return { ...state, profile: null, errorMessage: '' };
         case PROFILE_ERROR:
-            return { ...state, errorMessage: action.payload };
+            return { ...state, loading: false, errorMessage: action.payload };
         default:
             return state;
     }

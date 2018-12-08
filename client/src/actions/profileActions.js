@@ -3,6 +3,7 @@ import axios from 'axios';
 import {
     GET_PROFILE,
     PROFILE_LOADING,
+    CLEAR_CURRENT_PROFILE,
     PROFILE_ERROR 
     } from './types';
 
@@ -12,7 +13,6 @@ export const getCurrentProfile = () => {
         try {
             dispatch(setProfileLoading());
             const res = await axios.get('/api/profile/');
-            console.log('res', res)
             dispatch({
                 type: 'GET_PROFILE',
                 payload: res.data
@@ -21,6 +21,25 @@ export const getCurrentProfile = () => {
             dispatch({
                 type: 'GET_PROFILE',
                 payload: {}
+            });
+        }
+    }
+};
+
+// Get Current profile
+export const changeProfile = profileData => {
+    return async dispatch => {
+        try {
+            dispatch(setProfileLoading());
+            const res = await axios.post('/api/profile/', profileData);
+            dispatch({
+                type: 'GET_PROFILE',
+                payload: res.data
+            });
+        } catch(err) {
+            dispatch({
+                type: 'PROFILE_ERROR',
+                payload: err.response.data.errMsg
             });
         }
     }
@@ -37,22 +56,3 @@ export const clearCurrentProfile = () => {
         type: 'CLEAR_CURRENT_PROFILE'
     }
 }
-
-
-
-
-
-export const getCurrentUser = () => {
-    return async dispatch => {
-        try {
-            const res = await axios.get('/api/users/current')
-            console.log('current user', res)
-            dispatch({
-                type: 'GET_CURRENT_USER',
-                payload: res.data
-            });
-        } catch(err) {
-            console.log(err)
-        }
-    }
-};
