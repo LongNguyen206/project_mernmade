@@ -18,7 +18,10 @@ import Login from './components/Login';
 import Homepage from './components/Homepage';
 import SearchPage from "./components/SearchPage";
 import ListingsPage from "./components/ListingsPage";
-import ListingsProfile from "./components/ListingsProfile";
+import IndividualProfile from "./components/IndividualProfile";
+import About from './FooterPages/About';
+import TandC from './FooterPages/TandC';
+import Privacy from './FooterPages/Privacy';
 
 const jwToken = localStorage.getItem('JWTOKEN');
 axios.defaults.headers.common['Authorization'] = jwToken;
@@ -41,7 +44,11 @@ ReactDOM.render(
                 <Route exact path="/search" component={authGuard(SearchPage)} />
                 <Route exact path="/search_result" component={authGuard(ListingsPage)} />
                 <Route exact path="/home" component={authGuard(Homepage)} />
-                <Route exact path="/profile/:id" component={authGuard(ListingsProfile)} />
+                <Route exact path="/profiletest" component={authGuard(IndividualProfile)} />
+                  {/* footer pages */}
+                <Route exact path="/about" component={About} />
+                <Route exact path="/termsandconditions" component={TandC} />
+                <Route exact path="/privacypolicy" component={Privacy} />
             </App>
         </BrowserRouter>
     </Provider>,

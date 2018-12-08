@@ -1,14 +1,11 @@
 import React from 'react';
-
-
 import NavbarComp from './Navbar';
 import FooterComp from './Footer';
-
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faFacebookF, faInstagram, faLinkedinIn, faAppStore } from '@fortawesome/free-brands-svg-icons'
+import { faFacebookF, faInstagram} from '@fortawesome/free-brands-svg-icons'
 
-library.add(faFacebookF, faInstagram, faLinkedinIn, faAppStore)
+library.add(faFacebookF, faInstagram)
 
 export default (props) => {
     return (

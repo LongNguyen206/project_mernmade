@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Footer, Row } from 'react-materialize';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
 import '../styling/Style.css';
+
 
 class FooterComp extends Component {
     render () {
@@ -11,20 +11,20 @@ class FooterComp extends Component {
               copyrights="Copyright &copy; 2018 Hashtag Hound"
               links={
               <ul>
+                  <a href="https://www.facebook.com/hashtaghoundapp/"><FontAwesomeIcon icon={['fab', 'facebook-f']} className="socialMedia"/></a>
+                  &nbsp;&nbsp;
                 <a href="https://www.instagram.com/hashtag_hound/">  <FontAwesomeIcon icon={['fab', 'instagram']} className="socialMedia" /></a>
-                <a href="https://www.facebook.com/hashtaghoundapp/"><FontAwesomeIcon icon={['fab', 'facebook-f']} className="socialMedia"/></a>
               </ul>
               }
                 className='example'>
               <Row>
                 <ul className="footer-links">
-                  <a className="grey-text text-lighten-3" href="#!">About Us</a>
+                <a className="footer-page" href="/about">About Us</a>
                     &nbsp;&nbsp;
-                  <a className="grey-text text-lighten-3" href="#!">Terms & Conditions</a>
+                <a className="footer-page" href="/termsandconditions">Terms </a>
                     &nbsp;&nbsp;
-                  <a className="grey-text text-lighten-3" href="#!">Privacy Policy</a>
-                    &nbsp;&nbsp;
-                  <a className="grey-text text-lighten-3" href="#!">Contact Us </a>
+                <a className="footer-page" href="/privacypolicy">Privacy Policy</a>
+                    &nbsp;
                 </ul>
                </Row>
             </Footer>

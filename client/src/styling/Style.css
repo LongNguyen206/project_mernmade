@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Nanum+Gothic|Prata|Nunito|Oswald:500|Cormorant+Garamond');
+@import url('https://fonts.googleapis.com/css?family=Muli');
 
 /* Whole Navbar */
 nav {
@@ -20,15 +21,14 @@ nav .brand-logo {
   color: black;
   font-family: 'Oswald', sans-serif;
   margin-left: 5%;
-  font-weight: 400;
+  /* font-weight: 400; */
 }
 
 /* Navbar links */
 nav ul a  {
-  font-size: 1.4rem;
-  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-family:  Circular,"Helvetica Neue",Helvetica,Arial,sans-serif;
   color: black;
-  font-weight: 1;
   margin-left: auto;
 }
 
@@ -37,6 +37,7 @@ nav ul a:hover {
   border-bottom: 3px solid #000;
   display: inline-block;
   background-color: white;
+  line-height: 50px;
 }
 
 /* Login Modal */
@@ -58,9 +59,11 @@ nav ul a:hover {
 .btn:hover {
   /* background-color: #000000; */
 }
+
+
 .register-form{
   font-family: 'Nunito', sans-serif;
-  margin-bottom: 5%;
+  margin-bottom: 15%;
   margin-top: 15%;
 }
 
@@ -134,12 +137,15 @@ opacity: 0.5;
 #card {
 max-width: 200;
 }
-  
+
+
+/* Landing page text */
 h1 {
 font-family: 'Prata', serif;
 font-weight: 400;
 text-align: center;
 color: #3bc4ed;
+font-size: 55px;
 }
 
 .content {
@@ -158,6 +164,7 @@ h1.blocktext {
 
 .blocktext span {
     color: black;
+
 }
 
 
@@ -166,17 +173,18 @@ h1.blocktext {
 }
 
 
+
 .container4 {
-    margin-bottom: 30%;
+
     margin-top: 20%;
-    /* padding-bottom: 20%; */
 }
 
 
-.drop-image{
+/* .drop-image{
     margin-bottom: 30%;
     margin-top: 21%;
-}
+} */
+
 
 footer.page-footer {
     /* padding-top: 10px; */
@@ -185,13 +193,15 @@ footer.page-footer {
     width: 100%;
     bottom: 0;
     display: absolute;
-     overflow: hidden;
-     box-sizing: inherit;
+    overflow: hidden;
+    box-sizing: inherit;
 }
 
 
+
+/* footer pages - links */
 .footer-links {
-  font-size: 20px;
+  font-size: 17px;
   margin-top: 11%;
   margin-right: 40%;
   font-family: 'Nanum Gothic', sans-serif;
@@ -199,4 +209,202 @@ footer.page-footer {
 
 footer.page-footer .footer-copyright {
 text-align: center;
+}
+
+/* footer social media buttons  */
+.socialMedia {
+  color: white;
+  margin-left: auto;
+  margin-top: 17%;
+  font-size: 3rem;
+
+}
+.socialMedia:hover {
+color: #3bc4ed;
+}
+
+.footer-page {
+  color: white;
+}
+
+
+/* styling for the itunes image and paragraphy */
+.itunes-img {
+  margin-left: 60%;
+  width: 17%;
+  height: 10%;
+}
+
+.google-img {
+  /* margin-left: 80%; */
+  width: 20%;
+  height: 50%;
+  margin: 45px 0;
+}
+
+
+
+.app-heading {
+  color: #505254;
+  font-family: Muli,sans-serif;
+  margin-left: 60%;
+  margin-top: 40%;
+}
+
+.app-para {
+ margin-left: 60%;
+ text-align: left;
+ display:inline-block;
+ /* padding-top: 30%; */
+ font-size: 1.5rem;
+ font-family: Muli,sans-serif;
+ line-height: 1.4;
+ color: #505254;
+
+}
+
+/* landing page app image */
+.app-img {
+  margin-top: 50%;
+  margin-left: 50%;
+  width: 138%;
+  height: 150%;
+
+}
+
+.app-title {
+  margin-left: 60%;
+  text-align: left;
+  /* display:inline-block; */
+  font-size: 1.3rem;
+   font-family: Muli,sans-serif;
+   line-height: 1.4;
+    color: #32335f;
+    /* margin-top: 50%; */
+}
+
+
+/* background color of the hashtag hound app */
+.second-color {
+  margin-top: 15%;
+  padding-bottom: 5%;
+  background-color: #f6f9fc;
+      text-shadow: none;
+}
+
+.landing-btn {
+  box-shadow: 0 0 0 0 ;
+  font-size: 1rem;
+  border-color: #ffffff;
+  color: #ffffff;
+  background: linear-gradient(45deg, #0288d1 0%, #26c6da 100%);
+  border-radius: 50px;
+  margin-top: 0;
+  height: 20%;
+  width: 30%;
+  line-height: normal;
+  text-align: center;
+  font-family: 'Nunito', sans-serif;
+}
+
+
+
+
+/* animated faq dropdown */
+.faq-content {
+  margin: 0 auto;
+  margin-top: 5%;
+  margin-bottom: 7%;
+  width: 50%;
+  margin-right: 30%;
+}
+
+.faq-question {
+  padding: 20px 0;
+  /* border-bottom: 1px dotted #ccc; */
+}
+
+.panel-title {
+  font-size: 20px;
+  width: 50%;
+  position: relative;
+  color: black;
+  margin: 0;
+  padding: 10px 10px 0 48px;
+  font-family: 'Nunito', sans-serif;
+  display: block;
+  cursor: pointer;
+}
+
+.panel-content {
+  font-size: 15px;
+  padding: 0px 14px;
+  margin: 0 40px;
+  height: 0;
+  overflow: hidden;
+  z-index: -1;
+  position: relative;
+  opacity: 0;
+  -webkit-transition: .4s ease;
+  -moz-transition: .4s ease;
+  -o-transition: .4s ease;
+  transition: .4s ease;
+}
+
+.panel:checked ~ .panel-content{
+  height: auto;
+  opacity: 1;
+  padding: 14px;
+}
+
+.plus {
+  position: absolute;
+  margin-left: 20px;
+  margin-top: 4px;
+  z-index: 5;
+  font-size: 30px;
+  line-height: 100%;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  -webkit-transition: .2s ease;
+  -moz-transition: .2s ease;
+  -o-transition: .2s ease;
+  transition: .2s ease;
+}
+
+.panel:checked ~ .plus {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.panel {
+  display: none;
+}
+
+
+/* FAQ title */
+.faq {
+ color: #505254;
+ font-family: 'Nunito', sans-serif;
+ margin-top: 7%;
+ font-weight: 400;
+ font-size: 2rem;
+}
+
+/* contact us page */
+.contact-form {
+  color: #ffffff;
+  font-size: 30px;
+  padding-top: 5%;
+  font-family: 'Nunito', sans-serif;
+}
+
+.third-color{
+ background-color: #32335f;
+ padding-bottom: 30%;
 }
