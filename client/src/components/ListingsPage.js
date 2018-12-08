@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from "react";
-import "../styling/Style.css";
 import { Row, Col } from "react-materialize";
 import AccountCard from "./AccountCard";
 import FilterBar from "./FilterBar";

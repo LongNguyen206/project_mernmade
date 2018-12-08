@@ -1,26 +1,23 @@
-import { AUTH_REGISTER, AUTH_LOGIN, AUTH_LOGOUT, AUTH_ERROR } from '../actions/types';
+import isEmpty from '../validation/isEmpty';
+import { SET_CURRENT_USER, AUTH_ERROR } from '../actions/types';
 
 const DEFAULT_STATE = {
     isAuthenticated: false,
-    token: '',
+    user: '',
     errorMessage: ''
-}
+};
 
 // return different states depending on action types provided
 export default (state = DEFAULT_STATE, action) => {
     switch(action.type) {
-        case AUTH_REGISTER:
+        case SET_CURRENT_USER:
         // do something:
             // modify and return state
-            return { ...state, token: action.payload, isAuthenticated: true, errorMessage: '' }
-        case AUTH_LOGIN:
-            return { ...state, token: action.payload, isAuthenticated: true, errorMessage: '' }
-        case AUTH_LOGOUT:
-            return { ...state, token: action.payload, isAuthenticated: false, errorMessage: '' }
+            return { ...state, user: action.payload, isAuthenticated: !isEmpty(action.payload), errorMessage: '' };
         case AUTH_ERROR:
             console.log("Error from auth reducer");
-            return { ...state, errorMessage: action.payload }
+            return { ...state, errorMessage: action.payload };
         default:
-            return state
-    }
-}
+            return state;
+    };
+};

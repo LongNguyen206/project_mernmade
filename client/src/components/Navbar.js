@@ -1,33 +1,56 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from "react-router-dom";
 import { Navbar, NavItem, Modal } from 'react-materialize';
 
-import '../styling/Style.css';
-import * as actions from '../actions';
+import { logout } from '../actions/authActions';
+import { clearCurrentProfile } from '../actions/profileActions';
 import LoginModal from './LoginModal';
 
 class NavbarComp extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     logOut = () => {
+        this.props.clearCurrentProfile();
         this.props.logout();
+        this.props.history.push('/');
     }
 
     render() {
+        const { isAuthenticated, user } = this.props.auth;
+        const authLinks = ([
+            <NavItem title="My Profile" href='/myprofile'>
+                <img 
+                    src={user.avatar}
+                    style={{ width: '20px', marginRight: '10px', borderRadius: '50%' }}
+                />
+                {user.name}
+            </NavItem>,
+            <NavItem title="Saved Accounts">saved</NavItem>,
+            <NavItem onClick={this.logOut}>log out</NavItem>
+        ]);
+        const guestLinks = (
+            // if user is unauthenticated and at '/register' path, hide the Sign Up link
+            this.props.location.pathname === '/register' ?
+            <NavItem className="up-button" key="signin">
+                <Modal trigger={<div>Log In</div>} >
+                    <LoginModal />
+                </Modal>
+            </NavItem>
+            // if user is unauthenticated and at '/' path, show both
+            : this.props.location.pathname === '/' ?
+            [<NavItem className="up-button" key="signup" href="/register">Sign Up</NavItem>,
+            <NavItem className="up-button" key="signin">
+                <Modal trigger={<div>Log in</div>}>
+                    <LoginModal />
+                </Modal>
+            </NavItem> ]
+            // but if user is unauthenticated and get redirected to '/login' path, hide the Sign In link
+            :
+            <NavItem className="up-button" key="signup" href="/register">Sign Up</NavItem>
+        );
+
         return (
-            <Navbar brand='HASHTAG HOUND' right>
-                { !this.props.isAuth ?
-                [ <NavItem className="up-button" key="signup" href="/register">Sign Up</NavItem>,
-                <NavItem className="up-button" key="signin">
-                    <Modal header='Sign In' trigger={<div>Sign In</div>} >
-                        <LoginModal />
-                    </Modal>
-                </NavItem> ]
-                :
-                <NavItem href="/" onClick={this.logOut}>Sign Out</NavItem>
-                }
+            <Navbar brand='HASHTAG HOUND' fixed='true' right>
+                { !isAuthenticated ? guestLinks : authLinks }
             </Navbar>
         )
     }
@@ -36,8 +59,8 @@ class NavbarComp extends Component {
 // linking backend props to frontend state
 const mapStateToProps = state => {
     return {
-        isAuth: state.auth.isAuthenticated
+        auth: state.auth
     }
 };
 
-export default connect(mapStateToProps, actions)(NavbarComp);
+export default connect(mapStateToProps, { logout, clearCurrentProfile } )(withRouter(NavbarComp));

@@ -4,7 +4,7 @@ import Background from "../img/SearchPagephoto.jpg";
 import SearchCard from "./SearchCard";
 
 const headerStyle = {
-  backgroundImage: `url( ${Background} )`,
+  // backgroundImage: `url( ${Background} )`,
   height: "100vh",
   width: "100%",
   backgroundSize: "cover"

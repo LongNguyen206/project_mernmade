@@ -8,7 +8,6 @@ const ProfileSchema = new Schema({
   industry: { type: [String], required: true },
   company: { type: String, required: true },
   website: { type: String },
-  location: { type: String },
   shortlist: [{ type: Schema.Types.ObjectId, ref: 'accounts' }],
   date: { type: Date, default: Date.now }
 });

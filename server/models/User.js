@@ -7,7 +7,7 @@ const UserSchema = new Schema({
   name: { type: String, required: true },
   email: { type: String, required: true },
   password: { type: String },
-  avatar: { type: String },
+  avatar: { type: String, default: "https://file.globalupload.io/u9tUzQ1ywi.png" },
   date: { type: Date, default: Date.now }
 });
 

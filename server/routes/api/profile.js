@@ -144,7 +144,6 @@ router.post('/', passport.authenticate('jwt', { session: false }), (req, res) =>
     if (req.body.industry) profileFields.industry = req.body.industry;
     if (req.body.company) profileFields.company = req.body.company;
     if (req.body.website) profileFields.website = req.body.website;
-    if (req.body.location) profileFields.location = req.body.location;
     Profile.findOne({ user: req.user.id })
         .then(profile => {
             // if Profile exists
