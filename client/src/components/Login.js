@@ -9,6 +9,8 @@ import FacebookLogin from 'react-facebook-login';
 import * as actions from '../actions/authActions';
 import CustomInput from './CustomInput';
 
+
+
 class Login extends Component {
     componentDidMount() {
         if (this.props.auth.isAuthenticated) {
