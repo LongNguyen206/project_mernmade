@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Input } from 'react-materialize';
 
-export default class CustomInput extends Component {
+export default class CustomListInput extends Component {
     render() {
         const { input: { value, onChange } } = this.props;
         return (
@@ -14,8 +14,8 @@ export default class CustomInput extends Component {
                     type={this.props.type}
                     s={this.props.s}
                     placeholder={this.props.placeholder}
-                    value={value || this.props.defaultValue}
-                    onChange={onChange}
+                    value={this.props.value || this.props.defaultValue}
+                    onChange={this.props.onChange}
                 />
             </div>
         )

@@ -6,10 +6,6 @@ const searchHeaderStyle = {
 };
 
 class FilterBar extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <div>

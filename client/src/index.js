@@ -8,6 +8,7 @@ import axios from 'axios';
 import jwt_decode from 'jwt-decode';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
+import './styling/Style.css';
 import * as serviceWorker from './serviceWorker';
 import reducers from './reducers';
 import { setCurrentUser } from './actions/authActions';

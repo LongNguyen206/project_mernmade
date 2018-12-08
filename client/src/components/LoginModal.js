@@ -10,24 +10,20 @@ import * as actions from '../actions/authActions';
 import CustomInput from './CustomInput';
 
 class LoginModal extends Component {
-    constructor(props) {
-        super(props);
-    };
-
     onSubmit = async formData => {
         // We need to call some action creator that will contact backend server 
         await this.props.login(formData);
         if (!this.props.errorMessage) {
-            // window.location.reload();
-            // this.props.history.push('/search');
+            window.location.reload();
+            this.props.history.push('/search');
         }
     };
 
     responseFacebook = async res => {
         await this.props.oauthFacebook(res.accessToken);
         if (!this.props.errorMessage) {
-            // window.location.reload();
-            // this.props.history.push('/search');
+            window.location.reload();
+            this.props.history.push('/search');
         }
     };
 

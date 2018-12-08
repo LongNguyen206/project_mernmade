@@ -3,16 +3,13 @@ import { connect } from 'react-redux';
 import { withRouter } from "react-router-dom";
 import { Navbar, NavItem, Modal } from 'react-materialize';
 
-import '../styling/Style.css';
-import * as actions from '../actions/authActions';
+import { logout } from '../actions/authActions';
+import { clearCurrentProfile } from '../actions/profileActions';
 import LoginModal from './LoginModal';
 
 class NavbarComp extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     logOut = () => {
+        this.props.clearCurrentProfile();
         this.props.logout();
         this.props.history.push('/');
     }
@@ -20,7 +17,7 @@ class NavbarComp extends Component {
     render() {
         const { isAuthenticated, user } = this.props.auth;
         const authLinks = ([
-            <NavItem title="My Profile">
+            <NavItem title="My Profile" href='/myprofile'>
                 <img 
                     src={user.avatar}
                     style={{ width: '20px', marginRight: '10px', borderRadius: '50%' }}
@@ -66,4 +63,4 @@ const mapStateToProps = state => {
     }
 };
 
-export default connect(mapStateToProps, actions)(withRouter(NavbarComp));
+export default connect(mapStateToProps, { logout, clearCurrentProfile } )(withRouter(NavbarComp));

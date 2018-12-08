@@ -10,10 +10,6 @@ import * as actions from '../actions/authActions';
 import CustomInput from './CustomInput';
 
 class Login extends Component {
-    constructor(props) {
-        super(props);
-    };
-
     componentDidMount() {
         if (this.props.auth.isAuthenticated) {
             this.props.history.push('/search');

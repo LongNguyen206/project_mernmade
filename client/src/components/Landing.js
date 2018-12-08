@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { withRouter } from "react-router-dom";
 
-import '../styling/Style.css';
 import * as actions from '../actions/authActions';
 
 class Landing extends Component {

@@ -12,6 +12,7 @@ export const getCurrentProfile = () => {
         try {
             dispatch(setProfileLoading());
             const res = await axios.get('/api/profile/');
+            console.log('res', res)
             dispatch({
                 type: 'GET_PROFILE',
                 payload: res.data
@@ -27,11 +28,15 @@ export const getCurrentProfile = () => {
 
 export const setProfileLoading = () => {
     return {
-        type: PROFILE_LOADING
+        type: 'PROFILE_LOADING'
     }
 }
 
-
+export const clearCurrentProfile = () => {
+    return {
+        type: 'CLEAR_CURRENT_PROFILE'
+    }
+}
 
 
 

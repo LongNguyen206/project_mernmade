@@ -38,7 +38,7 @@ nav ul a:hover {
 }
 
 .modal {
-  width: 35%;
+  width: 500px;
 }
 
 /* Login Modal */
@@ -68,7 +68,6 @@ nav .nav-wrapper i {
   box-shadow: 0 1px 6px rgba(57,73,76,0.35);
 }
 
-
 .register-form{
   font-family: 'Nunito', sans-serif;
   margin-top: 15%;
@@ -90,9 +89,22 @@ nav .nav-wrapper i {
 }
 
 .form-group {
-  width: 450px;
+  width: 470px;
   margin: auto;
-  line-height: 1.6;
+}
+
+ /* label focus color */
+ .input-field input:focus + label {
+  color: #969696 !important;
+}
+/* label underline focus color */
+.input-field input:focus {
+  border-bottom: 1px solid #969696 !important;
+  box-shadow: 0 1px 0 0 #969696 !important;
+}
+
+.input-field label {
+  top: -0.5rem;
 }
 
 .register-btn-container {
@@ -157,14 +169,17 @@ nav .nav-wrapper i {
   background: #3b5998;
 }
 
-.fb-btn:hover {
+.fb-btn:hover, .fb-btn:focus, .fb-btn:active {
   background: #4464a8;
 }
 
-.fb-btn:active {
-  background: #4464a8;
+.no-profile-warning {
+  text-align: center;
+  width: 100%;
+  border: 1px solid red;
+  background-color: rgb(255, 197, 197);
+  color: red;
 }
-
 
 #profile {
   font-size: 10px;
@@ -182,7 +197,7 @@ nav .nav-wrapper i {
 
 .content {
   overflow: auto;
-  min-height: 100vh;
+  min-height: 95vh;
 }
 
 .blocktext {

@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { Footer, Row } from 'react-materialize';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-import '../styling/Style.css';
-
 class FooterComp extends Component {
     render () {
         return (
