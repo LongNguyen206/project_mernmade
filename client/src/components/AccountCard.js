@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import { Link } from 'react-router-dom';
 import { Col, Card, CardTitle } from 'react-materialize';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 
+import RoundLoader from './RoundLoader';
 import { shortlist } from '../actions/accountActions';
 import { getCurrentProfile } from '../actions/profileActions';
 
@@ -17,23 +17,24 @@ class AccountCard extends Component {
     }
   };
 
-
   componentDidMount() {
     this.props.getCurrentProfile();
-    
   }
   
   componentWillReceiveProps(nextProps) {
-    if (nextProps.profile.profile !== null) {
-        this.setState({
-          shortlist: nextProps.profile.profile.shortlist
-        })
-    }
-    if (this.state.shortlist.includes(this.props.account._id.toString())) {
+    if (Object.keys(nextProps.profile).length !== 0) {
       this.setState({
-        saved: true
+        shortlist: nextProps.profile.shortlist
+      });
+      if (this.state.shortlist.includes(this.props.account._id.toString())) {
+        this.setState({
+            saved: true
+        })
+      }
+    } else {
+      this.setState({
+        saved: false
       })
-      console.log("match", this.props.account.handle, this.state.saved)
     }
   };
 
@@ -45,42 +46,50 @@ class AccountCard extends Component {
   };
 
   render () {
-    let icon, followerCount, savedIcon;
-    if (this.props.account.platform === 'Instagram') {
-      icon = <i class="fab fa-instagram"></i>
-    } else if (this.props.account.platform === 'Twitter') {
-      icon = <i class="fab fa-twitter"></i>
-    } else if (this.props.account.platform === 'Facebook') {
-      icon = <i class="fab fa-facebook"></i>
-    } else if (this.props.account.platform === 'Youtube') {
-      icon = <i class="fab fa-youtube"></i>
-    }
+    let cardContent;
+    let icon, followerCount, savedIcon, truncateDesc;
 
-    let followerStr = this.props.account.followers.toString() ;
-  
-    if (this.props.account.followers < 1000) {
-      followerCount = followerStr
-    } else if (this.props.account.followers < 1000000) {
-      followerCount = (followerStr.slice(0 ,-3)) + '.' + (followerStr[followerStr.length-3]) + 'k'
+    if (this.props.account === null) {
+      cardContent = 
+      <Card horizontal style={{height: '250px'}}>
+        <div style={{padding: '20% 40%'}}>
+          <RoundLoader />
+        </div>
+      </Card>
     } else {
-      followerCount = (followerStr.slice(0 ,-6)) + '.' + (followerStr[followerStr.length-6]) + 'm'
-    } 
+      let followerStr = this.props.account.followers.toString() ;
 
-    if (this.state.saved === true) {
-      savedIcon = <i title="Remove from saved" class="fas fa-heart"></i>
-    } else {
-      savedIcon = <i title="Save this account" class="far fa-heart"></i>
-    }
+      if (this.props.account.platform === 'Instagram') {
+        icon = <i className="fab fa-instagram"></i>
+      } else if (this.props.account.platform === 'Twitter') {
+        icon = <i className="fab fa-twitter"></i>
+      } else if (this.props.account.platform === 'Facebook') {
+        icon = <i className="fab fa-facebook"></i>
+      } else if (this.props.account.platform === 'Youtube') {
+        icon = <i className="fab fa-youtube"></i>
+      }
+    
+      if (this.props.account.followers < 1000) {
+        followerCount = followerStr
+      } else if (this.props.account.followers < 1000000) {
+        followerCount = (followerStr.slice(0 ,-3)) + '.' + (followerStr[followerStr.length-3]) + 'k'
+      } else {
+        followerCount = (followerStr.slice(0 ,-6)) + '.' + (followerStr[followerStr.length-6]) + 'm'
+      } 
 
-    let truncateDesc;
-    if (this.props.account.description.length > 67) {
-      truncateDesc = this.props.account.description.substr(0,67) + '...'
-    } else {
-      truncateDesc = this.props.account.description
-    }
+      if (this.state.saved === true) {
+        savedIcon = <i title="Remove from saved" className="fas fa-bookmark fas-card"></i>
+      } else {
+        savedIcon = <i title="Save this account" className="far fa-bookmark far-card"></i>
+      }
 
-    return (
-      <Col m={7} s={12}>
+      if (this.props.account.description.length > 67) {
+        truncateDesc = this.props.account.description.substr(0,67) + '...'
+      } else {
+        truncateDesc = this.props.account.description
+      }
+
+      cardContent = 
         <Card horizontal header={<CardTitle image={this.props.account.picture}></CardTitle>}>
           <div className='pre-card-divider'>
             <p className="card-accountname"><a href={this.props.account.link} target="_blank">{this.props.account.accountName}</a></p>
@@ -94,6 +103,11 @@ class AccountCard extends Component {
             <a className="card-saved-icon" onClick={this.onClick.bind(this, this.props.account.handle, this.props.profile)}>{savedIcon}</a>
           </div>
         </Card>
+    }
+
+    return (
+      <Col m={7} s={12}>
+        {cardContent}
       </Col>
     )
   }
@@ -102,9 +116,9 @@ class AccountCard extends Component {
 // linking backend props to frontend state
 const mapStateToProps = state => {
   return {
-    profile: state.profile,
-    accounts: state.account,
-    errorMessage: state.account.errorMessage
+    profile: state.profile.profile,
+    accounts: state.accounts,
+    errorMessage: state.accounts.errorMessage
   }
 };
 

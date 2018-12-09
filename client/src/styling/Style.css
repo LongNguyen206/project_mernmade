@@ -113,6 +113,63 @@ ul.dropdown-content.select-dropdown li span {
   text-align: right;
 }
 
+.account-picture {
+  text-align: center;
+}
+
+.account-picture img {
+  max-height: 400px;
+  max-width: 300px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.account-info {
+  font-family: 'Lato', sans-serif;
+  text-align: right;
+  position: relative;
+  font-size: 20px;
+}
+
+.sum-loc {
+  margin-right: 5px;
+  width: 60%;
+}
+
+.sum-far {
+  float: right;
+  color: rgba(0, 0, 0, 0.363);
+  font-size: 40px;
+  top: 2%;
+  right: 2%;
+  position: absolute;
+}
+
+.sum-far:hover {
+  cursor: pointer;
+  color: #757575;
+}
+
+.sum-fas {
+  float: right;
+  color: rgb(255, 174, 0);
+  font-size: 40px;
+  top: 2%;
+  right: 2%;
+  position: absolute;
+}
+
+.sum-fas:hover {
+  cursor: pointer;
+  color: #ffe031;
+}
+
+.post-summary-divider {
+  font-family: 'Lato', sans-serif;
+  text-align: left;
+  position: relative;
+  font-size: 20px;
+}
+
 .input-field label:not(.label-icon).active {
   margin-top: 1.5rem;
 }
@@ -141,7 +198,7 @@ ul.dropdown-content.select-dropdown li span {
   font-size: 1.2rem;
   border-color: #ffffff;
   color: #ffffff;
-  background: linear-gradient(45deg, #0288d1 0%, #26c6da 100%);
+  background: linear-gradient(45deg, #0288d1 0%, #59CBD6 100%);
   border-radius: 50px;
   text-align: center;
   margin: 10px auto 5px auto;
@@ -221,14 +278,6 @@ ul.dropdown-content.select-dropdown li span {
   max-width: 200;
 }
 
-/* Landing page text */
-.blocktext h1 {
-  font-family: 'Prata', serif;
-  font-weight: 400;
-  text-align: center;
-  color: #3bc4ed;
-  font-size: 55px;
-}
 
 .content {
   background-color: #f3f3f3;
@@ -241,11 +290,12 @@ ul.dropdown-content.select-dropdown li span {
   padding-top: 15%;
 }
 
+/* Landing page text */
 .blocktext {
   font-family: 'Prata', serif;
   font-weight: 400;
   text-align: center;
-  color: #3bc4ed;
+  color: #59CBD6;
   margin-left: auto;
   margin-right: auto;
   width: 17em;
@@ -297,6 +347,8 @@ footer.page-footer .footer-copyright {
   position: relative;
   color: white;
   float: right;
+  margin-left: auto;
+  font-size: 3rem;
 }
 
 .socialMedia:hover {
@@ -333,18 +385,6 @@ footer.page-footer .footer-copyright {
 .strike > span:after {
   left: 100%;
   margin-left: 15px;
-}
-
-/* footer social media buttons  */
-.socialMedia {
-  color: white;
-  margin-left: auto;
-  margin-top: 17%;
-  font-size: 3rem;
-}
-
-.socialMedia:hover {
-color: #3bc4ed;
 }
 
 .footer-page {
@@ -418,7 +458,7 @@ color: #3bc4ed;
   font-size: 1rem;
   border-color: #ffffff;
   color: #ffffff;
-  background: linear-gradient(45deg, #0288d1 0%, #26c6da 100%);
+  background: linear-gradient(45deg, #0288d1 0%, #59CBD6 100%);
   border-radius: 50px;
   margin-top: 0;
   padding-top: 15px;
@@ -543,7 +583,7 @@ color: #3bc4ed;
   height: 250px;
   max-height: 250px;
   width: 500px;
-  max-width:500px; /* or whatever width you want. */
+  max-width:500px;
   font-family: 'Lato', sans-serif;
   text-align: right;
   position: relative;
@@ -577,32 +617,32 @@ color: #3bc4ed;
   font-weight: 500;
 }
 
-.far {
+.far-card {
   float: right;
-  color: rgb(51, 51, 51);
-  font-size: 20px;
+  color: rgba(0, 0, 0, 0.363);
+  font-size: 40px;
   bottom: 10px;
-  right: 10px;
+  right: 15px;
   position: absolute;
 }
 
-.far:hover {
+.far-card:hover {
   cursor: pointer;
-  color: #7c7c7c;
+  color: #757575;
 }
 
-.fas {
+.fas-card {
   float: right;
-  color: #5de2d0;
-  font-size: 20px;
+  color: rgb(255, 174, 0);
+  font-size: 40px;
   bottom: 10px;
-  right: 10px;
+  right: 15px;
   position: absolute;
 }
 
-.fas:hover {
+.fas-card:hover {
   cursor: pointer;
-  color: #5de2d0;
+  color: #ffe031;
 }
 
 .card-account-desc {
@@ -612,4 +652,21 @@ color: #3bc4ed;
   white-space: wrap;
   text-overflow: ellipsis;
   margin-top: 20px !important;
+}
+
+.progress {
+  margin-top: 0;
+  background-color: #59CBD6;
+}
+
+.progress .indeterminate {
+  background-color: rgb(0, 0, 0);
+}
+
+.input-field .prefix {
+  margin-top: 15px;
+}
+
+input[type=checkbox] {
+  -webkit-appearance:checkbox !important;
 }

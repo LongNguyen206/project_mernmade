@@ -27,7 +27,7 @@ class Register extends Component {
     responseFacebook = async res => {
         await this.props.oauthFacebook(res.accessToken);
         if (!this.props.errorMessage) {
-            this.props.history.push('/myprofile');
+            this.props.history.push('/search');
         }
     };
 

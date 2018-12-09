@@ -10,199 +10,26 @@ const filterBarStyle = {
 class ListingsPage extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
-      // The profiles array
-      profiles: [
-        {
-          id: 1,
-          name: "pr1",
-          platform: "instagram",
-          accountType: "influencer",
-          industry: "food",
-          location: "australia",
-          followers: 400000,
-          engagement: ""
-        },
-        {
-          id: 2,
-          name: "pr2",
-          platform: "twitter",
-          accountType: "feature",
-          followers: 400000,
-          engagement: ""
-        },
-        {
-          id: 3,
-          name: "pr3",
-          platform: "instagram",
-          accountType: "influencer",
-          industry: "food",
-          location: "australia",
-          followers: 400000,
-          engagement: ""
-        },
-        {
-          id: 4,
-          name: "pr4",
-          platform: "twitter",
-          accountType: "community",
-          followers: 400000,
-          engagement: ""
-        },
-        {
-          id: 5,
-          name: "pr5",
-          platform: "instagram",
-          accountType: "community",
-          followers: 400000,
-          engagement: ""
-        },
-        {
-          id: 6,
-          name: "pr6",
-          platform: "youtube",
-          accountType: "influencer",
-          followers: 400000,
-          engagement: ""
-        },
-        {
-          id: 7,
-          name: "pr7",
-          platform: "instagram",
-          accountType: "influencer",
-          followers: 400000,
-          engagement: ""
-        },
-        {
-          id: 8,
-          name: "pr8",
-          platform: "twitter",
-          accountType: "influencer",
-          followers: 400000,
-          engagement: ""
-        },
-        {
-          id: 9,
-          name: "pr9",
-          platform: "instagram",
-          accountType: "feature",
-          followers: 400000,
-          engagement: ""
-        },
-        {
-          id: 10,
-          name: "pr10",
-          platform: "youtube",
-          accountType: "influencer",
-          followers: 400000,
-          engagement: ""
-        }
-      ],
-      filteredProfiles: [
-        {
-          id: 1,
-          name: "pr1",
-          platform: "instagram",
-          accountType: "influencer",
-          industry: "food",
-          location: "australia",
-          followers: 400000,
-          engagement: ""
-        },
-        {
-          id: 2,
-          name: "pr2",
-          platform: "twitter",
-          accountType: "feature",
-          followers: 400000,
-          engagement: ""
-        },
-        {
-          id: 3,
-          name: "pr3",
-          platform: "instagram",
-          accountType: "influencer",
-          industry: "food",
-          location: "australia",
-          followers: 400000,
-          engagement: ""
-        },
-        {
-          id: 4,
-          name: "pr4",
-          platform: "twitter",
-          accountType: "community",
-          followers: 400000,
-          engagement: ""
-        },
-        {
-          id: 5,
-          name: "pr5",
-          platform: "instagram",
-          accountType: "community",
-          followers: 400000,
-          engagement: ""
-        },
-        {
-          id: 6,
-          name: "pr6",
-          platform: "youtube",
-          accountType: "influencer",
-          followers: 400000,
-          engagement: ""
-        },
-        {
-          id: 7,
-          name: "pr7",
-          platform: "instagram",
-          accountType: "influencer",
-          followers: 400000,
-          engagement: ""
-        },
-        {
-          id: 8,
-          name: "pr8",
-          platform: "twitter",
-          accountType: "influencer",
-          followers: 400000,
-          engagement: ""
-        },
-        {
-          id: 9,
-          name: "pr9",
-          platform: "instagram",
-          accountType: "feature",
-          followers: 400000,
-          engagement: ""
-        },
-        {
-          id: 10,
-          name: "pr10",
-          platform: "youtube",
-          accountType: "influencer",
-          followers: 400000,
-          engagement: ""
-        }
-      ],
-
+      profiles: [],
+      filteredProfiles: [],
       platforms: [
-        { id: 1, value: "instagram", isChecked: false },
-        { id: 2, value: "youtube", isChecked: false },
-        { id: 3, value: "twitter", isChecked: false },
-        { id: 4, value: "facebook", isChecked: false }
+        { id: 1, value: "Instagram", isChecked: false },
+        { id: 2, value: "Youtube", isChecked: false },
+        { id: 3, value: "Twitter", isChecked: false },
+        { id: 4, value: "Facebook", isChecked: false }
       ],
       accountTypes: [
-        { id: 5, value: "influencer", isChecked: false },
-        { id: 6, value: "feature", isChecked: false },
-        { id: 7, value: "community", isChecked: false }
+        { id: 5, value: "Influencer", isChecked: false },
+        { id: 6, value: "Feature", isChecked: false },
+        { id: 7, value: "Community", isChecked: false }
       ],
-
       filterByPlatform: [],
       filterByAccountType: []
     };
   }
 
+  // At the start, filter out the profiles from dropdowns
   componentWillMount() {
     const searchResult = this.state.profiles.filter(
       profile =>
@@ -219,23 +46,21 @@ class ListingsPage extends Component {
   handleAllChecked = event => {
     let platforms = this.state.platforms;
     let filterByPlatform = this.state.filterByPlatform;
-
     platforms.forEach(
       platform =>
         (platform.isChecked = event.target.checked) &&
         (filterByPlatform = [...filterByPlatform, platform.value])
     );
-
     let filteredProfiles = this.state.profiles.filter(profile =>
       filterByPlatform.includes(profile.platform)
     );
-
     this.setState({
       filteredProfiles: filteredProfiles,
       platforms: platforms,
       filterByPlatform: filterByPlatform
     });
   };
+
   // Method that handles individual checkboxes
   handlePlatform = event => {
     let platforms = this.state.platforms;
@@ -289,7 +114,6 @@ class ListingsPage extends Component {
 
   filterAllProfiles = () => {
     let { filterByPlatform, filterByAccountType } = this.state;
-
     if (filterByPlatform.length === 0 && filterByAccountType.length === 0) {
       var filteredProfiles = this.state.profiles;
     } else if (
@@ -308,7 +132,6 @@ class ListingsPage extends Component {
           filterByAccountType.includes(profile.accountType)
       );
     }
-
     this.setState({
       filteredProfiles: filteredProfiles
     });

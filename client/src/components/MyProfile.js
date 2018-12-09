@@ -38,7 +38,6 @@ class MyProfile extends Component {
               </div>
             </Col>
             <Col s={9}>
-              <medium className="d-block pb-3">* required fields</medium>
               <Input
                 disabled
                 name="name" 
@@ -56,7 +55,6 @@ class MyProfile extends Component {
                 label="Email" 
                 defaultValue={user.email + ' (cannot be changed)'} 
                 s={11} 
-                component={CustomProfileInput} 
               /> 
               <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
                 <Field 
@@ -64,7 +62,7 @@ class MyProfile extends Component {
                   type="text" 
                   id="profile_handle" 
                   placeholder="must not contain special characters except underscores"
-                  label="*Username"
+                  label="Username"
                   defaultValue={profile.handle}
                   s={11} 
                   component={CustomProfileInput} 

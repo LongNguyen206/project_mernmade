@@ -80,15 +80,23 @@ router.post('/handle/:handle/shortlist', passport.authenticate('jwt', { session:
                             profile.shortlist.unshift(account.id);
                         }
                     } else {
-                        return res.status(404).json({
-                            errMsg: "Please Create a profile first"
-                        })
+                        let newShortlist = [];
+                        let profileFields = {};
+                        profileFields.user = req.user.id;
+                        newShortlist.unshift(account.id);
+                        profileFields.shortlist = newShortlist;
+                        new Profile(profileFields).save()
+                            .then(profile => {
+                                res.json(profile)
+                            })
                     }
                     profile.save()
                     .then(profile => res.json(profile));
                 });
         })
-        .catch(err => res.status(404).json(err));
+        .catch(err => res.status(404).json({
+            errMsg: "Account not found"
+        }));
 });
 
 // @route   POST api/accounts/:account_id/review

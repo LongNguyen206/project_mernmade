@@ -1,7 +1,8 @@
-import { GET_ALL_ACCOUNTS, ACCOUNTS_LOADING, ACCOUNTS_ERROR, CLEAR_ALL_ACCOUNTS } from '../actions/types';
+import { GET_ALL_ACCOUNTS, GET_ACCOUNT, ACCOUNTS_LOADING, ACCOUNTS_ERROR, CLEAR_ALL_ACCOUNTS } from '../actions/types';
 
 const DEFAULT_STATE = {
     accounts: null,
+    account: null,
     loading: false,
     errorMessage: ''
 }
@@ -14,6 +15,8 @@ export default (state = DEFAULT_STATE, action) => {
             return { ...state, loading: true };
         case GET_ALL_ACCOUNTS:
             return { ...state, accounts: action.payload, loading: false, errorMessage: '' };
+        case GET_ACCOUNT:
+            return { ...state, account: action.payload, accounts: null, loading: false, errorMessage: '' };
         case CLEAR_ALL_ACCOUNTS:
             return { ...state, accounts: null, errorMessage: '' };
         case ACCOUNTS_ERROR:

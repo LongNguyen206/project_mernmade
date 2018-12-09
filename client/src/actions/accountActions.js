@@ -2,13 +2,14 @@ import axios from 'axios';
 
 import {
     GET_ALL_ACCOUNTS,
+    GET_ACCOUNT,
     ACCOUNTS_LOADING,
     GET_PROFILE,
     ACCOUNTS_ERROR,
     CLEAR_ALL_ACCOUNTS 
     } from './types';
 
-// Get current profile
+// Get all accounts
 export const getAllAccounts = () => {
     return async dispatch => {
         try {
@@ -22,6 +23,25 @@ export const getAllAccounts = () => {
             dispatch({
                 type: 'GET_ALL_ACCOUNTS',
                 payload: "Could not load accounts"
+            });
+        }
+    }
+};
+
+// Get account by handle
+export const getAccountByHandle = handle => {
+    return async dispatch => {
+        try {
+            dispatch(setAccountsLoading());
+            const res = await axios.get(`/api/accounts/handle/${handle}`);
+            dispatch({
+                type: 'GET_ACCOUNT',
+                payload: res.data
+            });
+        } catch(err) {
+            dispatch({
+                type: 'GET_ACCOUNT',
+                payload: null
             });
         }
     }

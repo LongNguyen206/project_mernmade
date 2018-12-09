@@ -24,7 +24,7 @@ class CardGrid extends Component {
     for(var i = 0; i < multiElements.length; i+=3) {
         var oneRow = [];
         oneRow.push(multiElements.slice(i, i+3).map(item => {
-      return <Col style={{display: 'inline-block'}}>{item}</Col>
+      return <Col key={i} style={{display: 'inline-block'}}>{item}</Col>
     }))
       separateElements.push(oneRow.map(itm => {return <Row>{itm}</Row>}))
     }

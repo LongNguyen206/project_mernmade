@@ -108,20 +108,14 @@ router.post('/', passport.authenticate('jwt', { session: false }), (req, res) =>
     // Get fields
     const profileFields = {};
     profileFields.user = req.user.id;
-    // Empty handle validation
-    if ((!req.body.handle) || (req.body.handle.trim().length === 0)) {
-        return res.status(400).json({
-            errMsg: "Username is required"
-        });
-    }
     // Handle length validation
-    if ((req.body.handle.length < 2) || (req.body.handle.length > 40)) {
+    if ((req.body.handle) && ((req.body.handle.length < 2) || (req.body.handle.length > 40))) {
         return res.status(400).json({
             errMsg: "Username must be between 2 and 40 characters"
         });
     }
     // Handle format validation
-    if (/^[a-zA-Z0-9_]*$/.test(req.body.handle) == false) {
+    if ((req.body.handle) && (/^[a-zA-Z0-9_]*$/.test(req.body.handle) == false)) {
         return res.status(400).json({
             errMsg: "Username must not contain special characters except underscores"
         });
@@ -148,18 +142,11 @@ router.post('/', passport.authenticate('jwt', { session: false }), (req, res) =>
                     .then(profile => res.json(profile));
             } else {
                 // Create
-                // Check if handle exists
-                Profile.findOne({ handle: profileFields.handle })
-                    .then(profile => {
-                        if (profile) {
-                            res.status(400).json({ errMsg: "Username already exists" });
-                        }
-                        // Save
-                        new Profile(profileFields).save()
-                            .then(profile => res.json(profile));
-                    });
-            }
-        });
+                // Save
+                new Profile(profileFields).save()
+                    .then(profile => res.json(profile));
+                };
+        })
 });
 
 // @route   DELETE api/profile/

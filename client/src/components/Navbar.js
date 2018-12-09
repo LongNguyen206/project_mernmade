@@ -19,15 +19,16 @@ class NavbarComp extends Component {
     render() {
         const { isAuthenticated, user } = this.props.auth;
         const authLinks = ([
-            <NavItem title="My Profile" href='/myprofile'>
+            <NavItem key={1} title="My Profile" href='/myprofile'>
                 <img 
+                    alt={user.name}
                     src={user.avatar}
                     style={{ width: '20px', marginRight: '10px', borderRadius: '50%' }}
                 />
                 {user.name}
             </NavItem>,
-            <NavItem title="Saved Accounts">saved</NavItem>,
-            <NavItem onClick={this.logOut}>log out</NavItem>
+            <NavItem key={2} title="Saved Accounts">saved</NavItem>,
+            <NavItem key={3} onClick={this.logOut}>log out</NavItem>
         ]);
         const guestLinks = (
             // if user is unauthenticated and at '/register' path, hide the Sign Up link
@@ -69,5 +70,4 @@ export default connect(mapStateToProps, {
     logout, 
     clearCurrentProfile,
     clearAllAccounts
-})
-(withRouter(NavbarComp));
+})(withRouter(NavbarComp));
