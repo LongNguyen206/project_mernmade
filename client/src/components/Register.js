@@ -14,20 +14,20 @@ class Register extends Component {
         if (this.props.auth.isAuthenticated) {
             this.props.history.push('/search');
         }
-    }
+    };
 
     onSubmit = async formData => {
         // We need to call some action creator that will contact backend server
         await this.props.register(formData);
         if (!this.props.errorMessage) {
-            this.props.history.push('/search');
+            this.props.history.push('/myprofile');
         }
     };
 
     responseFacebook = async res => {
         await this.props.oauthFacebook(res.accessToken);
         if (!this.props.errorMessage) {
-            this.props.history.push('/search');
+            this.props.history.push('/myprofile');
         }
     };
 

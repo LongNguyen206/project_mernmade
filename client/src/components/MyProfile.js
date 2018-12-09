@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { Container, Row, Col, Button, Input } from 'react-materialize';
 import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
-import { compose } from 'redux';
-import { withRouter } from "react-router-dom";
 
 import { getCurrentProfile, changeProfile } from '../actions/profileActions';
 import Loader from './Loader';
@@ -25,14 +23,7 @@ class MyProfile extends Component {
   render() {
     const { user } = this.props.auth;
     const { profile, loading, errorMessage } = this.props.profile;
-    if (profile) {
-        const initData = {
-        handle: profile.handle,
-        company: profile.company,
-        website: profile.website
-      };
-      this.props.initialize(initData);
-    }
+    // Check if the existing profile has loaded, then initialize Redux form with those values
     
     let loader, myprofileContent, profileTemplate;
 
@@ -47,27 +38,27 @@ class MyProfile extends Component {
               </div>
             </Col>
             <Col s={9}>
-              <small className="d-block pb-3">* required fields</small>
+              <medium className="d-block pb-3">* required fields</medium>
               <Input
-                  disabled
-                  name="name" 
-                  type="text" 
-                  id="profile_name" 
-                  label="Your name"
-                  defaultValue={user.name + ' (cannot be changed)'} 
-                  s={11}
-                />
-                <Input
-                  disabled 
-                  name="email" 
-                  type="text" 
-                  id="profile_email" 
-                  label="Email" 
-                  defaultValue={user.email + ' (cannot be changed)'} 
-                  s={11} 
-                  component={CustomProfileInput} 
-                /> 
-              <form initialValues={{ handle: "blabla" }} onSubmit={this.props.handleSubmit(this.onSubmit)}>
+                disabled
+                name="name" 
+                type="text" 
+                id="profile_name" 
+                label="Your name"
+                defaultValue={user.name + ' (cannot be changed)'} 
+                s={11}
+              />
+              <Input
+                disabled 
+                name="email" 
+                type="text" 
+                id="profile_email" 
+                label="Email" 
+                defaultValue={user.email + ' (cannot be changed)'} 
+                s={11} 
+                component={CustomProfileInput} 
+              /> 
+              <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
                 <Field 
                   name="handle" 
                   type="text" 
@@ -82,18 +73,18 @@ class MyProfile extends Component {
                   name="company" 
                   type="text" 
                   id="profile_company" 
-                  label="Your company" 
+                  label="Your company"
+                  defaultValue={profile.company} 
                   s={11} 
-                  defaultValue={profile.company}
                   component={CustomProfileInput} 
                 />
                 <Field 
                   name="website" 
                   type="text" 
                   id="profile_website" 
-                  label="Your website" 
+                  label="Your website"
+                  defaultValue={profile.website}  
                   s={11}
-                  defaultValue={profile.website}
                   component={CustomProfileInput} 
                 />
                 { errorMessage ? 
@@ -158,15 +149,18 @@ const mapStateToProps = state => {
   return {
     profile: state.profile,
     auth: state.auth,
-    errorMessage: state.profile.errorMessage
+    errorMessage: state.profile.errorMessage,
+    initialValues: state.profile.profile
   }
 };
 
-export default compose(
-  withRouter,
-  connect(mapStateToProps, { getCurrentProfile, changeProfile }),
-  reduxForm({ 
-    form: 'profile',
-    enableReinitialize: true
-  })
+MyProfile = reduxForm({
+  form: 'UsersShowForm',
+  enableReinitialize: true
+})(MyProfile);
+
+MyProfile = connect(
+  mapStateToProps, { getCurrentProfile, changeProfile }          
 )(MyProfile);
+
+export default MyProfile;

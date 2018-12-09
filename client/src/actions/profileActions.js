@@ -26,7 +26,7 @@ export const getCurrentProfile = () => {
     }
 };
 
-// Get Current profile
+// Create or Edit current profile
 export const changeProfile = profileData => {
     return async dispatch => {
         try {

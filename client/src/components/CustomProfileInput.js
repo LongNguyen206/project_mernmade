@@ -14,7 +14,7 @@ export default class CustomProfileInput extends Component {
                     type={this.props.type}
                     s={this.props.s}
                     placeholder={this.props.placeholder}
-                    value={value || this.props.defaultValue}
+                    value={value}
                     onChange={onChange}
                 />
             </div>

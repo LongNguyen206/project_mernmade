@@ -21,7 +21,7 @@ export default class CustomSelectInput extends Component {
                     defaultValue={this.props.defaultValue}
                     s={this.props.s}
                     value={value || this.props.defaultValue}
-                    onChange={this.props.onChange}
+                    onChange={onChange}
                 >
                 {selectOptions}
                 </Input>

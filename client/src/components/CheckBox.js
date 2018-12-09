@@ -5,7 +5,7 @@ export const CheckBox = props => {
   return (
     <li>
       <label>
-        <input
+        <Input
           key={props.id}
           onClick={props.handleFilter}
           type='checkbox'

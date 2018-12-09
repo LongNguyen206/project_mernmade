@@ -1,134 +1,66 @@
-import React, { Component, Fragment } from "react";
-import { Row, Col, Autocomplete, Input, Button, Card } from "react-materialize";
-import Background from "../img/SearchPagephoto.jpg";
-import SearchCard from "./SearchCard";
+import React, { Component } from "react";
+import { connect } from 'react-redux';
+import { compose } from 'redux';
+import { withRouter } from "react-router-dom";
 
-const headerStyle = {
-  // backgroundImage: `url( ${Background} )`,
-  height: "100vh",
-  width: "100%",
-  backgroundSize: "cover"
-};
-
-const autoCompleteStyle = {
-  backgroundColor: "white",
-  marginTop: "490px",
-
-  width: "300px"
-};
-
-const locationStyle = {
-  backgroundColor: "white",
-  marginTop: "490px",
-
-  width: "200px"
-};
-
-const dropDownStyle = {
-  backgroundColor: "white",
-  marginTop: "480px",
-  maginLeft: "100px",
-
-  width: "500px"
-};
-
-const buttonStyle = {
-  marginTop: "490px",
-  height: "55px"
-};
+import { getAllAccounts } from '../actions/accountActions';
+import Loader from './Loader';
+import CardGrid from './CardGrid';
 
 class SearchPage extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      platform: "",
-      industry: "",
-      location: ""
+    constructor(props) {
+        super(props);
+        this.state = {
+            accounts: []
+        }
     };
-  }
 
-  onChangeInput = event => {
-    this.setState({
-      platform: event.target.value
-    });
-  };
-  onChangeAutoComplete = event => {
-    console.log("before", event.target.value);
-    this.setState({
-      industry: event.target.value
-    });
-  };
+    componentDidMount() {
+        this.props.getAllAccounts();
+    };
 
-  onChangeLocation = event => {
-    this.setState({
-      location: event.target.value
-    });
-  };
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.accounts.length !== 0) {
+            this.setState({
+                accounts: nextProps.accounts.accounts
+            })
+        }
+    };
 
-  onSubmit = event => {
-    this.props.history.push({
-      pathname: "/search_result",
-      state: {
-        industry: this.state.industry,
-        platform: this.state.platform,
-        location: this.state.location
-      }
-    });
-  };
+    render () {
+        const { accounts, loading } = this.props.accounts;
+        let loader, accountsGrid;
 
-  render() {
-    return (
-      <Fragment>
-        <div style={headerStyle}>
-          <Row>
-            <form>
-              <div style={dropDownStyle}>
-                <Input
-                  backgroundColor="white"
-                  type="select"
-                  label="Materialize Select"
-                  onChange={this.onChangeInput}
-                  value={this.state.value}
-                >
-                  <option value="instagram">instagram</option>
-                  <option value="youtube">youtube</option>
-                  <option value="twitter">twitter</option>
-                  <option value="facebook">facebook</option>
-                </Input>
-              </div>
+        if (accounts === null || loading ) {
+            loader = <Loader />;
+            accountsGrid = null;
+        } else if (accounts.length === 0) {
+            // In case no accounts found
+            loader = <h3>Oops, could not get any accounts</h3>;
+            accountsGrid = null;
+        } else {
+            loader = null;
+            accountsGrid = <CardGrid accounts={this.state.accounts} />;
+        }
 
-              <Autocomplete
-                onChange={this.onChangeAutoComplete}
-                style={autoCompleteStyle}
-                placeholder="which Category?"
-                data={{
-                  food: {
-                    value: "food"
-                  },
-                  tech: null
-                }}
-              />
-
-              <Autocomplete
-                onChange={this.onChangeLocation}
-                style={locationStyle}
-                placeholder="Which Country?"
-                data={{
-                  Australia: {
-                    value: "australia"
-                  },
-                  tech: null
-                }}
-              />
-              <Button onClick={this.onSubmit} style={buttonStyle} waves="light">
-                Submit
-              </Button>
-            </form>
-          </Row>
-        </div>
-      </Fragment>
-    );
-  }
+        return (
+            <div className="searchpage">
+                {loader}
+                {accountsGrid}
+            </div>
+        )
+    };
 }
 
-export default SearchPage;
+// linking backend props to frontend state
+const mapStateToProps = state => {
+    return {
+        accounts: state.account,
+        errorMessage: state.account.errorMessage
+    }
+};
+
+export default compose(
+    withRouter,
+    connect(mapStateToProps, { getAllAccounts })
+)(SearchPage);

@@ -79,6 +79,10 @@ router.post('/handle/:handle/shortlist', passport.authenticate('jwt', { session:
                             // Else, add it to the start of shortlist array
                             profile.shortlist.unshift(account.id);
                         }
+                    } else {
+                        return res.status(404).json({
+                            errMsg: "Please Create a profile first"
+                        })
                     }
                     profile.save()
                     .then(profile => res.json(profile));

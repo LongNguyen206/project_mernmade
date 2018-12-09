@@ -20,8 +20,7 @@ import Register from './components/Register';
 import Login from './components/Login';
 import MyProfile from './components/MyProfile';
 import SearchPage from "./components/SearchPage";
-import ListingsPage from "./components/ListingsPage";
-import IndividualProfile from "./components/IndividualProfile";
+import Account from "./components/Account";
 import About from './FooterPages/About';
 import TandC from './FooterPages/TandC';
 import Privacy from './FooterPages/Privacy';
@@ -50,10 +49,9 @@ ReactDOM.render(
                 <Route exact path="/" component={Landing} />
                 <Route exact path="/register" component={Register} />
                 <Route exact path="/login" component={Login} />
-                <Route exact path="/search" component={authGuard(SearchPage)} />
-                <Route exact path="/search_result" component={authGuard(ListingsPage)} />
                 <Route exact path="/myprofile" component={authGuard(MyProfile)} />
-                <Route exact path="/profiletest" component={authGuard(IndividualProfile)} />
+                <Route exact path="/search" component={authGuard(SearchPage)} />
+                <Route exact path="/account/:handle" component={authGuard(Account)} />
                 {/* footer pages */}
                 <Route exact path="/about" component={About} />
                 <Route exact path="/terms" component={TandC} />

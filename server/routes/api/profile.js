@@ -4,7 +4,6 @@ const passport = require('passport');
 // Load 'users' and 'profile' models
 const User = mongoose.model("users");
 const Profile = mongoose.model("profile");
-const Account = mongoose.model("accounts");
 
 // @route   GET api/profile/
 // @desc    Get current user's profile
@@ -128,7 +127,7 @@ router.post('/', passport.authenticate('jwt', { session: false }), (req, res) =>
         });
     }
     // Website format validation
-    if ((req.body.website) && (/^(https?:\/\/)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)$/.test(req.body.website) == false)) {
+    if ((req.body.website) && (/^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/.test(req.body.website) == false)) {
         return res.status(400).json({
             errMsg: "Website is invalid"
         });

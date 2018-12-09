@@ -1,117 +1,114 @@
-import React, { Component, Fragment } from "react";
-import { Row, Card, CardTitle, Col } from "react-materialize";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Paper from "@material-ui/core/Paper";
+import React, { Component } from "react";
+import { Link } from 'react-router-dom';
+import { Col, Card, CardTitle } from 'react-materialize';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
+import { withRouter } from "react-router-dom";
 
-const cardStyle = {
-  marginTop: "52px",
-  minWidth: "300px",
-  height: "500px"
-};
-
-const cardContentStyle = {
-  maxWidth: "500px",
-  height: "700px"
-};
-
-const cardPicture = {
-  maxWidth: "100px",
-  height: "100px",
-  marginBottom: "50px"
-};
-
-const iconStyle = {
-  fontSize: "20px"
-};
-
-const ratingMargin = {
-  marginTop: "10px",
-  backGroundColor: "lightgray"
-};
-
-const profileNameStyle = {
-  fontSize: "20px",
-  color: "black",
-  textDecoration: "none",
-
-  paddingBottom: ".05em",
-  borderBottomWidth: "1px",
-  borderBottomStyle: "solid",
-  borderBottomColor: "rgba(29,29,29,.3)"
-};
-
-const text = {
-  opacity: "0.5"
-};
+import { shortlist } from '../actions/accountActions';
+import { getCurrentProfile } from '../actions/profileActions';
 
 class AccountCard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      profile: {
-        name: "@instagraminfluencer",
-        followers: "67k",
-        bio:
-          "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusantium facere, voluptate molestiae nisi eligendi recusandae blanditiis. Minus, dolorum itaque illo sint quos repudiandae esse atque aut, sit accusantium corrupti deleniti.",
-        rating: "4",
-        profilePicture: ""
-      }
-    };
+      saved: false,
+      shortlist: []
+    }
+  };
+
+
+  componentDidMount() {
+    this.props.getCurrentProfile();
+    
   }
+  
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.profile.profile !== null) {
+        this.setState({
+          shortlist: nextProps.profile.profile.shortlist
+        })
+    }
+    if (this.state.shortlist.includes(this.props.account._id.toString())) {
+      this.setState({
+        saved: true
+      })
+      console.log("match", this.props.account.handle, this.state.saved)
+    }
+  };
 
-  render() {
-    return this.props.filteredProfiles.map(filteredProfile => {
-      return (
-        <Fragment>
-          <Row>
-            <Col s={2} className="grid-example" />
+  onClick = async (handle, profile) => {
+    await this.props.shortlist(handle, profile);
+    this.setState({
+      saved: !this.state.saved
+    })
+  };
 
-            <Col s={8} className="grid-example">
-              <Col s={4} className="grid-example">
-                <Card
-                  style={cardStyle}
-                  className="card small'"
-                  header={<CardTitle />}
-                >
-                  <Row>
-                    <Col>
-                      <img
-                        style={cardPicture}
-                        src="https://www.badmousevinyls.com/image/thumbnails/18/93/vinilos_adhesivos_decorativos_mickey_mouse_1274_MCO17800083_8753_F_jpg-100657-350x350.jpg"
-                        alt=""
-                      />
-                    </Col>
-                    <Col>
-                      <i style={iconStyle} class="fab fa-instagram" />
-                      <Paper style={ratingMargin}>
-                        <p>
-                          Rating : {this.state.profile.rating}{" "}
-                          <i class="fas fa-star" />
-                        </p>
-                      </Paper>
-                    </Col>
-                  </Row>
-                  <a
-                    style={profileNameStyle}
-                    href="https://www.instagram.com/?hl=en"
-                  >
-                    {this.state.profile.name}
-                  </a>
-                  <br />
-                  <br />
-                  <hr />
+  render () {
+    let icon, followerCount, savedIcon;
+    if (this.props.account.platform === 'Instagram') {
+      icon = <i class="fab fa-instagram"></i>
+    } else if (this.props.account.platform === 'Twitter') {
+      icon = <i class="fab fa-twitter"></i>
+    } else if (this.props.account.platform === 'Facebook') {
+      icon = <i class="fab fa-facebook"></i>
+    } else if (this.props.account.platform === 'Youtube') {
+      icon = <i class="fab fa-youtube"></i>
+    }
 
-                  <p style={text}>Bio : {this.state.profile.bio}</p>
-                  <hr />
-                  <p style={text}>Followers : {this.state.profile.followers}</p>
-                </Card>
-              </Col>
-            </Col>
-          </Row>
-        </Fragment>
-      );
-    });
+    let followerStr = this.props.account.followers.toString() ;
+  
+    if (this.props.account.followers < 1000) {
+      followerCount = followerStr
+    } else if (this.props.account.followers < 1000000) {
+      followerCount = (followerStr.slice(0 ,-3)) + '.' + (followerStr[followerStr.length-3]) + 'k'
+    } else {
+      followerCount = (followerStr.slice(0 ,-6)) + '.' + (followerStr[followerStr.length-6]) + 'm'
+    } 
+
+    if (this.state.saved === true) {
+      savedIcon = <i title="Remove from saved" class="fas fa-heart"></i>
+    } else {
+      savedIcon = <i title="Save this account" class="far fa-heart"></i>
+    }
+
+    let truncateDesc;
+    if (this.props.account.description.length > 67) {
+      truncateDesc = this.props.account.description.substr(0,67) + '...'
+    } else {
+      truncateDesc = this.props.account.description
+    }
+
+    return (
+      <Col m={7} s={12}>
+        <Card horizontal header={<CardTitle image={this.props.account.picture}></CardTitle>}>
+          <div className='pre-card-divider'>
+            <p className="card-accountname"><a href={this.props.account.link} target="_blank">{this.props.account.accountName}</a></p>
+            <p className="card-follower-count" title={this.props.account.followers}>{icon} {followerCount}</p>
+            <p className="card-industry">{this.props.account.industry}</p>
+            <Link to={`/account/${this.props.account.handle}`}><p className="card-account-desc">{truncateDesc}</p></Link>
+          </div>
+          <div className="post-card-divider">
+            <hr style={{marginTop: '30px'}} />
+            <p className="card-account-type">{this.props.account.accountType}</p>
+            <a className="card-saved-icon" onClick={this.onClick.bind(this, this.props.account.handle, this.props.profile)}>{savedIcon}</a>
+          </div>
+        </Card>
+      </Col>
+    )
   }
 }
 
-export default AccountCard;
+// linking backend props to frontend state
+const mapStateToProps = state => {
+  return {
+    profile: state.profile,
+    accounts: state.account,
+    errorMessage: state.account.errorMessage
+  }
+};
+
+export default compose(
+  withRouter,
+  connect(mapStateToProps, { getCurrentProfile, shortlist })
+)(AccountCard);

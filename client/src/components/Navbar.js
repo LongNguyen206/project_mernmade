@@ -5,11 +5,13 @@ import { Navbar, NavItem, Modal } from 'react-materialize';
 
 import { logout } from '../actions/authActions';
 import { clearCurrentProfile } from '../actions/profileActions';
+import { clearAllAccounts } from '../actions/accountActions';
 import LoginModal from './LoginModal';
 
 class NavbarComp extends Component {
     logOut = () => {
         this.props.clearCurrentProfile();
+        this.props.clearAllAccounts();
         this.props.logout();
         this.props.history.push('/');
     }
@@ -63,4 +65,9 @@ const mapStateToProps = state => {
     }
 };
 
-export default connect(mapStateToProps, { logout, clearCurrentProfile } )(withRouter(NavbarComp));
+export default connect(mapStateToProps, { 
+    logout, 
+    clearCurrentProfile,
+    clearAllAccounts
+})
+(withRouter(NavbarComp));
