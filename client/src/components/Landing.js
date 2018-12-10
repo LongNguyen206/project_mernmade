@@ -30,7 +30,9 @@ class Landing extends Component {
             <h3 className="app-heading">__Get the app </h3>
             <p className="app-para"> Inspired by the countless hours wasted in search of relevant hashtags and the limited utility of supposedly ‘popular’ hashtags, we decided to develop an alternative - Hashtag Hound App, an intuitive app that sniffs out the exact hashtags you're looking for in minutes. </p>
             <div className="download-icons">
-              <a href="https://itunes.apple.com/us/app/hashtag-hound-instagram-tags/id1295130844?mt=8"><img id="itunes-img" alt="App Store" src={require('../img/applestore.png')} /></a>
+              <a href="https://itunes.apple.com/us/app/hashtag-hound-instagram-tags/id1295130844?mt=8" target="_blank" rel="noopener noreferrer">
+                <img id="itunes-img" alt="App Store" src={require('../img/applestore.png')} />
+              </a>
               {/* <img id="google-img" alt="Google Play" src={require('../img/google-play-badge.png')} /> */}
             </div>
           </Col>

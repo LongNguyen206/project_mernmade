@@ -92,7 +92,7 @@ class AccountCard extends Component {
       cardContent = 
         <Card horizontal header={<CardTitle image={this.props.account.picture}></CardTitle>}>
           <div className='pre-card-divider'>
-            <p className="card-accountname"><a href={this.props.account.link} target="_blank">{this.props.account.accountName}</a></p>
+            <p className="card-accountname"><a href={this.props.account.link} target="_blank" rel="noopener noreferrer">{this.props.account.accountName}</a></p>
             <p className="card-follower-count" title={this.props.account.followers}>{icon} {followerCount}</p>
             <p className="card-industry">{this.props.account.industry}</p>
             <Link to={`/account/${this.props.account.handle}`}><p className="card-account-desc">{truncateDesc}</p></Link>

@@ -88,7 +88,7 @@ router.post("/register", (req, res) => {
               jwt.sign(
                 payload, 
                 process.env.SECRETORKEY, 
-                { expiresIn: 7200 }, 
+                { expiresIn: 3600 }, 
                 (err, token) => {
                   res.json({
                     success: true,
@@ -146,7 +146,7 @@ router.post("/login", (req, res, next) => {
           jwt.sign(
             payload, 
             process.env.SECRETORKEY, 
-            { expiresIn: 7200 }, 
+            { expiresIn: 3600 }, 
             (err, token) => {
               res.json({
                 success: true,
@@ -188,7 +188,7 @@ router.post("/auth/facebook", passport.authenticate('facebookToken', { session: 
     jwt.sign(
       payload, 
       process.env.SECRETORKEY, 
-      { expiresIn: 7200 }, 
+      { expiresIn: 3600 }, 
       (err, token) => {
         res.json({
           success: true,
