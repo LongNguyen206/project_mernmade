@@ -80,7 +80,7 @@ class Register extends Component {
                                 component={CustomAuthInput}
                             />
                             { this.props.errorMessage ? 
-                                <p className="form-group" style={{color: 'red', fontSize: '13px'}}>
+                                <p className="form-group" style={{color: 'red', marginLeft: '10%', fontSize: '13px'}}>
                                     *{ this.props.errorMessage }
                                 </p>
                             : null}
