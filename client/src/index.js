@@ -13,6 +13,7 @@ import * as serviceWorker from './serviceWorker';
 import reducers from './reducers';
 import { setCurrentUser, logout } from './actions/authActions';
 import { clearCurrentProfile } from './actions/profileActions';
+import { clearAllAccounts } from './actions/accountActions';
 import authGuard from './components/HOCs/authGuard';
 
 import App from './components/App';
@@ -28,34 +29,35 @@ import TandC from './FooterPages/TandC';
 import Privacy from './FooterPages/Privacy';
 
 const jwToken = localStorage.getItem('JWTOKEN');
-axios.defaults.headers.common['Authorization'] = jwToken;
-let current_user = {}
+let current_user = {};
+const store = createStore(
+    reducers,
+    {
+      auth: {
+          isAuthenticated: jwToken ? true : false,
+          user: current_user
+      }
+  }, composeWithDevTools(applyMiddleware(reduxThunk)));
 // Get current user if token is valid
-if (jwToken) {
+if (localStorage.JWTOKEN) {
+    axios.defaults.headers.common['Authorization'] = jwToken;
     current_user = setCurrentUser(jwt_decode(jwToken)).payload;
     // Check for expired token
     const currentTime = Date.now() / 1000;
     if (jwt_decode(jwToken).exp < currentTime) {
-        // Logout user
-        logout();
         // TODO: Clear current Profile
-        clearCurrentProfile();
+        store.dispatch(clearCurrentProfile());
+        store.dispatch(clearAllAccounts());
+        // Logout user
+        store.dispatch(logout());
         // Redirect to login
         window.location.href = '/login';
     }
 }
 
-
 ReactDOM.render(
   <Provider
-    store={createStore(
-      reducers,
-      {
-        auth: {
-            isAuthenticated: jwToken ? true : false,
-            user: current_user
-        }
-    }, composeWithDevTools(applyMiddleware(reduxThunk)))}>
+    store={ store }>
         <BrowserRouter>
             <App>
                 {/* All Routes defined here  */}
