@@ -34,6 +34,6 @@ class CardGrid extends Component {
   render() {
     return (<div> {this.separateElement()} </div>);
   }
-  };
+};
 
 export default CardGrid;

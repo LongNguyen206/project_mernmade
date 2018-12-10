@@ -11,7 +11,8 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import './styling/Style.css';
 import * as serviceWorker from './serviceWorker';
 import reducers from './reducers';
-import { setCurrentUser } from './actions/authActions';
+import { setCurrentUser, logout } from './actions/authActions';
+import { clearCurrentProfile } from './actions/profileActions';
 import authGuard from './components/HOCs/authGuard';
 
 import App from './components/App';
@@ -31,8 +32,19 @@ axios.defaults.headers.common['Authorization'] = jwToken;
 let current_user = {}
 // Get current user if token is valid
 if (jwToken) {
-    current_user = setCurrentUser(jwt_decode(jwToken)).payload
+    current_user = setCurrentUser(jwt_decode(jwToken)).payload;
+    // Check for expired token
+    const currentTime = Date.now() / 1000;
+    if (jwt_decode(jwToken).exp < currentTime) {
+        // Logout user
+        logout();
+        // TODO: Clear current Profile
+        clearCurrentProfile();
+        // Redirect to login
+        window.location.href = '/login';
+    }
 }
+
 
 ReactDOM.render(
   <Provider

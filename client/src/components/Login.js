@@ -40,8 +40,8 @@ export class Login extends Component {
                     <h4 className="register-title">Log In</h4>
                     <Row className="form-row">
                         <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
-                            <Field name="email" type="email" id="login_email" label="Enter your email" s={12} component={CustomAuthInput} />
-                            <Field name="password" type="password" id="login_password" label="Enter your password" s={12} component={CustomAuthInput} />
+                            <Field name="email" type="email" id="login_email" label="Enter your email" s={11} component={CustomAuthInput} />
+                            <Field name="password" type="password" id="login_password" label="Enter your password" s={11} component={CustomAuthInput} />
                             { this.props.errorMessage ?
                             <p className="form-group" style={{color: 'red', marginLeft: '10%', fontSize: '13px'}}>
                                 *{ this.props.errorMessage }
