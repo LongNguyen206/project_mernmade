@@ -27,7 +27,7 @@ class NavbarComp extends Component {
                 />
                 {user.name}
             </NavItem>,
-            <NavItem key={2} title="Saved Accounts">saved</NavItem>,
+            <NavItem key={2} href='/saved' title="Saved Accounts">saved</NavItem>,
             <NavItem key={3} onClick={this.logOut}>log out</NavItem>
         ]);
         const guestLinks = (

@@ -83,8 +83,8 @@ class AccountCard extends Component {
         savedIcon = <i title="Save this account" className="far fa-bookmark far-card"></i>
       }
 
-      if (this.props.account.description.length > 67) {
-        truncateDesc = this.props.account.description.substr(0,67) + '...'
+      if (this.props.account.description.length > 50) {
+        truncateDesc = this.props.account.description.substr(0,50) + '...'
       } else {
         truncateDesc = this.props.account.description
       }

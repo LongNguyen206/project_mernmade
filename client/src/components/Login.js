@@ -9,7 +9,7 @@ import FacebookLogin from 'react-facebook-login';
 import * as actions from '../actions/authActions';
 import CustomAuthInput from './CustomAuthInput';
 
-class Login extends Component {
+export class Login extends Component {
     componentDidMount() {
         if (this.props.auth.isAuthenticated) {
             this.props.history.push('/search');
@@ -43,7 +43,7 @@ class Login extends Component {
                             <Field name="email" type="email" id="login_email" label="Enter your email" s={12} component={CustomAuthInput} />
                             <Field name="password" type="password" id="login_password" label="Enter your password" s={12} component={CustomAuthInput} />
                             { this.props.errorMessage ?
-                            <p className="form-group" style={{color: 'red', fontSize: '13px'}}>
+                            <p className="form-group" style={{color: 'red', marginLeft: '10%', fontSize: '13px'}}>
                                 *{ this.props.errorMessage }
                             </p>
                             : null}

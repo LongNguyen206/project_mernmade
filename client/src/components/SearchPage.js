@@ -173,24 +173,23 @@ class SearchPage extends Component {
             accountsGrid = 
             <div>
             <Row>
-    <Input  type='checkbox' value='red' label='Red' />
-    <Input name='group1' type='checkbox' value='yellow' label='Yellow' defaultValue='checked' />
-    <Input name='group1' type='checkbox' value='green' label='Green' className='filled-in' defaultChecked='checked' />
-    <Input name='group1' type='checkbox' value='brown' label='Brown' disabled='disabled' />
-</Row>
                 <SearchBar onSearch={this.onSearch}/>
-                <div style={{marginLeft: '100px'}}>
-                <Input type="checkbox"/>
-                <FilterBar
-                    platforms={this.state.platforms}
-                    accountTypes={this.state.accountTypes}
-                    handleAllChecked={this.handleAllChecked}
-                    handlePlatform={this.handlePlatform}
-                    handleAccountType={this.handleAccountType}
-                />
-                </div>
-                <CardGrid accounts={this.state.filteredAccounts} />
-            </div>    
+            </Row>
+            <Row>
+                <Col l={2} style={{marginLeft: '25px', width: '150px', float: 'left'}}>
+                    <FilterBar
+                        platforms={this.state.platforms}
+                        accountTypes={this.state.accountTypes}
+                        handleAllChecked={this.handleAllChecked}
+                        handlePlatform={this.handlePlatform}
+                        handleAccountType={this.handleAccountType}
+                    />
+                </Col>
+                <Col l={10} style={{float: 'right'}}>
+                    <CardGrid accounts={this.state.filteredAccounts} />
+                </Col>
+            </Row>
+            </div>
         }
 
         return (
@@ -216,28 +215,25 @@ class SearchBar extends Component {
 
 class FilterBar extends Component {
     render() {
-        return (
+        return (  
             <div>
                 <ul>
                     <p>Platform</p>
                     <div>
                         {this.props.platforms.map(platform => {
                             return (<Row>
-                                        <Input key={platform.id} onClick={platform.handlePlatform} type="checkbox" checked={platform.isChecked} value={platform.value} />
-                                    </Row>);
+                                        <Input label={platform.value} key={platform.id} onClick={this.props.handlePlatform} type="checkbox" checked={platform.isChecked} value={platform.value} />
+                                    </Row>
+                            );
                         })}
                     </div>
                     <hr />
                     <p>Account Type</p>
                     <div>{this.props.accountTypes.map(type => {
-                        return (<li>
-                                    <p>
-                                        <label>
-                                            <Input key={type.id} onClick={type.handleAccountType} type="checkbox" checked={type.isChecked} value={type.value} />{" "}
-                                            <span>{type.value}</span>
-                                        </label>
-                                    </p> 
-                                </li>);
+                        return (<Row>
+                                    <Input label={type.value} key={type.id} onClick={this.props.handleAccountType} type="checkbox" checked={type.isChecked} value={type.value} />{" "}
+                                </Row>
+                            );
                         })}
                     </div>
                 </ul>
