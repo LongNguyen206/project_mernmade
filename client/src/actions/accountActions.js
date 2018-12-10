@@ -68,7 +68,7 @@ export const shortlist = handle => {
 // Loader
 export const setAccountsLoading = () => {
     return {
-        type: 'PROFILE_LOADING'
+        type: 'ACCOUNTS_LOADING'
     }
 }
 

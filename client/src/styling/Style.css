@@ -582,8 +582,8 @@ footer.page-footer .footer-copyright {
 .card.horizontal {
   height: 250px;
   max-height: 250px;
-  width: 500px;
-  max-width:500px;
+  width: 450px;
+  max-width:450px;
   font-family: 'Lato', sans-serif;
   text-align: right;
   position: relative;

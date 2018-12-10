@@ -2,7 +2,9 @@ import axios from 'axios';
 
 import {
     GET_PROFILE,
+    GET_ALL_ACCOUNTS,
     PROFILE_LOADING,
+    ACCOUNTS_LOADING,
     CLEAR_CURRENT_PROFILE,
     PROFILE_ERROR 
     } from './types';
@@ -21,6 +23,25 @@ export const getCurrentProfile = () => {
             dispatch({
                 type: 'GET_PROFILE',
                 payload: {}
+            });
+        }
+    }
+};
+
+// Get Current profile's shortlist
+export const getShortlist = () => {
+    return async dispatch => {
+        try {
+            dispatch(setAccountsLoading());
+            const res = await axios.get('/api/profile/shortlist');
+            dispatch({
+                type: 'GET_ALL_ACCOUNTS',
+                payload: res.data
+            });
+        } catch(err) {
+            dispatch({
+                type: 'PROFILE_ERRORS',
+                payload: []
             });
         }
     }
@@ -48,6 +69,12 @@ export const changeProfile = profileData => {
 export const setProfileLoading = () => {
     return {
         type: 'PROFILE_LOADING'
+    }
+}
+
+export const setAccountsLoading = () => {
+    return {
+        type: 'ACCOUNTS_LOADING'
     }
 }
 

@@ -19,6 +19,7 @@ import Landing from './components/Landing';
 import Register from './components/Register';
 import Login from './components/Login';
 import MyProfile from './components/MyProfile';
+import Saved from './components/Saved';
 import SearchPage from "./components/SearchPage";
 import Account from "./components/Account";
 import About from './FooterPages/About';
@@ -52,6 +53,7 @@ ReactDOM.render(
                 <Route exact path="/myprofile" component={authGuard(MyProfile)} />
                 <Route exact path="/search" component={authGuard(SearchPage)} />
                 <Route exact path="/account/:handle" component={authGuard(Account)} />
+                <Route exact path="/saved" component={authGuard(Saved)} />
                 {/* footer pages */}
                 <Route exact path="/about" component={About} />
                 <Route exact path="/terms" component={TandC} />

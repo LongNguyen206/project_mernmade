@@ -83,7 +83,7 @@ router.get('/user/:user_id', passport.authenticate('jwt', { session: false }), (
 // @access  Private
 router.get('/shortlist', passport.authenticate('jwt', { session: false }), (req, res) => {
     Profile.findOne({ user: req.user.id })
-        .populate('shortlist', ['name', 'platform'])
+        .populate('shortlist')
         .then(profile => {
             if (!profile) {
                 return res.status(404).json({
