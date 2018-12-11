@@ -521,6 +521,18 @@ All data HashtagHound collects is stored electronically on the DigitalOcean infr
 
 # Part B Documentation
 
+### Project Management
+
+##1. Record interactions with your client in a diary format
+
+![User Workflow](https://github.com/LongNguyen206/project_mernmade/blob/dev/doc_images/User_workflow_diagram.png)![User Workflow](https://github.com/LongNguyen206/project_mernmade/blob/dev/doc_images/User_workflow_diagram.png)![User Workflow](https://github.com/LongNguyen206/project_mernmade/blob/dev/doc_images/User_workflow_diagram.png)![User Workflow](https://github.com/LongNguyen206/project_mernmade/blob/dev/doc_images/User_workflow_diagram.png)![User Workflow](https://github.com/LongNguyen206/project_mernmade/blob/dev/doc_images/User_workflow_diagram.png)
+
+##3. Develop project charter, including preliminary statement of project scope and obtain sign-off
+
+##10. As a team, conduct post project review
+
+Overall the implementation of HashtagHound was a success with the majority of our user stories implemented. One pitfall was the Admin Dashboard stretch goal. While successfully creating the table for the dashboard, unfortunately we were unable to connect it to the API back-end. Better planning and stricter deadlines would help to alleviate this problem in the future. The second pitfall was the implementation of the Instagram API, unfortunately due to the Cambridge Analytica scandal the lock-down of the majority of Instagram API end-points complicated the implementation. This problem could be avoided in the future if with better future planning and securing a HTTPS certification easier in the project.
+
 ### Application Design
 
 ## 1. A 350 word summary of your application including problem definition and solution
