@@ -8,6 +8,8 @@
 
 ---
 
+# Part A Documentation
+
 ## Table of content:
 
 1. [Who is your client?](#client)
@@ -255,6 +257,7 @@ Admin
 - email: String
 - password: String(hashed and salted value)
 ```
+
 ```
 User
 
@@ -267,6 +270,7 @@ User
 - facebookID
 - LinkedInID
 ```
+
 ```
 InfluencerListing
 
@@ -278,6 +282,7 @@ InfluencerListing
 - engagementRate: float
 - description: text
 ```
+
 ```
 Review:
 
@@ -308,11 +313,32 @@ The **Registered Users** can view influencer profiles. **Registered Users** can 
 
 ## 15. Provide wireframes for your App:
 
+Intial Wirefame Drafts :
+
 The first wireframe outlines the landing page Dashboard with the main search/filter features to be applied to the influencers.
 ![First Wireframe](https://github.com/LongNguyen206/project_mernmade/blob/dev/doc_images/wireframe.png)
 a ![Second Wireframe](https://github.com/LongNguyen206/project_mernmade/blob/dev/doc_images/wireframe2.png)
 The last wire-frame is from the admin perspective, allowing the admin to individually add new influencers.
 ![Third Wireframe](https://github.com/LongNguyen206/project_mernmade/blob/dev/doc_images/wireframe3.png)
+
+Second Wireframe Drafts :
+Second draft where made for our app, after further collabration and consideration of our clients needs.
+
+Second draft for the landing page, we wanted to keep it simple,direct and straight foward as this is the first avenue into allowing users to signup or login.
+![Second draft wireframe landing page](https://github.com/LongNguyen206/project_mernmade/blob/dev/doc_images/landing_page.png)
+
+The draft for the login page, we wanted to go with the idea of using a modal as it requires the user attention/interaction as it's important for most websites that the user login correctly.
+![Second draft wireframe login page](https://github.com/LongNguyen206/project_mernmade/blob/dev/doc_images/landing_page_log_in.png)
+
+The sites signup page, simple and elegant, captures the users data to generate a users account.
+![Second draft wireframe signup page](https://github.com/LongNguyen206/project_mernmade/blob/dev/doc_images/signup_page.png)
+
+This was originally going to be a prefilter searchpage right after the user logs in. Its basis was to set prerequisite before heading to the main listing page, it was an idea to give the user a quick response of accounts their were looking for intially after.
+![Second draft wireframe influencer searchpage](https://github.com/LongNguyen206/project_mernmade/blob/dev/doc_images/influener_search_page.png)
+
+Here was going to be the sites bread and butter, it was going to show you all the results of account the user was looking for, based on platform, type of account, follower count, engagment rate, and location.
+As you can see below, there is a side filter bar, where the user would be able to effortlessly filter through all accounts.
+![Second draft wireframe influencer listingpage](https://github.com/LongNguyen206/project_mernmade/blob/dev/doc_images/influencer_listings.png)
 
 <a name="taskAllocation"> </a>
 
@@ -490,3 +516,115 @@ Escaping is a means ensuring data an application has received is secure before r
 
 HashtagHound has never collected private information from the account user unless previously provided with consent. We only collect publicly available social media data from official APIs (Twitter, Facebook, Instagram & YouTube). Data collected from our social platform partners complies with their standard [Platform Policies](https://www.instagram.com/about/legal/terms/api/) and [Terms and Services](https://help.instagram.com/581066165581870).
 All data HashtagHound collects is stored electronically on the DigitalOcean infrastructure, <dataCentreLocation>. Our application servers and database servers run inside an DigitalOcean Private Cloud. This secure database containing our Users, Visitors and User data is only accessible on our application servers and by approved DigitalOcean Engineers. All data stored by HashtagHound is encrypted at rest.
+
+---
+
+# Part B Documentation
+
+### Project Management
+
+##1. Record interactions with your client in a diary format
+
+##3. Develop project charter, including preliminary statement of project scope and obtain sign-off
+
+Project Name: Hashtag Hound
+
+Project description: An application that allows businesses to filter through manually entered and genuine influencers and leave a review after they have worked with them. Companies have the ability to leave an anonymous review on influencers they choose to work with.
+
+Project Manager: Long Nguyen
+
+Business Case: Our client, Mary owns a social media agency in New York and was having trouble managing her clients. Her clients do not have a platform to be in contact with her firm and she is unable to manage her list of influencers in an efficient way. Our application helps her to do that.
+
+Team Members: Mariam , Long, Jesse , Oliver
+
+Expected goals of each member:
+
+Mariam – Frontend development with user experience, main design
+
+Long – Backend development with database, authentication
+
+Jesse – frontend development of filter system and profiles
+
+Oliver – Frontend for the admin app
+
+Challenges and constraints:
+
+Getting the review system up and running
+
+Attaching the backend admin system to the frontend
+
+Taking too much time to choose a UI framework
+
+Instagram api authentication
+
+##10. As a team, conduct post project review
+
+Post project review:
+
+Mariam – I was in charge of front end design with the application and I really enjoyed communicating with the client back and forth to understand the type of look and design she was going for. She was after a clean, minimal look with very simple colors such as blue, grey and white. The front end was very time consuming because that is what the customer sees and probably the only thing they care about because it is an experience. I felt that if we had the client send us exactly what she wanted from the very beginning we would have been able to save a lot of time and focus on more important areas like implementing a solid review system with stars. At first there was a bit of communication issues because I was not used to team work with programming but after the first week it was all in sync and I was very much enjoying the project. I believe we could have gotten better results if we had figured out what to use for the front end and communicated the design with the client better. Testing was fun.
+
+Jesse – I was in charge filtering system for the influencer, listing pages, creating initial wireframes. The wireframes forced me to learn a new skill because I hadn’t wireframed with figma before. I liked that I was able to get a deeper understanding of react and state control. What I didn’t like was., it was very difficult because I didn’t implement redux, thus I now understand its importance. The filter bar was very time consuming, although I got it done it took a lot of my time.
+
+Long - I was in charge of backend development with the routes, models, redux and deployment. I learnt how to deploy applications, continuous integrations and agile. I had a lot of difficulty with digital oceana nd get facebook authentication to work. The project started very well but a lot of features took very time to implement. A lot of things had to be done manually because w edidn tuse a lot of ready packages which caused a lot of thme to be buggy like the search bar, card creation , flex box.
+
+Overall the implementation of HashtagHound was a success with the majority of our user stories implemented. One pitfall was the Admin Dashboard stretch goal. While successfully creating the table for the dashboard, unfortunately we were unable to connect it to the API back-end. Better planning and stricter deadlines would help to alleviate this problem in the future. The second pitfall was the implementation of the Instagram API, unfortunately due to the Cambridge Analytica scandal the lock-down of the majority of Instagram API end-points complicated the implementation. This problem could be avoided in the future if with better future planning and securing a HTTPS certification easier in the project.
+
+### Application Design
+
+## 1. A 350 word summary of your application including problem definition and solution
+
+Hashtag Hound was designed to create an easy to navigate constantly updating B2B database of influencers, that potential Clients can easily filter/sort through, saving time for both the potential Client and Mary. Several features help Hashtag Hound to stand out amongst the competition.
+
+Firstly, the Shortlist capability allows the client to save a potential influencer to a personal shortlist under the saved tab. This was an important feature as it saves time for the Client while simultaneously encouraging the client to return in the near future.
+
+Secondly, Hashtag Hound has an in-depth Review system that combines an engagement rate (a number from 1-5 that is derived from influencers activity on social media) with a commenting functionality that allows previous clients that have worked with an influencer before. The engagement rate helps to the client to quickly access how active an influencer is, without the need to tediously scan through a particular influencers social media accounts. The commenting review functionality provides a unique insight for the Client as only past sponsors of the said influencer can post reviews. This insight can help a client distinguish the best fit for them based on the review.
+
+Lastly, Hashtag Hound provides several filters granting the Client the ability to filter through specific social media accounts. This allows the client to decide on the type of audience, whether that be Facebook, YouTube, Twitter, etc or all of them. Overall this helps to save the Client time
+
+## 3. User stories for the whole application:
+
+Referenced Above in [Question 14](#userStories)
+
+## 4. A workflow diagram of the user journey/s:
+
+![User Workflow](https://github.com/LongNguyen206/project_mernmade/blob/dev/doc_images/User_workflow_diagram.png)
+
+## 5. Wireframes for all main pages of your app:
+
+Second Wireframe Drafts :
+<br>
+Second draft where made for our app, after further collabration and consideration of our clients needs.
+
+Second draft for the landing page, we wanted to keep it simple,direct and straight foward as this is the first avenue into allowing users to signup or login.
+<br>
+![Second draft wireframe landing page](https://github.com/LongNguyen206/project_mernmade/blob/dev/doc_images/landing_page.png)
+<br>
+The draft for the login page, we wanted to go with the idea of using a modal as it requires the user attention/interaction as it's important for most websites that the user login correctly.
+<br>
+![Second draft wireframe login page](https://github.com/LongNguyen206/project_mernmade/blob/dev/doc_images/landing_page_log_in.png)
+<br>
+The sites signup page, simple and elegant, captures the users data to generate a users account.
+<br>
+![Second draft wireframe signup page](https://github.com/LongNguyen206/project_mernmade/blob/dev/doc_images/signup_page.png)
+<br>
+This was originally going to be a prefilter searchpage right after the user logs in. Its basis was to set prerequisite before heading to the main listing page, it was an idea to give the user a quick response of accounts their were looking for intially after.
+<br>
+![Second draft wireframe influencer searchpage](https://github.com/LongNguyen206/project_mernmade/blob/dev/doc_images/influener_search_page.png)
+<br>
+Here was going to be the sites bread and butter, it was going to show you all the results of account the user was looking for, based on platform, type of account, follower count, engagment rate, and location.
+As you can see below, there is a side filter bar, where the user would be able to effortlessly filter through all accounts.
+<br>
+![Second draft wireframe influencer listingpage](https://github.com/LongNguyen206/project_mernmade/blob/dev/doc_images/influencer_listings.png)
+<br>
+Current state of our wirefames:
+<br>
+![Current wireframe](https://github.com/LongNguyen206/project_mernmade/blob/dev/doc_images/current_wirefame.png)
+<br>
+
+## 6. Entity Relationship Diagram (ERD):
+
+Referenced Above in [Question 13](#DBschema)
+
+## 7. Project plan and effort estimation
+
+Refer to [Question 16 and 17](#taskAllocation)
