@@ -94,6 +94,7 @@ class MyProfile extends Component {
                   className="header-button" 
                   onClick={this.props.history.goBack} 
                   style={{
+                    fontSize: '1rem',
                     float: 'right', 
                     marginRight: '10%', 
                     width: '150px',
@@ -106,6 +107,7 @@ class MyProfile extends Component {
                   className="header-button" 
                   type="submit" 
                   style={{
+                    fontSize: '1rem',
                     float: 'right', 
                     marginRight: '2%', 
                     width: '200px'

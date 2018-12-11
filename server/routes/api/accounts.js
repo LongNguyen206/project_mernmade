@@ -103,28 +103,39 @@ router.post('/handle/:handle/shortlist', passport.authenticate('jwt', { session:
 // @desc    Add a review to this account, by current user
 // @access  Private
 router.post('/:account_id/review', passport.authenticate('jwt', { session: false }), (req, res) => {
+    console.log("hitting here")
     Account.findById(req.params.account_id)
         .then(account => {
             const newReview = {
-                reviewText: req.body.text,
-                // reviewName: req.body.name,
-                // reviewAvatar: req.user.id,
-                reviewUser: req.user.id
+                reviewText: req.body.reviewText,
+                reviewUserName: req.user.name,
+                reviewUserAvatar: req.user.avatar,
+                reviewUser: req.user.id,
+                reviewRate: req.body.reviewRate
             }
              // Empty text validation
-            if ((!req.body.text) || (req.body.text.trim().length === 0)) {
+            if ((!req.body.reviewText) || (req.body.reviewText.trim().length === 0)) {
                 return res.status(400).json({
                     errMsg: "Text is required"
                 });
             }
             // Text length validation
-            if ((req.body.text.length < 3) || (req.body.text.length > 300)) {
+            if ((req.body.reviewText.length < 3) || (req.body.reviewText.length > 300)) {
                 return res.status(400).json({
                     errMsg: "Review must be between 3 and 300 characters"
                 });
             }
+            // Empty rating validation
+            if (!req.body.reviewRate) {
+                return res.status(400).json({
+                    errMsg: "Rating is required"
+                });
+            }
             // // Add to reviews array
             account.reviews.unshift(newReview);
+            account.numberOfReviews++;
+            account.totalRate += req.body.reviewRate;
+            account.averageRate = (account.totalRate/account.numberOfReviews);
             // Save
             account.save()
                 .then(account => res.json(account));

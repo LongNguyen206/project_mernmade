@@ -2,9 +2,10 @@ import React, { Component } from "react";
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { withRouter } from "react-router-dom";
-import { Input, Icon, Row, Col } from 'react-materialize';
+import { Input, Row, Col } from 'react-materialize';
 
 import { getAllAccounts } from '../actions/accountActions';
+import { getCurrentProfile } from '../actions/profileActions';
 import Loader from './Loader';
 import CardGrid from './CardGrid';
 
@@ -32,6 +33,7 @@ class SearchPage extends Component {
 
     componentDidMount() {
         this.props.getAllAccounts();
+        this.props.getCurrentProfile();
     };
 
     componentWillReceiveProps(nextProps) {
@@ -116,6 +118,7 @@ class SearchPage extends Component {
         } else {
           filterByAccountType = [...filterByAccountType, e.target.value];
         }
+
         this.setState({
             accountTypes: accountTypes,
             filterByAccountType: filterByAccountType
@@ -148,6 +151,7 @@ class SearchPage extends Component {
 
     render () {
         const { accounts, loading } = this.props.accounts;
+        const { profile } = this.props.profile;
         let shownAccounts, loader, accountsGrid;
         if (this.state.filterByPlatform.length === 0) {
             shownAccounts = this.state.accounts;
@@ -161,7 +165,7 @@ class SearchPage extends Component {
             shownAccounts = this.state.filteredAccounts;
         }
 
-        if (accounts === null || loading ) {
+        if (accounts === null || loading || profile === null) {
             loader = <Loader />;
             accountsGrid = null;
         } else if (accounts.length === 0) {
@@ -176,7 +180,8 @@ class SearchPage extends Component {
                     <SearchBar onSearch={this.onSearch}/>
                 </Row>
                 <Row>
-                    <Col l={2} style={{marginLeft: '25px', width: '150px', float: 'left'}}>
+                    <Col l={2} style={{marginLeft: '25px', maxWidth: '220px', float: 'left'}}>
+                        <h5 className='counter'>Accounts found: <b>{this.state.filteredAccounts.length}</b></h5>
                         <FilterBar
                             platforms={this.state.platforms}
                             accountTypes={this.state.accountTypes}
@@ -186,7 +191,7 @@ class SearchPage extends Component {
                         />
                     </Col>
                     <Col l={10} style={{float: 'right', marginTop: "20px"}}>
-                        <CardGrid accounts={this.state.filteredAccounts} />
+                        <CardGrid accounts={this.state.filteredAccounts} profile={this.props.profile}/>
                     </Col>
                 </Row>
             </div>
@@ -206,7 +211,7 @@ class SearchBar extends Component {
         return (
             <div className="filter-list" style={{width: '100%', marginLeft: '10px'}}>
                 <form>
-                    <Input type="text" className="form-control form-control-lg" placeholder="Search" onChange={this.props.onSearch} style={{width: '90vw'}}><Icon style={{marginTop: '50%', width: '97%'}}>search</Icon></Input>
+                    <Input type="text" className="form-control form-control-lg" placeholder="Search for anything in our database" onChange={this.props.onSearch} style={{ width:'97vw', fontSize: '40px' }} />
                 </form>
             </div>
         )
@@ -244,6 +249,7 @@ class FilterBar extends Component {
 // linking backend props to frontend state
 const mapStateToProps = state => {
     return {
+        profile: state.profile,
         accounts: state.accounts,
         errorMessage: state.accounts.errorMessage
     }
@@ -251,5 +257,5 @@ const mapStateToProps = state => {
 
 export default compose(
     withRouter,
-    connect(mapStateToProps, { getAllAccounts })
+    connect(mapStateToProps, { getAllAccounts, getCurrentProfile })
 )(SearchPage);

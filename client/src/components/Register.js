@@ -3,7 +3,7 @@ import { Row, Button } from 'react-materialize';
 import { reduxForm, Field } from 'redux-form';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import FacebookLogin from 'react-facebook-login';
 
 import * as actions from '../actions/authActions';
@@ -101,6 +101,7 @@ class Register extends Component {
                                 />
                             </div>
                         </form>
+                        <p style={{textAlign: 'center', marginBotom: "0"}}>Have an account? Sign in <Link to='/login'>here</Link></p>  
                     </Row>
                 </div>
             </div>

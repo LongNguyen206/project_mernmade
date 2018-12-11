@@ -22,7 +22,7 @@ export const getAllAccounts = () => {
         } catch(err) {
             dispatch({
                 type: 'GET_ALL_ACCOUNTS',
-                payload: "Could not load accounts"
+                payload: []
             });
         }
     }
@@ -54,6 +54,25 @@ export const shortlist = handle => {
             const res = await axios.post(`/api/accounts/handle/${handle}/shortlist`, handle);
             dispatch({
                 type: 'GET_PROFILE',
+                payload: res.data
+            });
+        } catch(err) {
+            dispatch({
+                type: 'ACCOUNTS_ERROR',
+                payload: err.response.data.errMsg
+            });
+        }
+    }
+};
+
+// Add a review
+export const addReview = (account_id, data) => {
+    return async dispatch => {
+        try {
+            const res = await axios.post(`/api/accounts/${account_id}/review`, data);
+            console.log(res.data)
+            dispatch({
+                type: 'GET_ACCOUNT',
                 payload: res.data
             });
         } catch(err) {

@@ -7,11 +7,18 @@ class CardGrid extends Component {
     super(props);
   }
 
-//this function will return array of element 20 divs in this case 
+  //this function will return array of element 20 divs in this case 
   multipleElements() {
     let elements = [];
+    const { profile } = this.props.profile;
     for(let i = 0; i < this.props.accounts.length; i++) {
-      elements.push(<AccountCard key={i} account={this.props.accounts[i]}/>)
+      let saved;
+      if ((profile.shortlist.length !== 0) && (profile.shortlist.includes(this.props.accounts[i]._id))) {
+        saved = true
+      } else {
+        saved = false
+      }
+      elements.push(<AccountCard key={i} account={this.props.accounts[i]} profile={this.props.profile} saved={saved}/>)
     }
     return elements;
   }
@@ -26,7 +33,7 @@ class CardGrid extends Component {
         oneRow.push(multiElements.slice(i, i+3).map(item => {
       return <Col key={i} style={{display: 'inline-block'}}>{item}</Col>
     }))
-      separateElements.push(oneRow.map(itm => {return <Row>{itm}</Row>}))
+      separateElements.push(oneRow.map(itm => {return <Row key={i}>{itm}</Row>}))
     }
     return separateElements;
   }

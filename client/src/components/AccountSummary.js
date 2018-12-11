@@ -1,51 +1,19 @@
 import React, { Component } from 'react';
-import { Row, Col, Input } from 'react-materialize';
+import { Row, Col } from 'react-materialize';
+import ReactStars from 'react-stars';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { withRouter, Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
 import Loader from './Loader';
 import { shortlist } from '../actions/accountActions';
-import { getCurrentProfile } from '../actions/profileActions';
 
 class AccountSummary extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-          saved: false,
-          shortlist: []
-        }
-    };
-
-    componentDidMount() {
-        this.props.getCurrentProfile();
-    }
-    
-    componentWillReceiveProps(nextProps) {
-        if (Object.keys(nextProps.profile).length !== 0) {
-            this.setState({
-                shortlist: nextProps.profile.shortlist
-            });
-            if (this.state.shortlist.includes(this.props.account._id.toString())) {
-                this.setState({
-                    saved: true
-                })
-            }
-        } else {
-            this.setState({
-                saved: false
-            })
-        }
-    };
-
     onClick = async (handle, profile) => {
-        await this.props.shortlist(handle, profile);
-        this.setState({
-          saved: !this.state.saved
-        })
-      };
+        await this.props.shortlist(handle);
+    };
 
-      render () {
+    render () {
         let summaryContent, icon, followerCount, savedIcon, name, engagement, location, description;
     
         if (this.props.account === null) {
@@ -71,7 +39,7 @@ class AccountSummary extends Component {
                 followerCount = (followerStr.slice(0 ,-6)) + '.' + (followerStr[followerStr.length-6]) + 'm'
             };
 
-            if (this.state.saved === true) {
+            if (this.props.saved === true) {
                 savedIcon = <i title="Remove from saved" className="fas fa-bookmark sum-fas"></i>
             } else {
                 savedIcon = <i title="Save this account" className="far fa-bookmark sum-far"></i>
@@ -102,27 +70,41 @@ class AccountSummary extends Component {
             };
 
             summaryContent = 
-                <div className='register-card' style={{width: '100%', marginTop: '5%', padding: '5%'}}>
+                <div className='register-card' style={{width: '100%', padding: '5%'}}>
                     <div className="profile-form" >
                         <Row>
                             <Col m={6} l={6}>
                                 <div className="account-picture">
-                                    <img src={this.props.account.picture} style={{}}/>
+                                    <img src={this.props.account.picture} />
                                 </div>
                             </Col>
                             <Col l={6}>
                                 <div className="account-info">
                                     <div className='pre-summary-divider'>
-                                        {name}
-                                        <p className="sum-accountname" style={{fontSize: '30px', margin: '1rem 0'}}><a href={this.props.account.link} target="_blank">{this.props.account.accountName}</a></p>
+                                        <p className="sum-accountname" style={{fontSize: '30px', margin: '1rem 0'}}>
+                                            <a href={this.props.account.link} target="_blank">{this.props.account.accountName}</a>
+                                        </p>
+                                        {name} 
                                         <p className="sum-follower-count" title={this.props.account.followers} style={{fontSize: '30px', margin: '1rem 0'}}>{icon} {followerCount}</p>
                                         {engagement}
                                         <p className="sum-account-type">Status: <b>{this.props.account.accountType}</b></p>
                                         <p className="sum-industry">Industry: <b>{this.props.account.industry}</b></p>
                                         {location}
+                                        <p>
+                                        <ReactStars
+                                            count={5}
+                                            size={35}
+                                            color2={'#ffd700'}
+                                            value={this.props.account.averageRate}
+                                            edit={false}
+                                            className="review-stars-summary"
+                                        /></p>
+                                        <br />
+                                        <br />
+                                        <p style={{fontSize: '15px', textAlign: 'right', marginTop: '0'}}>(based on {this.props.account.numberOfReviews} reviews)</p>
                                     </div>
                                 </div>
-                                <a className="sum-saved-icon" onClick={this.onClick.bind(this, this.props.account.handle, this.props.profile)}>{savedIcon}</a>
+                                <a className="sum-saved-icon" onClick={this.onClick.bind(this, this.props.account.handle)}>{savedIcon}</a>
                             </Col> 
                         </Row>
                         <Row>
@@ -141,17 +123,8 @@ class AccountSummary extends Component {
         )
     }
 }
-
-// linking backend props to frontend state
-const mapStateToProps = state => {
-    return {
-      profile: state.profile.profile,
-      accounts: state.accounts,
-      errorMessage: state.accounts.errorMessage
-    }
-  };
   
-  export default compose(
+export default compose(
     withRouter,
-    connect(mapStateToProps, { getCurrentProfile, shortlist })
-  )(AccountSummary);
+    connect(null, { shortlist })
+)(AccountSummary);

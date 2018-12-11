@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { Button, Row } from 'react-materialize';
+import { Button, Col } from 'react-materialize';
 import { reduxForm, Field } from 'redux-form';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { withRouter } from "react-router-dom";
 import FacebookLogin from 'react-facebook-login';
+import { Link } from "react-router-dom";
 
 import * as actions from '../actions/authActions';
 import CustomAuthInput from './CustomAuthInput';
@@ -38,12 +39,12 @@ export class Login extends Component {
             <div className='register-card'>
                 <div className="register-form" >
                     <h4 className="register-title">Log In</h4>
-                    <Row className="form-row">
+                    <Col className="form-row">
                         <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
                             <Field name="email" type="email" id="login_email" label="Enter your email" s={11} component={CustomAuthInput} />
                             <Field name="password" type="password" id="login_password" label="Enter your password" s={11} component={CustomAuthInput} />
                             { this.props.errorMessage ?
-                            <p className="form-group" style={{color: 'red', marginLeft: '10%', fontSize: '13px'}}>
+                            <p className="form-group-auth" style={{color: 'red', marginLeft: '15px', fontSize: '13px'}}>
                                 *{ this.props.errorMessage }
                             </p>
                             : null}
@@ -62,7 +63,8 @@ export class Login extends Component {
                                 icon="fa-facebook"
                             />
                         </div>
-                    </Row>
+                        <p style={{textAlign: 'center', marginBotom: "0"}}>Don't have an account? Sign up <Link to='/register'>here</Link></p>  
+                    </Col>
                 </div>
             </div>
         )

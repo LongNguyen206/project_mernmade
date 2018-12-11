@@ -40,7 +40,7 @@ export const getShortlist = () => {
             });
         } catch(err) {
             dispatch({
-                type: 'PROFILE_ERRORS',
+                type: 'GET_ALL_ACCOUNTS',
                 payload: []
             });
         }

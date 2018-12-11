@@ -2,9 +2,10 @@ import React, { Component } from "react";
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { withRouter } from "react-router-dom";
-import { Input, Icon, Row, Col } from 'react-materialize';
+import { Input, Row } from 'react-materialize';
 
 import { getShortlist } from '../actions/profileActions';
+import { getCurrentProfile } from '../actions/profileActions';
 import Loader from './Loader';
 import CardGrid from './CardGrid';
 
@@ -19,6 +20,7 @@ class Saved extends Component {
 
     componentDidMount() {
         this.props.getShortlist();
+        this.props.getCurrentProfile();
     };
 
     componentWillReceiveProps(nextProps) {
@@ -48,9 +50,10 @@ class Saved extends Component {
 
     render () {
         const { accounts, loading } = this.props.accounts;
+        const { profile } = this.props.profile;
         let loader, accountsGrid;
 
-        if (accounts === null || loading ) {
+        if (accounts === null || loading || profile === null) {
             loader = <Loader />;
             accountsGrid = null;
         } else if (accounts.length === 0) {
@@ -64,10 +67,9 @@ class Saved extends Component {
                 <Row>
                     <SearchBar onSearch={this.onSearch}/>
                 </Row>
-                <Row>
-                    <Col l={10} style={{float: 'right'}}>
-                        <CardGrid accounts={this.state.filteredAccounts} />
-                    </Col>
+                <Row style={{marginRight: 'auto', marginLeft: 'auto'}}>
+                    <h4 className="saved-header" style={{textAlign: 'center'}}>You Saved {this.state.accounts.length} {this.state.accounts.length == 1 ? "Account" : "Accounts"}</h4>
+                    <CardGrid accounts={this.state.filteredAccounts} profile={this.props.profile} />
                 </Row>
             </div>
         }
@@ -86,7 +88,7 @@ class SearchBar extends Component {
         return (
             <div className="filter-list" style={{width: '100%', marginLeft: '10px'}}>
                 <form>
-                    <Input type="text" className="form-control form-control-lg" placeholder="Search" onChange={this.props.onSearch}><Icon style={{marginTop: '50%'}}>search</Icon></Input>
+                    <Input type="text" className="form-control form-control-lg" placeholder="Your wildcard search" onChange={this.props.onSearch} style={{ width:'97vw', fontSize: '40px'}} />
                 </form>
             </div>
         )
@@ -96,6 +98,7 @@ class SearchBar extends Component {
 // linking backend props to frontend state
 const mapStateToProps = state => {
     return {
+        profile: state.profile,
         accounts: state.accounts,
         errorMessage: state.accounts.errorMessage
     }
@@ -103,5 +106,5 @@ const mapStateToProps = state => {
 
 export default compose(
     withRouter,
-    connect(mapStateToProps, { getShortlist })
+    connect(mapStateToProps, { getShortlist, getCurrentProfile })
 )(Saved);

@@ -1,44 +1,56 @@
 import React, { Component } from 'react';
-import { Container, Row, Col, Button, Input } from 'react-materialize';
+import { Row, Col } from 'react-materialize';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { withRouter, Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
 import { getAccountByHandle, shortlist } from '../actions/accountActions';
+import { getCurrentProfile } from '../actions/profileActions';
 import Loader from './Loader';
 import AccountSummary from './AccountSummary';
+import AccountReviewFeed from './AccountReviewFeed';
 import ReviewForm from './ReviewForm';
 
 class Account extends Component {
   componentDidMount() {
     if (this.props.match.params.handle) {
       this.props.getAccountByHandle(this.props.match.params.handle);
-    }
+    };
+    this.props.getCurrentProfile();
   }
 
   render() {
-    const { loading } = this.props.account;
-    const account = this.props.account.account;
-    
-    let loader, accountContent;
-    
-    if (account === null || loading ) {
+    const { loading, account } = this.props.account;
+    const { profile } = this.props.profile;
+    let loader, accountContent, saved;    
+
+    if (account === null || loading || profile === null ) {
       loader = <Loader />;
       accountContent = null;
     } else {
       loader = null;
-      accountContent = <AccountSummary account={account} />;
+    
+      if ((profile.shortlist.length !== 0) && (profile.shortlist.includes(account._id))) {
+        saved = true
+      } else {
+        saved = false
+      }
+      accountContent = 
+      <div>
+        <Col m={12} l={6} s={12} style={{marginLeft: '10%'}}>
+          <AccountSummary account={account} profile={profile} saved={saved}/>
+          <AccountReviewFeed  accountID={account._id} reviews={account.reviews} />
+        </Col>
+        <Col m={12} l={4} s={12}>
+          <ReviewForm account={account}/>
+        </Col>
+      </div>
     }
 
     return (
       <Row>
         {loader}
-        <Col m={12} l={6} s={12} style={{marginLeft: '10%'}}>
-          {accountContent}
-        </Col>
-        <Col m={12} l={3} s={12}>
-          <ReviewForm />
-        </Col>
+        {accountContent}
       </Row>  
     )
   }
@@ -55,5 +67,6 @@ const mapStateToProps = state => {
 
 export default compose(
   withRouter,
-  connect(mapStateToProps, { getAccountByHandle, shortlist })
+  connect(mapStateToProps, { getCurrentProfile, getAccountByHandle, shortlist })
 )(Account);
+

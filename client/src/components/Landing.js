@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { withRouter } from "react-router-dom";
-import {Row, Col, Button, Input} from 'react-materialize';
+import { Row, Col, Button } from 'react-materialize';
 
 import * as actions from '../actions/authActions';
 

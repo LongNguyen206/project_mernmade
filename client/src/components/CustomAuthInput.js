@@ -13,6 +13,8 @@ export default class CustomAuthInput extends Component {
                     className="form-control-auth"
                     type={this.props.type}
                     s={this.props.s}
+                    l={this.props.l}
+                    m={this.props.m}
                     placeholder={this.props.placeholder}
                     value={value}
                     onChange={onChange}

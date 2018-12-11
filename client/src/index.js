@@ -56,7 +56,7 @@ if (jwToken) {
             // Logout user
             store.dispatch(logout());
             // Redirect to login
-            window.location.href = '/login';
+            window.location.href = '/';
         }
 }
 

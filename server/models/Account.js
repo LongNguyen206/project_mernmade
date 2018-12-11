@@ -15,6 +15,9 @@ const AccountSchema = new Schema({
   industry: { type: String, required: true },
   location: { type: String },
   description: { type: String },
+  averageRate: { type: Number },
+  numberOfReviews: { type: Number, default: 0 },
+  totalRate: { type: Number, default: 0 },
   reviews: [{
     reviewUser: { type: Schema.Types.ObjectId, ref: 'users' },
     reviewUserName: { type: String },

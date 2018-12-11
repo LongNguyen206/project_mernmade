@@ -172,7 +172,6 @@ router.post("/auth/facebook", passport.authenticate('facebookToken', { session: 
   .then(user => {
     // If User doesn't exist
     if (!user) {
-      console.log("no user found with this facebook email")
       return res.status(404).json({
         errMsg: "no user found with this facebook email"
       })

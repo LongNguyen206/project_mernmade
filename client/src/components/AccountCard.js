@@ -1,55 +1,24 @@
 import React, { Component } from "react";
 import { Col, Card, CardTitle } from 'react-materialize';
+import ReactStars from 'react-stars';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { withRouter, Link } from "react-router-dom";
 
 import RoundLoader from './RoundLoader';
 import { shortlist } from '../actions/accountActions';
-import { getCurrentProfile } from '../actions/profileActions';
 
 class AccountCard extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      saved: false,
-      shortlist: []
-    }
-  };
-
-  componentDidMount() {
-    this.props.getCurrentProfile();
-  }
-  
-  componentWillReceiveProps(nextProps) {
-    if (Object.keys(nextProps.profile).length !== 0) {
-      this.setState({
-        shortlist: nextProps.profile.shortlist
-      });
-      if (this.state.shortlist.includes(this.props.account._id.toString())) {
-        this.setState({
-            saved: true
-        })
-      }
-    } else {
-      this.setState({
-        saved: false
-      })
-    }
-  };
-
-  onClick = async (handle, profile) => {
-    await this.props.shortlist(handle, profile);
-    this.setState({
-      saved: !this.state.saved
-    })
+  onClick = async (handle) => {
+    await this.props.shortlist(handle);
   };
 
   render () {
-    let cardContent;
-    let icon, followerCount, savedIcon, truncateDesc;
-
-    if (this.props.account === null) {
+    let icon, followerCount, savedIcon, truncateDesc, rate, cardContent;
+    const { account } = this.props;
+    const { profile } = this.props.profile;
+    
+    if ((account === null) || (profile === null)) {
       cardContent = 
       <Card horizontal style={{height: '250px'}}>
         <div style={{padding: '20% 40%'}}>
@@ -57,50 +26,68 @@ class AccountCard extends Component {
         </div>
       </Card>
     } else {
-      let followerStr = this.props.account.followers.toString() ;
 
-      if (this.props.account.platform === 'Instagram') {
+      let followerStr = account.followers.toString() ;
+
+      if (account.platform === 'Instagram') {
         icon = <i className="fab fa-instagram"></i>
-      } else if (this.props.account.platform === 'Twitter') {
+      } else if (account.platform === 'Twitter') {
         icon = <i className="fab fa-twitter"></i>
-      } else if (this.props.account.platform === 'Facebook') {
+      } else if (account.platform === 'Facebook') {
         icon = <i className="fab fa-facebook"></i>
-      } else if (this.props.account.platform === 'Youtube') {
+      } else if (account.platform === 'Youtube') {
         icon = <i className="fab fa-youtube"></i>
       }
     
-      if (this.props.account.followers < 1000) {
+      if (account.followers < 1000) {
         followerCount = followerStr
-      } else if (this.props.account.followers < 1000000) {
+      } else if (account.followers < 1000000) {
         followerCount = (followerStr.slice(0 ,-3)) + '.' + (followerStr[followerStr.length-3]) + 'k'
       } else {
         followerCount = (followerStr.slice(0 ,-6)) + '.' + (followerStr[followerStr.length-6]) + 'm'
       } 
 
-      if (this.state.saved === true) {
+      if (this.props.saved === true) {
         savedIcon = <i title="Remove from saved" className="fas fa-bookmark fas-card"></i>
       } else {
         savedIcon = <i title="Save this account" className="far fa-bookmark far-card"></i>
       }
 
-      if (this.props.account.description.length > 50) {
-        truncateDesc = this.props.account.description.substr(0,50) + '...'
+      if (account.description.length > 50) {
+        truncateDesc = account.description.substr(0,50) + '...'
       } else {
-        truncateDesc = this.props.account.description
+        truncateDesc = account.description
       }
-
+      if (account.averageRate) {
+        rate = <p style={{ textAlign: 'left', width: '300px'}}>{account.averageRate}/5 ({account.numberOfReviews} reviews)</p>
+      } else {
+        rate = <p>No reviews</p>
+      }
       cardContent = 
-        <Card horizontal header={<CardTitle image={this.props.account.picture}></CardTitle>}>
+        <Card horizontal header={<CardTitle image={account.picture}></CardTitle>}>
           <div className='pre-card-divider'>
-            <p className="card-accountname"><a href={this.props.account.link} target="_blank" rel="noopener noreferrer">{this.props.account.accountName}</a></p>
-            <p className="card-follower-count" title={this.props.account.followers}>{icon} {followerCount}</p>
-            <p className="card-industry">{this.props.account.industry}</p>
-            <Link to={`/account/${this.props.account.handle}`}><p className="card-account-desc">{truncateDesc}</p></Link>
+            <p className="card-accountname"><a href={account.link} target="_blank" rel="noopener noreferrer">{account.accountName}</a></p>
+            <p className="card-follower-count" title={account.followers}>{icon} {followerCount}</p>
+            <p className="card-industry">{account.industry}</p>
+            <Link to={`/account/${account.handle}`}><p className="card-account-desc">{truncateDesc}</p></Link>
           </div>
           <div className="post-card-divider">
             <hr style={{marginTop: '30px'}} />
-            <p className="card-account-type">{this.props.account.accountType}</p>
-            <a className="card-saved-icon" onClick={this.onClick.bind(this, this.props.account.handle, this.props.profile)}>{savedIcon}</a>
+            <div className="card-account-type">
+            <p style={{ fontSize: '15px', fontWeight: '500'}}>{account.accountType}</p>
+            <p>
+                <ReactStars
+                    count={5}
+                    size={20}
+                    color2={'#ffd700'}
+                    value={account.averageRate}
+                    edit={false}
+                    className="review-stars-summary"
+                />
+                </p>
+              {rate}
+            </div>
+            <a className="card-saved-icon" onClick={this.onClick.bind(this, account.handle)}>{savedIcon}</a>
           </div>
         </Card>
     }
@@ -113,16 +100,7 @@ class AccountCard extends Component {
   }
 }
 
-// linking backend props to frontend state
-const mapStateToProps = state => {
-  return {
-    profile: state.profile.profile,
-    accounts: state.accounts,
-    errorMessage: state.accounts.errorMessage
-  }
-};
-
 export default compose(
   withRouter,
-  connect(mapStateToProps, { getCurrentProfile, shortlist })
+  connect(null, { shortlist })
 )(AccountCard);

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Row } from 'react-materialize';
+import { Button, Col } from 'react-materialize';
 import { reduxForm, Field } from 'redux-form';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
@@ -31,12 +31,12 @@ class LoginModal extends Component {
         return (
             <div>
             <h4 className="register-title">Log In</h4>
-            <Row className="form-row">
+            <Col className="form-row">
                 <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
-                    <Field name="email" type="email" id="login_email" label="Enter your email" s={11} component={CustomAuthInput} />
-                    <Field name="password" type="password" id="login_password" label="Enter your password" s={11} component={CustomAuthInput} />
+                    <Field name="email" type="email" id="login_email" label="Enter your email" s={9} l={9} component={CustomAuthInput} />
+                    <Field name="password" type="password" id="login_password" label="Enter your password" s={9} l={9} m={9} component={CustomAuthInput} />
                     { this.props.errorMessage ?
-                    <p className="form-group" style={{color: 'red', marginLeft: '10%', fontSize: '13px'}}>
+                    <p className="form-group" style={{color: 'red', marginLeft: '15px', fontSize: '13px'}}>
                         *{ this.props.errorMessage }
                     </p>
                     : null}
@@ -55,7 +55,7 @@ class LoginModal extends Component {
                         icon="fa-facebook"
                     />
                 </div>
-            </Row>
+            </Col>
             </div>
         )
     };
