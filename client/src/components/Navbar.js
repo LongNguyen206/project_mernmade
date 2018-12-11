@@ -9,6 +9,10 @@ import { clearAllAccounts } from '../actions/accountActions';
 import LoginModal from './LoginModal';
 
 class NavbarComp extends Component {
+    componentDidMount() {
+        console.log(this.props.auth.user.name)
+        console.log(this.props.auth.user.avatar)
+    }
     logOut = () => {
         this.props.clearCurrentProfile();
         this.props.clearAllAccounts();

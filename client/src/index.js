@@ -29,7 +29,14 @@ import TandC from './FooterPages/TandC';
 import Privacy from './FooterPages/Privacy';
 
 const jwToken = localStorage.getItem('JWTOKEN');
+axios.defaults.headers.common['Authorization'] = jwToken;
 let current_user = {};
+
+// Get current user if token is valid
+if (jwToken) {
+    current_user = setCurrentUser(jwt_decode(jwToken)).payload;   
+}
+
 const store = createStore(
     reducers,
     {
@@ -38,21 +45,19 @@ const store = createStore(
           user: current_user
       }
   }, composeWithDevTools(applyMiddleware(reduxThunk)));
-// Get current user if token is valid
-if (localStorage.JWTOKEN) {
-    axios.defaults.headers.common['Authorization'] = jwToken;
-    current_user = setCurrentUser(jwt_decode(jwToken)).payload;
-    // Check for expired token
+
+// Check for expired token
+if (jwToken) {
     const currentTime = Date.now() / 1000;
-    if (jwt_decode(jwToken).exp < currentTime) {
-        // TODO: Clear current Profile
-        store.dispatch(clearCurrentProfile());
-        store.dispatch(clearAllAccounts());
-        // Logout user
-        store.dispatch(logout());
-        // Redirect to login
-        window.location.href = '/login';
-    }
+        if (jwt_decode(jwToken).exp < currentTime) {
+            // TODO: Clear current Profile
+            store.dispatch(clearCurrentProfile());
+            store.dispatch(clearAllAccounts());
+            // Logout user
+            store.dispatch(logout());
+            // Redirect to login
+            window.location.href = '/login';
+        }
 }
 
 ReactDOM.render(

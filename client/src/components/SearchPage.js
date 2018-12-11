@@ -172,23 +172,23 @@ class SearchPage extends Component {
             loader = null;
             accountsGrid = 
             <div>
-            <Row>
-                <SearchBar onSearch={this.onSearch}/>
-            </Row>
-            <Row>
-                <Col l={2} style={{marginLeft: '25px', width: '150px', float: 'left'}}>
-                    <FilterBar
-                        platforms={this.state.platforms}
-                        accountTypes={this.state.accountTypes}
-                        handleAllChecked={this.handleAllChecked}
-                        handlePlatform={this.handlePlatform}
-                        handleAccountType={this.handleAccountType}
-                    />
-                </Col>
-                <Col l={10} style={{float: 'right'}}>
-                    <CardGrid accounts={this.state.filteredAccounts} />
-                </Col>
-            </Row>
+                <Row>
+                    <SearchBar onSearch={this.onSearch}/>
+                </Row>
+                <Row>
+                    <Col l={2} style={{marginLeft: '25px', width: '150px', float: 'left'}}>
+                        <FilterBar
+                            platforms={this.state.platforms}
+                            accountTypes={this.state.accountTypes}
+                            handleAllChecked={this.handleAllChecked}
+                            handlePlatform={this.handlePlatform}
+                            handleAccountType={this.handleAccountType}
+                        />
+                    </Col>
+                    <Col l={10} style={{float: 'right', marginTop: "20px"}}>
+                        <CardGrid accounts={this.state.filteredAccounts} />
+                    </Col>
+                </Row>
             </div>
         }
 
@@ -206,7 +206,7 @@ class SearchBar extends Component {
         return (
             <div className="filter-list" style={{width: '100%', marginLeft: '10px'}}>
                 <form>
-                    <Input type="text" className="form-control form-control-lg" placeholder="Search" onChange={this.props.onSearch}><Icon style={{marginTop: '50%'}}>search</Icon></Input>
+                    <Input type="text" className="form-control form-control-lg" placeholder="Search" onChange={this.props.onSearch} style={{width: '90vw'}}><Icon style={{marginTop: '50%', width: '97%'}}>search</Icon></Input>
                 </form>
             </div>
         )
