@@ -521,6 +521,54 @@ All data HashtagHound collects is stored electronically on the DigitalOcean infr
 
 # Part B Documentation
 
+### Project Management
+
+##1. Record interactions with your client in a diary format
+
+##3. Develop project charter, including preliminary statement of project scope and obtain sign-off
+
+Project Name: Hashtag Hound
+
+Project description: An application that allows businesses to filter through manually entered and genuine influencers and leave a review after they have worked with them. Companies have the ability to leave an anonymous review on influencers they choose to work with.
+
+Project Manager: Long Nguyen
+
+Business Case: Our client, Mary owns a social media agency in New York and was having trouble managing her clients. Her clients do not have a platform to be in contact with her firm and she is unable to manage her list of influencers in an efficient way. Our application helps her to do that.
+
+Team Members: Mariam , Long, Jesse , Oliver
+
+Expected goals of each member:
+
+Mariam – Frontend development with user experience, main design
+
+Long – Backend development with database, authentication
+
+Jesse – frontend development of filter system and profiles
+
+Oliver – Frontend for the admin app
+
+Challenges and constraints:
+
+Getting the review system up and running
+
+Attaching the backend admin system to the frontend
+
+Taking too much time to choose a UI framework
+
+Instagram api authentication
+
+##10. As a team, conduct post project review
+
+Post project review:
+
+Mariam – I was in charge of front end design with the application and I really enjoyed communicating with the client back and forth to understand the type of look and design she was going for. She was after a clean, minimal look with very simple colors such as blue, grey and white. The front end was very time consuming because that is what the customer sees and probably the only thing they care about because it is an experience. I felt that if we had the client send us exactly what she wanted from the very beginning we would have been able to save a lot of time and focus on more important areas like implementing a solid review system with stars. At first there was a bit of communication issues because I was not used to team work with programming but after the first week it was all in sync and I was very much enjoying the project. I believe we could have gotten better results if we had figured out what to use for the front end and communicated the design with the client better. Testing was fun.
+
+Jesse – I was in charge filtering system for the influencer, listing pages, creating initial wireframes. The wireframes forced me to learn a new skill because I hadn’t wireframed with figma before. I liked that I was able to get a deeper understanding of react and state control. What I didn’t like was., it was very difficult because I didn’t implement redux, thus I now understand its importance. The filter bar was very time consuming, although I got it done it took a lot of my time.
+
+Long - I was in charge of backend development with the routes, models, redux and deployment. I learnt how to deploy applications, continuous integrations and agile. I had a lot of difficulty with digital oceana nd get facebook authentication to work. The project started very well but a lot of features took very time to implement. A lot of things had to be done manually because w edidn tuse a lot of ready packages which caused a lot of thme to be buggy like the search bar, card creation , flex box.
+
+Overall the implementation of HashtagHound was a success with the majority of our user stories implemented. One pitfall was the Admin Dashboard stretch goal. While successfully creating the table for the dashboard, unfortunately we were unable to connect it to the API back-end. Better planning and stricter deadlines would help to alleviate this problem in the future. The second pitfall was the implementation of the Instagram API, unfortunately due to the Cambridge Analytica scandal the lock-down of the majority of Instagram API end-points complicated the implementation. This problem could be avoided in the future if with better future planning and securing a HTTPS certification easier in the project.
+
 ### Application Design
 
 ## 1. A 350 word summary of your application including problem definition and solution
@@ -544,26 +592,34 @@ Referenced Above in [Question 14](#userStories)
 ## 5. Wireframes for all main pages of your app:
 
 Second Wireframe Drafts :
+<br>
 Second draft where made for our app, after further collabration and consideration of our clients needs.
 
 Second draft for the landing page, we wanted to keep it simple,direct and straight foward as this is the first avenue into allowing users to signup or login.
+<br>
 ![Second draft wireframe landing page](https://github.com/LongNguyen206/project_mernmade/blob/dev/doc_images/landing_page.png)
-
+<br>
 The draft for the login page, we wanted to go with the idea of using a modal as it requires the user attention/interaction as it's important for most websites that the user login correctly.
+<br>
 ![Second draft wireframe login page](https://github.com/LongNguyen206/project_mernmade/blob/dev/doc_images/landing_page_log_in.png)
-
+<br>
 The sites signup page, simple and elegant, captures the users data to generate a users account.
+<br>
 ![Second draft wireframe signup page](https://github.com/LongNguyen206/project_mernmade/blob/dev/doc_images/signup_page.png)
-
+<br>
 This was originally going to be a prefilter searchpage right after the user logs in. Its basis was to set prerequisite before heading to the main listing page, it was an idea to give the user a quick response of accounts their were looking for intially after.
+<br>
 ![Second draft wireframe influencer searchpage](https://github.com/LongNguyen206/project_mernmade/blob/dev/doc_images/influener_search_page.png)
-
+<br>
 Here was going to be the sites bread and butter, it was going to show you all the results of account the user was looking for, based on platform, type of account, follower count, engagment rate, and location.
 As you can see below, there is a side filter bar, where the user would be able to effortlessly filter through all accounts.
+<br>
 ![Second draft wireframe influencer listingpage](https://github.com/LongNguyen206/project_mernmade/blob/dev/doc_images/influencer_listings.png)
-
+<br>
 Current state of our wirefames:
-![Current wireframe](https://github.com/LongNguyen206/project_mernmade/blob/dev/doc_images/Current_Wireframes.png)
+<br>
+![Current wireframe](https://github.com/LongNguyen206/project_mernmade/blob/dev/doc_images/current_wirefame.png)
+<br>
 
 ## 6. Entity Relationship Diagram (ERD):
 
