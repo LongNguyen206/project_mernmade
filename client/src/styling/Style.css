@@ -573,6 +573,9 @@ footer.page-footer .footer-copyright {
   text-align: center;
   height: 250px;
   max-height: 250px;
+  /* display:flex;
+  align-items:center;
+  justify-content:center; */
 }
 
 .card.horizontal .card-image img {
