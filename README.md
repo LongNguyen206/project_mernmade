@@ -544,26 +544,34 @@ Referenced Above in [Question 14](#userStories)
 ## 5. Wireframes for all main pages of your app:
 
 Second Wireframe Drafts :
+<br>
 Second draft where made for our app, after further collabration and consideration of our clients needs.
 
 Second draft for the landing page, we wanted to keep it simple,direct and straight foward as this is the first avenue into allowing users to signup or login.
+<br>
 ![Second draft wireframe landing page](https://github.com/LongNguyen206/project_mernmade/blob/dev/doc_images/landing_page.png)
-
+<br>
 The draft for the login page, we wanted to go with the idea of using a modal as it requires the user attention/interaction as it's important for most websites that the user login correctly.
+<br>
 ![Second draft wireframe login page](https://github.com/LongNguyen206/project_mernmade/blob/dev/doc_images/landing_page_log_in.png)
-
+<br>
 The sites signup page, simple and elegant, captures the users data to generate a users account.
+<br>
 ![Second draft wireframe signup page](https://github.com/LongNguyen206/project_mernmade/blob/dev/doc_images/signup_page.png)
-
+<br>
 This was originally going to be a prefilter searchpage right after the user logs in. Its basis was to set prerequisite before heading to the main listing page, it was an idea to give the user a quick response of accounts their were looking for intially after.
+<br>
 ![Second draft wireframe influencer searchpage](https://github.com/LongNguyen206/project_mernmade/blob/dev/doc_images/influener_search_page.png)
-
+<br>
 Here was going to be the sites bread and butter, it was going to show you all the results of account the user was looking for, based on platform, type of account, follower count, engagment rate, and location.
 As you can see below, there is a side filter bar, where the user would be able to effortlessly filter through all accounts.
+<br>
 ![Second draft wireframe influencer listingpage](https://github.com/LongNguyen206/project_mernmade/blob/dev/doc_images/influencer_listings.png)
-
+<br>
 Current state of our wirefames:
-![Current wireframe](https://github.com/LongNguyen206/project_mernmade/blob/dev/doc_images/Current_Wireframes.png)
+<br>
+![Current wireframe](https://github.com/LongNguyen206/project_mernmade/blob/dev/doc_images/current_wirefame.png)
+<br>
 
 ## 6. Entity Relationship Diagram (ERD):
 
