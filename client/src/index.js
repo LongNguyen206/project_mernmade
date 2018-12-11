@@ -50,7 +50,6 @@ const store = createStore(
 
 // Check for expired token
 if (jwToken) {
-<<<<<<< HEAD
     const currentTime = Date.now() / 1000;
         if (jwt_decode(jwToken).exp < currentTime) {
             // TODO: Clear current Profile
@@ -61,18 +60,6 @@ if (jwToken) {
             // Redirect to login
             window.location.href = '/';
         }
-=======
-  const currentTime = Date.now() / 1000;
-  if (jwt_decode(jwToken).exp < currentTime) {
-    // TODO: Clear current Profile
-    store.dispatch(clearCurrentProfile());
-    store.dispatch(clearAllAccounts());
-    // Logout user
-    store.dispatch(logout());
-    // Redirect to login
-    window.location.href = "/login";
-  }
->>>>>>> 7b46c491eb40326208cbfe0497ff9ac9018aeef2
 }
 
 ReactDOM.render(
