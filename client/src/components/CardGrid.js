@@ -13,7 +13,7 @@ class CardGrid extends Component {
     const { profile } = this.props.profile;
     for(let i = 0; i < this.props.accounts.length; i++) {
       let saved;
-      if ((profile.shortlist.length !== 0) && (profile.shortlist.includes(this.props.accounts[i]._id))) {
+      if ((profile.shortlist !== undefined) && (profile.shortlist.length !== 0) && (profile.shortlist.includes(this.props.accounts[i]._id))) {
         saved = true
       } else {
         saved = false
