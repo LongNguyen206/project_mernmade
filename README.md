@@ -8,7 +8,7 @@
 
 > Project website: [mernmade.com](https://mernmade.com)
 
-> [Github link](https://github.com/LongNguyen206/project_mernmade)
+> Github link: [https://github.com/LongNguyen206/project_mernmade](https://github.com/LongNguyen206/project_mernmade)
 
 > [Trello board](https://trello.com/b/BlPphC67/mernmadecom)
 
