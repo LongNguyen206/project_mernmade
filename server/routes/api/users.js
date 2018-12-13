@@ -50,9 +50,9 @@ router.post("/register", (req, res) => {
       });
     }
     // Password format validation
-    if (/(?=^.{6,15}$)(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&amp;*()_+}{&quot;:;'?/&gt;.&lt;,])(?!.*\s).*$/.test(req.body.password) == false) {
+    if (/(?=^.{6,15}$)(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&;*()_+}{";:;'?/>;.<;,])(?!.*\s).*$/.test(req.body.password) == false) {
       return res.status(400).json({
-        errMsg: "Password must be at least 6 characters and have at least 1 lower case letter, 1 Upper case letter and 1 digit"
+        errMsg: "Password must be at least 6 characters and have at least 1 lower case letter, 1 Upper case letter, 1 digit and 1 special character"
     });
     }
     // Confirm Password validation

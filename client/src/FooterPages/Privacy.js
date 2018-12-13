@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 
-
 class Privacy extends Component {
   render() {
     return(
@@ -78,13 +77,9 @@ class Privacy extends Component {
 
         By email: hashtaghound@gmail.com </p>
 
-
-
-
    </div>
     );
   }
 }
-
 
 export default Privacy;

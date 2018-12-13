@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const mongoose = require("mongoose");
 const passport = require('passport');
-// Load 'account' model
+
 const Profile = mongoose.model("profile");
 const Account = mongoose.model("accounts");
 

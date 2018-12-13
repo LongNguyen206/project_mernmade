@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
 
-
-
 class Terms extends Component {
   render() {
     return(
@@ -9,6 +7,5 @@ class Terms extends Component {
     )
   }
 }
-
 
 export default Terms;

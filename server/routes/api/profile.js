@@ -117,7 +117,7 @@ router.post('/', passport.authenticate('jwt', { session: false }), (req, res) =>
     // Handle format validation
     if ((req.body.handle) && (/^[a-zA-Z0-9_]*$/.test(req.body.handle) == false)) {
         return res.status(400).json({
-            errMsg: "Username must not contain special characters except underscores"
+            errMsg: "Username must not contain spaces or special characters except underscores"
         });
     }
     // Website format validation
@@ -142,7 +142,6 @@ router.post('/', passport.authenticate('jwt', { session: false }), (req, res) =>
                     .then(profile => res.json(profile));
             } else {
                 // Create
-                // Save
                 new Profile(profileFields).save()
                     .then(profile => res.json(profile));
                 };
@@ -157,7 +156,6 @@ router.delete('/', passport.authenticate('jwt', { session: false }), (req, res) 
         .then(() => {
             User.findOneAndRemove({ _id: req.user.id })
                 .then(() => res.json({ msg: "Success"}))
-
         })
         .catch(err => res.status(404).json(err));
 });
