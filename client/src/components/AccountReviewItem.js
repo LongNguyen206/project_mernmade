@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
-import { Card, CardTitle, Col, Row } from 'react-materialize';
+import { Col, Row } from 'react-materialize';
 import ReactStars from 'react-stars';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { withRouter } from "react-router-dom";
 
-import Loader from './Loader';
 import { shortlist } from '../actions/accountActions';
 
 class AccountReviewItem extends Component {
     render () {
-        const { review, accountID, auth } = this.props;   
+        const { review } = this.props;   
         let date = new Date(review.reviewDate);
         var month = date.getUTCMonth() + 1;
         var day = date.getUTCDate();

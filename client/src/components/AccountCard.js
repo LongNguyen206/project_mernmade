@@ -58,11 +58,13 @@ class AccountCard extends Component {
       } else {
         truncateDesc = account.description
       }
+
       if (account.averageRate) {
-        rate = <p style={{ textAlign: 'left', width: '300px'}}>{account.averageRate}/5 ({account.numberOfReviews} reviews)</p>
+        rate = <p style={{ textAlign: 'left', width: '300px'}}>{account.averageRate.toFixed(1)}/5 ({account.numberOfReviews} reviews)</p>
       } else {
         rate = <p>No reviews</p>
       }
+      
       cardContent = 
         <Card horizontal header={<CardTitle image={account.picture}></CardTitle>}>
           <div className='pre-card-divider'>
