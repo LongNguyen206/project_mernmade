@@ -30,7 +30,7 @@ class Account extends Component {
     } else {
       loader = null;
     
-      if ((profile.shortlist.length !== 0) && (profile.shortlist.includes(account._id))) {
+      if ((profile.shortlist) && (profile.shortlist.length !== 0) && (profile.shortlist.includes(account._id))) {
         saved = true
       } else {
         saved = false
